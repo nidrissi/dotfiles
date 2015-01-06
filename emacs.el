@@ -24,7 +24,7 @@
 (setq default-frame-alist
       '((background-color . "black")
         (foreground-color . "white")
-        (font . "DejaVu Sans Mono-11")))
+        (font . "DejaVu Sans Mono-12")))
 (set-scroll-bar-mode 'right)
 (column-number-mode t)
 (line-number-mode t)
@@ -46,6 +46,11 @@
 (setq ibuffer-saved-filter-groups
       '(("default"
          ("latex" (mode . latex-mode))
+         ("perl" (mode . perl-mode))
+         ("web" (or (mode . html-mode)
+                    (mode . js-mode)
+                    (mode . css-mode)
+                    (mode . web-mode)))
          ("git" (name . "*magit"))
          ("emacs" (or (name . "*Messages*")
                       (name . "*scratch*")
@@ -103,11 +108,14 @@
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil
               tab-width 4)
-(defalias 'perl-mode 'cperl-mode)
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 (setq cperl-indent-level 4
-      cperl-invalid-face nil
       cperl-indent-parens-as-block t
       cperl-close-paren-offset -4)
+(add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . html-mode)) ; template toolkit
 
 
 ;; Magit
