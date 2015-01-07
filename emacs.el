@@ -265,18 +265,21 @@
       (if (file-exists-p "C:/Users/Najib/OneDrive/journal.gpg")
           "C:/Users/Najib/OneDrive/journal.gpg"
         "e:/SkyDrive/journal.gpg"))
-(defun my-new-diary-entry ()
-  (interactive)
+(defun my-new-diary-entry (prefix)
+  (interactive "P")
   (find-file my-diary-file)
+  (goto-char (point-min))
   (org-mode)
-  (let ((date (format-time-string "* %d/%m/%y")))
-    (unless (search-forward-regexp date nil t)
-      (insert date "\n"))
-    (org-narrow-to-subtree)
-    (goto-char (point-max))
-    (insert "** " (format-time-string "%R") "\n")))
+  (unless prefix
+    (let ((date (format-time-string "* %d/%m/%y")))
+      (unless (search-forward-regexp date nil t)
+        (insert date "\n"))
+      (org-narrow-to-subtree)
+      (goto-char (point-max))
+      (insert "** " (format-time-string "%R") "\n"))))
 (global-set-key (kbd "C-c j") 'my-new-diary-entry)
-      
+(add-hook 'text-mode-hook 'turn-on-auto-fill)      
+
 
 ;; Customize
 ;; "²" = "\u00b2"
