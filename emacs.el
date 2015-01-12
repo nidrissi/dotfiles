@@ -273,9 +273,11 @@
   (unless prefix
     (let ((date (format-time-string "* %d/%m/%y")))
       (unless (search-forward-regexp date nil t)
+        (goto-char (point-max))
         (insert date "\n"))
       (org-narrow-to-subtree)
       (goto-char (point-max))
+      (widen)
       (insert "** " (format-time-string "%R") "\n"))))
 (global-set-key (kbd "C-c j") 'my-new-diary-entry)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)      
