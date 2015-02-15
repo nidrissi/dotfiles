@@ -85,12 +85,12 @@
 (flx-ido-mode 1)
 (setq ido-enable-flex-matching t
       ido-max-window-height 1
-      ido-auto-merge-work-directories-length -1
-      ido-use-faces nil)                ; flx-ido
+      ido-auto-merge-work-directories-length -1)
 (setq gc-cons-threshold 20000000)       ; gc
 (projectile-global-mode)
 
 ;;; Icomplete
+(require 'icomplete+)
 (icomplete-mode t)
 (setq icomplete-prospects-height 1)
 
@@ -173,10 +173,10 @@
      (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
 
      ;; Fold
-     (add-to-list 'TeX-fold-macro-spec-list '("[r]" ("cref" "Cref")))
-     (add-to-list 'TeX-fold-macro-spec-list '("[c]" ("textcite")))
-     (add-to-list 'TeX-fold-macro-spec-list '("[f]" ("tablefootnote")))
-     (add-to-list 'TeX-fold-macro-spec-list '("[n]" ("nomenclature")))
+     (add-to-list 'LaTeX-fold-macro-spec-list '("[r]" ("cref" "Cref")))
+     (add-to-list 'LaTeX-fold-macro-spec-list '("[c]" ("textcite")))
+     (add-to-list 'LaTeX-fold-macro-spec-list '("[f]" ("tablefootnote")))
+     (add-to-list 'LaTeX-fold-macro-spec-list '("[n]" ("nomenclature")))
      (add-to-list 'LaTeX-fold-math-spec-list '("[" ("lbrack")))
      (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
 
