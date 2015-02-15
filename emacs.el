@@ -80,7 +80,6 @@
 (cua-mode t)
 
 ;;; Ido
-(require 'flx-ido)
 (ido-mode t)
 (ido-everywhere t)
 (flx-ido-mode 1)
@@ -92,7 +91,6 @@
 (projectile-global-mode)
 
 ;;; Icomplete
-(require 'icomplete+)
 (icomplete-mode t)
 (setq icomplete-prospects-height 1)
 
@@ -159,15 +157,6 @@
       '((?o "circ" "Ring operator" 8728)
         (?K "Bbbk" "Blackboard bold k" 120156)))
 
-;(require 'latex)
-;(require 'reftex)
-;(require 'tex-fold)
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'TeX-fold-mode)
-(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
 
 (eval-after-load "reftex"
   '(progn
@@ -175,21 +164,21 @@
 
 (eval-after-load "latex"
   '(progn
+     (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+     (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
+     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+     (add-hook 'LaTeX-mode-hook 'TeX-fold-mode)
+     (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
      (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
 
      ;; Fold
-     (add-to-list 'TeX-fold-macro-spec-list
-                  '("[r]" ("cref" "Cref")))
-     (add-to-list 'TeX-fold-macro-spec-list
-                  '("[c]" ("textcite")))
-     (add-to-list 'TeX-fold-macro-spec-list
-                  '("[f]" ("tablefootnote")))
-     (add-to-list 'TeX-fold-macro-spec-list
-                  '("[n]" ("nomenclature")))
-     (add-to-list 'LaTeX-fold-math-spec-list
-                  '("[" ("lbrack")))
-     (add-to-list 'LaTeX-fold-math-spec-list
-                  '("]" ("rbrack")))
+     (add-to-list 'TeX-fold-macro-spec-list '("[r]" ("cref" "Cref")))
+     (add-to-list 'TeX-fold-macro-spec-list '("[c]" ("textcite")))
+     (add-to-list 'TeX-fold-macro-spec-list '("[f]" ("tablefootnote")))
+     (add-to-list 'TeX-fold-macro-spec-list '("[n]" ("nomenclature")))
+     (add-to-list 'LaTeX-fold-math-spec-list '("[" ("lbrack")))
+     (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
 
      ;; LaTeXmk
      (add-to-list
