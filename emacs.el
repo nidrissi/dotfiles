@@ -275,6 +275,15 @@
 (global-set-key (kbd "C-c j") 'my-new-diary-entry)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)      
 
+(set-fontset-font
+ "fontset-default"
+ (cons (decode-char 'ucs #x02200) (decode-char 'ucs #x022ff))
+ "STIX")
+(set-fontset-font
+ "fontset-default"
+ (cons (decode-char 'ucs #x02a00) (decode-char 'ucs #x02aff))
+ "STIX")
+
 
 ;; Customize
 ;; "²" = "\u00b2"
