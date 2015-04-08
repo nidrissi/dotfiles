@@ -1,7 +1,7 @@
 ;; Init
 (fset 'yes-or-no-p 'y-or-n-p)
 (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
@@ -179,6 +179,24 @@
      (add-to-list 'LaTeX-fold-macro-spec-list '("[n]" ("nomenclature")))
      (add-to-list 'LaTeX-fold-math-spec-list '("[" ("lbrack")))
      (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
+     (add-to-list 'LaTeX-fold-math-spec-list '("\u00ab" ("og")))
+     (add-to-list 'LaTeX-fold-math-spec-list '("\u00bb" ("fg")))
+
+     ;; reftex
+     (TeX-add-style-hook
+      "cleveref"
+      (lambda ()
+        (if (boundp 'reftex-ref-style-alist)
+            (add-to-list
+             'reftex-ref-style-alist
+             '("Cleveref" "cleveref"
+               (("\\cref" ?c) ("\\Cref" ?C) ("\\cpageref" ?d) ("\\Cpageref" ?D)))))
+        (reftex-ref-style-activate "Cleveref")
+        (TeX-add-symbols
+         '("cref" TeX-arg-ref)
+         '("Cref" TeX-arg-ref)
+         '("cpageref" TeX-arg-ref)
+         '("Cpageref" TeX-arg-ref))))
 
      ;; LaTeXmk
      (add-to-list
@@ -236,7 +254,12 @@
           (interactive)
           (TeX-command "View" 'TeX-active-master 0))))))
 
-
+;; Fonts (used for folding)
+(dolist (x '((#x02200 . #x022ff) (#x02a00 . #x02aff) (#x1d400 . #x1d7ff)))
+  (set-fontset-font
+   "fontset-default"
+   (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
+   "STIX"))
 
 ;; Misc
 (setq woman-fill-column 80
@@ -250,40 +273,6 @@
       browse-url-generic-program
       (cond ((eq system-type 'windows-nt) "C:/Users/Najib/AppData/Local/Google/Chrome/Application/chrome.exe")
             (t "google-chrome")))
-
-;; Diary
-(require 'epa-file)
-(epa-file-enable)
-(setq my-diary-file
-      (if (file-exists-p "C:/Users/Najib/OneDrive/journal.gpg")
-          "C:/Users/Najib/OneDrive/journal.gpg"
-        "e:/SkyDrive/journal.gpg"))
-(defun my-new-diary-entry (prefix)
-  (interactive "P")
-  (find-file my-diary-file)
-  (goto-char (point-min))
-  (org-mode)
-  (unless prefix
-    (let ((date (format-time-string "* %d/%m/%y")))
-      (unless (search-forward-regexp date nil t)
-        (goto-char (point-max))
-        (insert date "\n"))
-      (org-narrow-to-subtree)
-      (goto-char (point-max))
-      (widen)
-      (insert "** " (format-time-string "%R") "\n"))))
-(global-set-key (kbd "C-c j") 'my-new-diary-entry)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)      
-
-(set-fontset-font
- "fontset-default"
- (cons (decode-char 'ucs #x02200) (decode-char 'ucs #x022ff))
- "STIX")
-(set-fontset-font
- "fontset-default"
- (cons (decode-char 'ucs #x02a00) (decode-char 'ucs #x02aff))
- "STIX")
-
 
 ;; Customize
 ;; "²" = "\u00b2"
