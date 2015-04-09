@@ -1,7 +1,7 @@
 ;; Init
 (fset 'yes-or-no-p 'y-or-n-p)
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
@@ -89,11 +89,6 @@
 (setq gc-cons-threshold 20000000)       ; gc
 (projectile-global-mode)
 
-;;; Icomplete
-(require 'icomplete+)
-(icomplete-mode t)
-(setq icomplete-prospects-height 1)
-
 ;;; Backup
 (setq backup-by-copying t
       backup-directory-alist '(("." . "~/.saves"))
@@ -115,6 +110,9 @@
       cperl-close-paren-offset -4)
 (add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . html-mode)) ; template toolkit
 
+;; Haskell
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 ;; Magit
 (autoload 'magit-status "magit")
@@ -255,7 +253,7 @@
           (TeX-command "View" 'TeX-active-master 0))))))
 
 ;; Fonts (used for folding)
-(dolist (x '((#x02200 . #x022ff) (#x02a00 . #x02aff) (#x1d400 . #x1d7ff)))
+(dolist (x '((#x2200 . #x22ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
   (set-fontset-font
    "fontset-default"
    (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
@@ -276,17 +274,8 @@
 
 ;; Customize
 ;; "²" = "\u00b2"
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(LaTeX-math-abbrev-prefix "\u00b2")
  '(ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
- '(magit-git-executable "C:/Program Files (x86)/Git/bin/git.exe"))
+ '(magit-git-executable "C:/Program Files (x86)/Git/bin/git.exe"));
