@@ -117,6 +117,7 @@
 ;; Magit
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 
 ;; AUCTeX
