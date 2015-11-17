@@ -95,7 +95,6 @@
       delete-old-versions t
       version-control t)
 
-
 ;; Programming
 ;;; Misc prog
 (setq standard-indent 4)
@@ -145,6 +144,8 @@
        (append
         (car ispell-tex-skip-alists)
         '(("\\\\cref" ispell-tex-arg-end)
+          ("\\\\Cref" ispell-tex-arg-end)
+          ("\\\\import" ispell-tex-arg-end 2)
           ("\\\\textcite" ispell-tex-arg-end)))
        (cadr ispell-tex-skip-alists))
       flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
@@ -154,8 +155,8 @@
 (setq LaTeX-math-menu-unicode t
       LaTeX-math-list
       '((?o "circ" "Ring operator" 8728)
-        (?K "Bbbk" "Blackboard bold k" 120156)))
-
+        (?K "Bbbk" "Blackboard bold k" 120156))
+      LaTeX-fill-break-at-separators '(\\\[ \\\]))
 
 (eval-after-load "reftex"
   '(progn
@@ -253,12 +254,22 @@
           (interactive)
           (TeX-command "View" 'TeX-active-master 0))))))
 
-;; Fonts (used for folding)
-(dolist (x '((#x2200 . #x22ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
+;;; Fonts (used for folding)
+(dolist (x '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
   (set-fontset-font
    "fontset-default"
    (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
    "STIX"))
+
+;; Org mode
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
+(setq
+ org-log-done t
+ org-agenda-files
+ (list (if (file-exists-p "C:/Users/Najib/OneDrive")
+           "C:/Users/Najib/OneDrive/agenda.org"
+         "E:/SkyDrive/agenda.org")))
 
 ;; Misc
 (setq woman-fill-column 80
@@ -270,7 +281,7 @@
       ;; Browser
       browse-url-browser-function 'browse-url-generic
       browse-url-generic-program
-      (cond ((eq system-type 'windows-nt) "C:/Users/Najib/AppData/Local/Google/Chrome/Application/chrome.exe")
+      (cond ((eq system-type 'windows-nt) "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
             (t "google-chrome")))
 
 ;; Customize
@@ -279,4 +290,4 @@
 (custom-set-variables
  '(LaTeX-math-abbrev-prefix "\u00b2")
  '(ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
- '(magit-git-executable "C:/Program Files (x86)/Git/bin/git.exe"));
+ '(magit-git-executable "C:/Program Files/Git/bin/git.exe"))
