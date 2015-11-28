@@ -5,11 +5,8 @@
 (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
+(cd (getenv "HOME"))
 (setq enable-local-eval t)
-(setq my-home
-      (cond ((eq system-type 'windows-nt) "C:/Users/Najib/")
-            (t "~")))
-(cd my-home)
 (server-start)
 
 ;; Interface
@@ -114,9 +111,11 @@
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 ;; Magit
+(require 'ssh-agency)
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(setenv "SSH_ASKPASS" "git-gui--askpass")
 
 
 ;; AUCTeX
@@ -289,5 +288,4 @@
 (custom-set-faces)
 (custom-set-variables
  '(LaTeX-math-abbrev-prefix "\u00b2")
- '(ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
- '(magit-git-executable "C:/Program Files/Git/bin/git.exe"))
+ '(ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe"))
