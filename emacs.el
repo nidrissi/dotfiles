@@ -114,7 +114,8 @@
 (require 'ssh-agency)
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
-(setq magit-last-seen-setup-instructions "1.4.0")
+(setq magit-last-seen-setup-instructions "1.4.0"
+      magit-push-always-verify nil)
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
 
