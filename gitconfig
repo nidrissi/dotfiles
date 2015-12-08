@@ -1,7 +1,22 @@
 [user]
-	email = najib.idrissi@ens.fr
-	name = Najib Idrissi Kaitouni
+	email = najib.idrissi-kaitouni@math.univ-lille1.fr
+	name = Najib Idrissi
 [color]
         diff = auto
         status = auto
         branch = auto
+[push]
+	default = simple
+[core]
+    editor = "c:/Users/Najib/Programmes/emacs-24.5/bin/emacsclientw.exe"
+[gui]
+	encoding = utf-8
+[merge]
+        tool = kdiff3
+[mergetool "kdiff3"]
+        path = c:/Program Files/KDiff3/kdiff3.exe
+[diff]
+        tool = kdiff3
+        guitool = kdiff3
+[difftool "kdiff3"]
+        path = c:/Program Files/KDiff3/kdiff3.exe
