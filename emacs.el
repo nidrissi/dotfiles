@@ -294,6 +294,7 @@
       browse-url-generic-program
       (cond ((eq system-type 'windows-nt) "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
             (t "google-chrome")))
+(global-visual-line-mode)
 
 ;; Customize
 ;; "²" = "\u00b2"
