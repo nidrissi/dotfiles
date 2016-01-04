@@ -1,7 +1,7 @@
 ;; Init
 (fset 'yes-or-no-p 'y-or-n-p)
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
