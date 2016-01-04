@@ -15,7 +15,8 @@
 (tool-bar-mode -1)
 (blink-cursor-mode -1)
 (setq inhibit-startup-message t
-      initial-scratch-message nil)
+      initial-scratch-message nil
+      ring-bell-function 'ignore)
 
 ;;; Add essentials ones
 (setq default-frame-alist
@@ -93,7 +94,6 @@
       version-control t)
 
 ;; Programming
-;;; Misc prog
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil
               tab-width 4)
@@ -104,7 +104,19 @@
 (setq cperl-indent-level 4
       cperl-indent-parens-as-block t
       cperl-close-paren-offset -4)
-(add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . html-mode)) ; template toolkit
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss?\\'" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
+
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
@@ -114,8 +126,7 @@
 (require 'ssh-agency)
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
-(setq magit-last-seen-setup-instructions "1.4.0"
-      magit-push-always-verify nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
 
@@ -267,9 +278,9 @@
 (setq
  org-log-done t
  org-agenda-files
- (list (if (file-exists-p "C:/Users/Najib/OneDrive")
-           "C:/Users/Najib/OneDrive/agenda.org"
-         "E:/SkyDrive/agenda.org")))
+ (list (if (file-exists-p "E:/SkyDrive")
+           "E:/SkyDrive/agenda.org"
+         "C:/Users/Najib/OneDrive/agenda.org")))
 
 ;; Misc
 (setq woman-fill-column 80
