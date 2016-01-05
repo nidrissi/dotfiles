@@ -32,6 +32,12 @@
       echo-keystrokes 0.1)
 (setq-default indicate-empty-lines t)
 
+;;; Visual fill mode
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
+      visual-fill-column-width 80)
+(global-visual-fill-column-mode)
+(global-visual-line-mode)
+
 ;;; Unicode!
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
@@ -44,11 +50,11 @@
 (setq ibuffer-saved-filter-groups
       '(("default"
          ("latex" (mode . latex-mode))
-         ("perl" (mode . perl-mode))
          ("web" (or (mode . html-mode)
                     (mode . js-mode)
                     (mode . css-mode)
-                    (mode . web-mode)))
+                    (mode . web-mode)
+                    (mode . markdown-mode)))
          ("git" (name . "*magit"))
          ("emacs" (or (name . "*Messages*")
                       (name . "*scratch*")
@@ -94,6 +100,7 @@
       version-control t)
 
 ;; Programming
+;;; Misc prog
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil
               tab-width 4)
@@ -104,7 +111,7 @@
 (setq cperl-indent-level 4
       cperl-indent-parens-as-block t
       cperl-close-paren-offset -4)
-
+(add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . web-mode)) ; template toolkit
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -114,9 +121,8 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . sass-mode))
-(add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
-
+(add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
@@ -126,7 +132,8 @@
 (require 'ssh-agency)
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
-(setq magit-last-seen-setup-instructions "1.4.0")
+(setq magit-last-seen-setup-instructions "1.4.0"
+      magit-push-always-verify nil)
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
 
@@ -175,7 +182,6 @@
 
 (eval-after-load "latex"
   '(progn
-     (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
      (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
      (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
      (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
@@ -278,18 +284,14 @@
 (setq
  org-log-done t
  org-agenda-files
- (list (if (file-exists-p "E:/SkyDrive")
-           "E:/SkyDrive/agenda.org"
-         "C:/Users/Najib/OneDrive/agenda.org")))
+ (list (if (file-exists-p "C:/Users/Najib/OneDrive")
+           "C:/Users/Najib/OneDrive/agenda.org"
+         "E:/SkyDrive/agenda.org")))
 
 ;; Misc
-(setq woman-fill-column 80
-      line-move-visual nil
-      ;; Calendar
-      calendar-week-start-day 1
+(setq calendar-week-start-day 1
       calendar-latitude 50.6
       calendar-longitude 3.1
-      ;; Browser
       browse-url-browser-function 'browse-url-generic
       browse-url-generic-program
       (cond ((eq system-type 'windows-nt) "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
