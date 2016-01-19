@@ -91,7 +91,6 @@
       ido-max-window-height 1
       ido-auto-merge-work-directories-length -1)
 (setq gc-cons-threshold 20000000)       ; gc
-(projectile-global-mode)
 
 ;;; Backup
 (setq backup-by-copying t
