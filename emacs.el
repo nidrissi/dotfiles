@@ -54,7 +54,8 @@
                     (mode . js-mode)
                     (mode . css-mode)
                     (mode . web-mode)
-                    (mode . markdown-mode)))
+                    (mode . markdown-mode)
+                    (mode . jade-mode)))
          ("git" (name . "*magit"))
          ("emacs" (or (name . "*Messages*")
                       (name . "*scratch*")
@@ -110,6 +111,8 @@
 (setq cperl-indent-level 4
       cperl-indent-parens-as-block t
       cperl-close-paren-offset -4)
+
+;; Ouaibe
 (add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . web-mode)) ; template toolkit
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -120,8 +123,12 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+
+;; Markdown
 (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
+(setq markdown-enable-math t)
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
@@ -132,7 +139,8 @@
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
 (setq magit-last-seen-setup-instructions "1.4.0"
-      magit-push-always-verify nil)
+      magit-push-always-verify nil
+      magit-diff-refine-hunk 'all)
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
 
@@ -298,7 +306,8 @@
 
 ;; Customize
 ;; "²" = "\u00b2"
-(custom-set-faces)
+(custom-set-faces
+ '(fixed-pitch ((t (:height 1.2 :family "Consolas")))))
 (custom-set-variables
  '(LaTeX-math-abbrev-prefix "\u00b2")
- '(ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe"))
+ '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe"))
