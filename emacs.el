@@ -35,7 +35,6 @@
 ;;; Visual fill mode
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
       visual-fill-column-width 80)
-(global-visual-fill-column-mode)
 (global-visual-line-mode)
 
 ;;; Unicode!
