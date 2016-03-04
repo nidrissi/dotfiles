@@ -48,7 +48,9 @@
 ;;; Ibuffer, a buffer list
 (setq ibuffer-saved-filter-groups
       '(("default"
-         ("latex" (mode . latex-mode))
+         ("latex" (or (mode . latex-mode)
+                      (mode . plain-tex-mode)
+                      (mode . tex-output-mode)))
          ("web" (or (mode . html-mode)
                     (mode . js-mode)
                     (mode . css-mode)
@@ -179,7 +181,8 @@
 (setq LaTeX-math-menu-unicode t
       LaTeX-math-list
       '((?o "circ" "Ring operator" 8728)
-        (?K "Bbbk" "Blackboard bold k" 120156))
+        (?K "Bbbk" "Blackboard bold k" 120156)
+        (?à "otimes" "Circled times" 8855))
       LaTeX-fill-break-at-separators '(\\\[ \\\]))
 
 (eval-after-load "reftex"
@@ -302,7 +305,6 @@
       browse-url-generic-program
       (cond ((eq system-type 'windows-nt) "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
             (t "google-chrome")))
-(global-visual-line-mode)
 
 ;; Customize
 ;; "²" = "\u00b2"
