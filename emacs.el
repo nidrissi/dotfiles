@@ -6,7 +6,6 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
 (cd (getenv "HOME"))
-(setq enable-local-eval t)
 (server-start)
 
 ;; Interface
