@@ -53,7 +53,7 @@
          ("web" (or (mode . html-mode)
                     (mode . js-mode)
                     (mode . css-mode)
-                    (mode . scss-mode)
+                    (mode . sass-mode)
                     (mode . web-mode)
                     (mode . markdown-mode)
                     (mode . jade-mode)))
