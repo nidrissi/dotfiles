@@ -28,7 +28,8 @@
 (display-time-mode t)
 (show-paren-mode t)
 (setq display-time-string-forms '(24-hours ":" minutes)
-      echo-keystrokes 0.1)
+      echo-keystrokes 0.1
+      confirm-kill-emacs 'yes-or-no-p)
 (setq-default indicate-empty-lines t)
 
 ;;; Visual fill mode
