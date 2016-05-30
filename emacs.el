@@ -21,7 +21,8 @@
 (setq default-frame-alist
       '((background-color . "black")
         (foreground-color . "white")
-        (font . "DejaVu Sans Mono-12")))
+        (font . "DejaVu Sans Mono-12")
+        (fullscreen . maximized)))
 (set-scroll-bar-mode 'right)
 (column-number-mode t)
 (line-number-mode t)
@@ -31,6 +32,9 @@
       echo-keystrokes 0.1
       confirm-kill-emacs 'yes-or-no-p)
 (setq-default indicate-empty-lines t)
+;; smart-mode-line
+(setq sml/theme 'powerline)
+(sml/setup)
 
 ;;; Visual fill mode
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
@@ -311,7 +315,18 @@
 ;; Customize
 ;; "²" = "\u00b2"
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(fixed-pitch ((t (:height 1.2 :family "Consolas")))))
 (custom-set-variables
- '(LaTeX-math-abbrev-prefix "\u00b2")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(LaTeX-math-abbrev-prefix "²")
+ '(custom-safe-themes
+   (quote
+    ("a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
  '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe"))
