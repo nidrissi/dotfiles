@@ -293,16 +293,6 @@
    (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
    "STIX"))
 
-;; Org mode
-(define-key global-map (kbd "C-c l") 'org-store-link)
-(define-key global-map (kbd "C-c a") 'org-agenda)
-(setq
- org-log-done t
- org-agenda-files
- (list (if (file-exists-p "C:/Users/Najib/OneDrive")
-           "C:/Users/Najib/OneDrive/agenda.org"
-         "E:/SkyDrive/agenda.org")))
-
 ;; Misc
 (setq calendar-week-start-day 1
       calendar-latitude 50.6
@@ -329,4 +319,15 @@
  '(custom-safe-themes
    (quote
     ("a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
- '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe"))
+ '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+ '(openwith-associations
+   (quote
+    (("\\.(?:pdf|ps)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
+      (file))
+     ("\\.mp3\\'" "xmms"
+      (file))
+     ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
+      ("-idx" file))
+     ("\\.\\(?:jp?g\\|png\\)\\'" "display"
+      (file)))))
+ '(openwith-mode t))
