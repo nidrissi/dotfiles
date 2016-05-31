@@ -1,3 +1,113 @@
+;;; Unicode!
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+
+;; "²" = "\u00b2"
+;; Customize
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fixed-pitch ((t (:height 1.2 :family "Consolas")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(LaTeX-command "latex -file-line-error")
+ '(LaTeX-fill-break-at-separators (quote (\\\[ \\\])))
+ '(LaTeX-math-abbrev-prefix "\u00b2")
+ '(LaTeX-math-list
+   (quote
+    ((111 "circ" "Ring operator" 8728)
+     (75 "Bbbk" "Blackboard bold k" 120156)
+     (224 "otimes" "Circled times" 8855))))
+ '(TeX-PDF-mode t)
+ '(TeX-auto-save t)
+ '(TeX-electric-sub-and-superscript t)
+ '(TeX-parse-self t)
+ '(TeX-quote-language-alist (quote (("french" "\\og{}" "\\fg{}" nil))))
+ '(TeX-source-correlate-method (quote synctex))
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t)
+ '(TeX-view-program-selection
+   (quote
+    ((output-pdf "Sumatra PDF")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-html "xdg-open"))))
+ '(backup-by-copying t)
+ '(backup-directory-alist (quote (("." . "~/.saves"))))
+ '(blink-cursor-mode nil)
+ '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-generic-program
+   "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
+ '(calendar-week-start-day 1)
+ '(column-number-mode t)
+ '(confirm-kill-emacs (quote yes-or-no-p))
+ '(cperl-close-paren-offset -4)
+ '(cperl-indent-level 4)
+ '(cperl-indent-parens-as-block t)
+ '(cua-mode t nil (cua-base))
+ '(cua-prefix-override-inhibit-delay 0.4)
+ '(cua-remap-control-v nil)
+ '(cua-remap-control-z nil)
+ '(custom-safe-themes
+   (quote
+    ("a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
+ '(default-frame-alist
+    (quote
+     ((background-color . "black")
+      (foreground-color . "white")
+      (font . "DejaVu Sans Mono-12")
+      (fullscreen . maximized)
+      (vertical-scroll-bars . right))))
+ '(delete-old-versions t)
+ '(display-time-mode t)
+ '(display-time-string-forms (quote (24-hours ":" minutes)))
+ '(echo-keystrokes 0.1)
+ '(flx-ido-mode t)
+ '(flyspell-tex-command-regexp
+   "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(gc-cons-threshold 20000000)
+ '(ido-auto-merge-work-directories-length -1)
+ '(ido-enable-flex-matching t)
+ '(ido-everywhere t)
+ '(ido-max-window-height 1)
+ '(ido-mode (quote both) nil (ido))
+ '(indent-tabs-mode nil)
+ '(indicate-empty-lines t)
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
+ '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+ '(magit-diff-refine-hunk (quote all))
+ '(markdown-enable-math t)
+ '(menu-bar-mode nil)
+ '(openwith-associations
+   (quote
+    (("\\.(?:pdf|ps)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
+      (file))
+     ("\\.mp3\\'" "xmms"
+      (file))
+     ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
+      ("-idx" file))
+     ("\\.\\(?:jp?g\\|png\\)\\'" "display"
+      (file)))))
+ '(openwith-mode t)
+ '(preview-gs-options
+   (quote
+    ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
+ '(reftex-plug-into-AUCTeX t)
+ '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
+ '(show-paren-mode t)
+ '(tab-width 4)
+ '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(version-control t)
+ '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow))))
+
 ;; Init
 (fset 'yes-or-no-p 'y-or-n-p)
 (require 'package)
@@ -9,45 +119,18 @@
 (server-start)
 
 ;; Interface
-;;; Remove superfluous elements
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(blink-cursor-mode -1)
-(setq inhibit-startup-message t
-      initial-scratch-message nil
-      ring-bell-function 'ignore)
+(setq ring-bell-function 'ignore)
 
-;;; Add essentials ones
-(setq default-frame-alist
-      '((background-color . "black")
-        (foreground-color . "white")
-        (font . "DejaVu Sans Mono-12")
-        (fullscreen . maximized)))
-(set-scroll-bar-mode 'right)
-(column-number-mode t)
-(line-number-mode t)
-(display-time-mode t)
-(show-paren-mode t)
-(setq display-time-string-forms '(24-hours ":" minutes)
-      echo-keystrokes 0.1
-      confirm-kill-emacs 'yes-or-no-p)
-(setq-default indicate-empty-lines t)
-;; smart-mode-line
+;; Powerline
 (setq sml/theme 'powerline)
 (sml/setup)
 
 ;;; Visual fill mode
-(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
-      visual-fill-column-width 80)
+(setq visual-fill-column-width 80)
 (global-visual-line-mode)
-
-;;; Unicode!
-(set-language-environment "UTF-8")
-(prefer-coding-system 'utf-8)
 
 ;;; Distinguish buffer names with path
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
 
 ;;; Ibuffer, a buffer list
 (setq ibuffer-saved-filter-groups
@@ -84,40 +167,12 @@
 (setq disabled-command-function nil)
 (browse-kill-ring-default-keybindings)
 
-(setq cua-enable-cursor-indications t
-      cua-normal-cursor-color "gray"
-      cua-remap-control-v nil
-      cua-remap-control-z nil
-      cua-prefix-override-inhibit-delay 0.4)
-(cua-mode t)
-
-;;; Ido
-(ido-mode t)
-(ido-everywhere t)
-(flx-ido-mode 1)
-(setq ido-enable-flex-matching t
-      ido-max-window-height 1
-      ido-auto-merge-work-directories-length -1)
-(setq gc-cons-threshold 20000000)       ; gc
-
-;;; Backup
-(setq backup-by-copying t
-      backup-directory-alist '(("." . "~/.saves"))
-      delete-old-versions t
-      version-control t)
-
 ;; Programming
 ;;; Misc prog
-(setq standard-indent 4)
-(setq-default indent-tabs-mode nil
-              tab-width 4)
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-(setq cperl-indent-level 4
-      cperl-indent-parens-as-block t
-      cperl-close-paren-offset -4)
 
 ;; Ouaibe
 (add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . web-mode)) ; template toolkit
@@ -135,43 +190,16 @@
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
-(setq markdown-enable-math t)
-
-;; Haskell
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 ;; Magit
 (require 'ssh-agency)
 (autoload 'magit-status "magit")
 (global-set-key (kbd "C-c m") 'magit-status)
-(setq magit-last-seen-setup-instructions "1.4.0"
-      magit-push-always-verify nil
-      magit-diff-refine-hunk 'all)
+(setq magit-last-seen-setup-instructions "1.4.0")
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
-
 ;; AUCTeX
-(setq TeX-auto-save t
-      TeX-parse-self t
-      TeX-electric-sub-and-superscript t
-      reftex-plug-into-AUCTeX t
-      ;; Sinon TeX-next-error bug
-      LaTeX-command "latex -file-line-error"
-      TeX-quote-language-alist '(("french" "\\og{}" "\\fg{}"))
-      preview-gs-options
-      '("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4"
-        "-dGraphicsAlphaBits=4")
-      TeX-view-program-selection
-      '(((output-dvi style-pstricks) "dvips and gv")
-        (output-dvi "xdvi")
-        (output-pdf "Okular")
-        (output-html "xdg-open"))
-      TeX-source-correlate-method 'synctex
-      TeX-source-correlate-start-server t
-      TeX-source-correlate-mode t
-      reftex-section-prefixes '((0 . "part.") (1 . "cha.") (t . "sec."))
-      ispell-tex-skip-alists
+(setq ispell-tex-skip-alists
       (list
        (append
         (car ispell-tex-skip-alists)
@@ -179,17 +207,7 @@
           ("\\\\Cref" ispell-tex-arg-end)
           ("\\\\import" ispell-tex-arg-end 2)
           ("\\\\textcite" ispell-tex-arg-end)))
-       (cadr ispell-tex-skip-alists))
-      flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
-(setq-default TeX-PDF-mode t)
-
-;;; Math
-(setq LaTeX-math-menu-unicode t
-      LaTeX-math-list
-      '((?o "circ" "Ring operator" 8728)
-        (?K "Bbbk" "Blackboard bold k" 120156)
-        (?à "otimes" "Circled times" 8855))
-      LaTeX-fill-break-at-separators '(\\\[ \\\]))
+       (cadr ispell-tex-skip-alists)))
 
 (eval-after-load "reftex"
   '(progn
@@ -292,42 +310,3 @@
    "fontset-default"
    (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
    "STIX"))
-
-;; Misc
-(setq calendar-week-start-day 1
-      calendar-latitude 50.6
-      calendar-longitude 3.1
-      browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program
-      (cond ((eq system-type 'windows-nt) "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
-            (t "google-chrome")))
-
-;; Customize
-;; "²" = "\u00b2"
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(fixed-pitch ((t (:height 1.2 :family "Consolas")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(LaTeX-math-abbrev-prefix "²")
- '(custom-safe-themes
-   (quote
-    ("a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
- '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
- '(openwith-associations
-   (quote
-    (("\\.(?:pdf|ps)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
-      (file))
-     ("\\.mp3\\'" "xmms"
-      (file))
-     ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
-      ("-idx" file))
-     ("\\.\\(?:jp?g\\|png\\)\\'" "display"
-      (file)))))
- '(openwith-mode t))
