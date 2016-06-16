@@ -1,0 +1,79 @@
+TERM linux
+TERM freebsd
+TERM xterm-color
+TERM xterm
+TERM screen
+
+
+NORMAL 00
+FILE   00
+DIR    01;34
+LINK   36
+ORPHAN 36;04
+EXEC   01;32
+FIFO   01;04;35
+SOCK   01;04;35
+BLK    01;04;31
+CHR    01;04;31
+
+
+.cmd   01;32
+.exe   01;32
+.com   01;32
+.btm   01;32
+.bat   01;32
+.tar   31
+.tgz   31
+.tbz2  31
+.arj   31
+.taz   31
+.lzh   31
+.zip   31
+.z     31
+.Z     31
+.gz    31
+.bz    31
+.bz2   31
+.rpm   31
+.deb   31
+.jpg   35
+.jpeg  35
+.JPG   35
+.png   35
+.PNG   35
+.gif   35
+.GIF   35
+.bmp   35
+.BMP   35
+.xbm   35
+.xpm   35
+.tga   35
+.pbm   35
+.pgm   35
+.ppm   35
+.tif   35
+.tiff  35
+.dvi   35
+.ps    35
+.ps.gz 35
+.eps   35
+.pdf   35
+.mpl   01;35
+.gnuplot 01;31
+.gp    01;31
+
+
+TERM xterm-mono
+TERM xtermm-a
+TERM vt100
+
+NORMAL 00
+FILE   00
+DIR    01
+LINK   04
+ORPHAN 04
+EXEC   01
+FIFO   07
+SOCK   07
+BLK    07
+CHR    07
