@@ -1,5 +1,4 @@
 $pdflatex = 'pdflatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S';
-$out_dir = 'build';
 
 # for nomenclature
 add_cus_dep("nlo", "nls", 0, "nlo2nls");

@@ -46,6 +46,9 @@
    "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
  '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(completion-ignored-extensions
+   (quote
+    (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log")))
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(cperl-close-paren-offset -4)
  '(cperl-indent-level 4)
@@ -56,7 +59,7 @@
  '(cua-remap-control-z nil)
  '(custom-safe-themes
    (quote
-    ("a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
+    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
  '(default-frame-alist
     (quote
      ((background-color . "black")
@@ -87,15 +90,8 @@
  '(menu-bar-mode nil)
  '(openwith-associations
    (quote
-    (("\\.(?:pdf|ps)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
-      (file))
-     ("\\.mp3\\'" "xmms"
-      (file))
-     ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
-      ("-idx" file))
-     ("\\.\\(?:jp?g\\|png\\)\\'" "display"
+    (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
       (file)))))
- '(openwith-mode t)
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
@@ -120,6 +116,7 @@
 
 ;; Interface
 (setq ring-bell-function 'ignore)
+(openwith-mode)
 
 ;; Powerline
 (setq sml/theme 'powerline)
@@ -275,34 +272,34 @@
            (add-to-list 'TeX-view-program-list
                         '("Sumatra PDF"
                           ("\"C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
-                           (mode-io-correlate " -forward-search %b %n") " %O")))
+                           (mode-io-correlate " -forward-search %b %n") " %o")))
            (assq-delete-all 'output-pdf TeX-view-program-selection)
            (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF"))))
 
      ;; Okular forward PDF search requires absolute path.
      (add-to-list
       'TeX-expand-list
-      '("%a" (lambda nil (expand-file-name (buffer-file-name)))))
+      '("%a" (lambda nil (expand-file-name (buffer-file-name)))))))
 
      ;; Output directory: build
-     (add-to-list
-      'TeX-expand-list
-      '("%O" (lambda ()
-               (concat "\"build/"
-                       (replace-regexp-in-string
-                        "\"" ""
-                        (funcall file (TeX-output-extension) t))
-                       "\""))))
-     (setq TeX-view-program-list-builtin
-           '(("Okular"
-              ("okular --unique %O"
-               (mode-io-correlate "#src:%n%a")))))
-     (add-hook
-      'LaTeX-mode-hook
-      (lambda ()
-        (defun TeX-view ()
-          (interactive)
-          (TeX-command "View" 'TeX-active-master 0))))))
+     ;; (add-to-list
+     ;;  'TeX-expand-list
+     ;;  '("%O" (lambda ()
+     ;;           (concat "\"build/"
+     ;;                   (replace-regexp-in-string
+     ;;                    "\"" ""
+     ;;                    (funcall file (TeX-output-extension) t))
+     ;;                   "\""))))
+     ;; (setq TeX-view-program-list-builtin
+     ;;       '(("Okular"
+     ;;          ("okular --unique %O"
+     ;;           (mode-io-correlate "#src:%n%a")))))
+     ;; (add-hook
+     ;;  'LaTeX-mode-hook
+     ;;  (lambda ()
+     ;;    (defun TeX-view ()
+     ;;      (interactive)
+     ;;      (TeX-command "View" 'TeX-active-master 0))))))
 
 ;;; Fonts (used for folding)
 (dolist (x '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
