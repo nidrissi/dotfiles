@@ -91,7 +91,12 @@
  '(openwith-associations
    (quote
     (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
+      (file))
+     ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
       (file)))))
+ '(package-selected-packages
+   (quote
+    (yaml-mode web-mode visual-fill-column unicode-fonts ssh-agency solarized-theme smart-mode-line-powerline-theme sass-mode org openwith markdown-mode magit jade-mode haskell-mode flycheck flx-ido cperl-mode color-theme browse-kill-ring auctex)))
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
