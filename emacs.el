@@ -48,7 +48,7 @@
  '(column-number-mode t)
  '(completion-ignored-extensions
    (quote
-    (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log")))
+    (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(cperl-close-paren-offset -4)
  '(cperl-indent-level 4)
@@ -94,14 +94,65 @@
       (file))
      ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
       (file)))))
- '(package-selected-packages
-   (quote
-    (yaml-mode web-mode visual-fill-column unicode-fonts ssh-agency solarized-theme smart-mode-line-powerline-theme sass-mode org openwith markdown-mode magit jade-mode haskell-mode flycheck flx-ido cperl-mode color-theme browse-kill-ring auctex)))
- '(preview-gs-options
-   (quote
-    ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
+ '(org-format-latex-header
+   "\\documentclass{scrartcl}
+\\usepackage[usenames]{color}
+[PACKAGES]
+[DEFAULT-PACKAGES]
+\\pagestyle{empty}             % do not remove")
+ '(org-latex-default-packages-alist
+(quote
+ (("AUTO" "inputenc" t)
+  ("T1" "fontenc" t)
+  ("" "graphicx" t)
+  ("" "grffile" t)
+  ("" "longtable" nil)
+  ("" "wrapfig" nil)
+  ("" "rotating" nil)
+  ("normalem" "ulem" t)
+  ("" "amsmath" t)
+  ("" "textcomp" t)
+  ("" "amssymb" t)
+  ("" "capt-of" nil)
+  ("" "hyperref" nil))))
+ '(org-latex-packages-alist (quote (("" "microtype" nil) ("" "mathtools" nil))))
+'(package-selected-packages
+(quote
+ (ace-window yaml-mode web-mode visual-fill-column unicode-fonts ssh-agency solarized-theme smart-mode-line-powerline-theme sass-mode org openwith markdown-mode magit jade-mode haskell-mode flycheck flx-ido cperl-mode color-theme browse-kill-ring auctex)))
+'(preview-gs-options
+(quote
+ ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
  '(reftex-plug-into-AUCTeX t)
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
+'(safe-local-variable-values
+(quote
+ ((eval add-to-list
+        (quote LaTeX-fold-math-spec-list)
+        (quote
+         ("▿"
+          ("ez"))))
+  (eval add-to-list
+        (quote LaTeX-fold-math-spec-list)
+        (quote
+         ("𝕜"
+          ("K"))))
+  (eval add-to-list
+        (quote LaTeX-fold-math-spec-list)
+        (quote
+         ("ш"
+          ("shuffle"))))
+  (eval add-to-list
+        (quote LaTeX-fold-math-spec-list)
+        (quote
+         ("∂_μ"
+          ("dm"))))
+  (eval add-to-list
+        (quote LaTeX-fold-math-spec-list)
+        (quote
+         ("∂_λ"
+          ("dl"))))
+  (eval make-local-variable
+        (quote LaTeX-fold-math-spec-list)))))
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -122,19 +173,13 @@
 ;; Interface
 (setq ring-bell-function 'ignore)
 (openwith-mode)
-
-;; Powerline
 (setq sml/theme 'powerline)
 (sml/setup)
-
-;;; Visual fill mode
 (setq visual-fill-column-width 80)
 (global-visual-line-mode)
-
-;;; Distinguish buffer names with path
 (require 'uniquify)
 
-;;; Ibuffer, a buffer list
+;;; Ibuffer
 (setq ibuffer-saved-filter-groups
       '(("default"
          ("latex" (or (mode . latex-mode)
@@ -154,16 +199,18 @@
                       (name . "*Help*"))))))
 (add-hook 'ibuffer-mode-hook
           (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
 ;; Editing
 ;;; Keybindings
-(global-set-key (kbd "C-c b") 'bury-buffer)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-c w") 'woman)
-(global-set-key (kbd "C-c e") 'eshell)
-(global-set-key (kbd "C-c c") 'calendar)
+(require 'my-mode)
+(define-key my-mode-map (kbd "C-,") #'ido-switch-buffer)
+(define-key my-mode-map (kbd "C-;") #'ace-window)
+(define-key my-mode-map (kbd "M-/") #'hippie-expand)
+(define-key my-mode-map (kbd "C-c w") #'woman)
+(define-key my-mode-map (kbd "C-c e") #'eshell)
+(define-key my-mode-map (kbd "C-x C-b") #'ibuffer)
+(define-key my-mode-map (kbd "C-c m") #'magit-status)
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
@@ -196,7 +243,6 @@
 ;; Magit
 (require 'ssh-agency)
 (autoload 'magit-status "magit")
-(global-set-key (kbd "C-c m") 'magit-status)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
