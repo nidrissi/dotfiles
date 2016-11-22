@@ -204,6 +204,7 @@
 ;; Editing
 ;;; Keybindings
 (require 'my-mode)
+(cua-mode t) ; order matters!
 (define-key my-mode-map (kbd "C-,") #'ido-switch-buffer)
 (define-key my-mode-map (kbd "C-;") #'ace-window)
 (define-key my-mode-map (kbd "M-/") #'hippie-expand)
