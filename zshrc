@@ -73,7 +73,8 @@ setopt \
     hist_ignore_dups \
     hist_verify \
     hist_no_store \
-    hist_ignore_space
+    hist_ignore_space \
+    extended_history
 
 ## Others
 DIRSTACKSIZE=20
