@@ -16,23 +16,23 @@ my @entry = $root->children('entry');
 for my $entry (@entry) {
     my $title = $entry->first_child('title')->text;
 
+    # arXiv id
     my $id = $entry->first_child('id')->text;
     $id =~ s{http://arxiv.org/abs/(.+)v..?}{$1};
 
+    # Year
     my $date = $entry->first_child('published')->text;
     $date =~ s/^(....).*/$1/;
 
-    my @author;
-    for my $auth ($entry->children('author')) {
-        $auth = $auth->text;
-        $auth =~ s/^(.+) ([^ ]+)$/$2, $1/;
-        push @author, $auth;
-    }
+    # Author list
+    my @author = map {
+        # Najib Idrissi -> Idrissi, Najib
+        # Assumes only the last word is the surname
+        $_->text =~ s/^(.+) ([^ ]+)$/$2, $1/r;
+    } $entry->children('author');
     my $author_list = join ' and ', @author;
 
-    my $category = $entry->first_child('arxiv:primary_category')->{'att'}{'term'};
-
-    printf '@misc{tmpkey, author = {%s}, title = {%s}, date = {%s}, eprint = {%s}, eprinttype = {arXiv}, eprintclass = {%s}, note = {Preprint}}',
-      $author_list, $title, $date, $id, $category;
-    say '';
+    printf '@misc{tmpkey, author = {%s}, title = {%s}, date = {%s}, eprint = {%s}, eprinttype = {arXiv}, note = {Preprint}}',
+      $author_list, $title, $date, $id;
+    print "\n";
 }
