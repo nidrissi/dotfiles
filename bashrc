@@ -2,7 +2,7 @@
 #       already has a different purpose in SSH.
 
 # Otherwise conflict with Emacs's ssh-agency...
-env=~/.ssh/agent.2.env
+env=~/.ssh/agent.env
 
 # Note: Don't bother checking SSH_AGENT_PID. It's not used
 #       by SSH itself, and it might even be incorrect
