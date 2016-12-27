@@ -18,7 +18,7 @@ for my $entry (@entry) {
 
     # arXiv id
     my $id = $entry->first_child('id')->text;
-    $id =~ s{http://arxiv.org/abs/(.+)v..?}{$1};
+    $id =~ s{http://arxiv.org/abs/(.+)v(?:\d)+}{$1};
 
     # Year
     my $date = $entry->first_child('published')->text;
