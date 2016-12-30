@@ -1,22 +1,17 @@
 [user]
-	email = najib.idrissi-kaitouni@math.univ-lille1.fr
+	email = najib.idrissi.kaitouni@gmail.com
 	name = Najib Idrissi
+	signingkey = B323A0F438147FA2
 [color]
         diff = auto
         status = auto
         branch = auto
 [push]
 	default = simple
+	followTags = true
 [core]
-    editor = "c:/Users/Najib/Programmes/emacs-24.5/bin/emacsclientw.exe"
-[gui]
-	encoding = utf-8
-[merge]
-        tool = kdiff3
-[mergetool "kdiff3"]
-        path = c:/Program Files/KDiff3/kdiff3.exe
-[diff]
-        tool = kdiff3
-        guitool = kdiff3
-[difftool "kdiff3"]
-        path = c:/Program Files/KDiff3/kdiff3.exe
+	editor = e:/Programmes/emacs/bin/emacsclientw.exe
+[pull]
+	rebase = preserve
+[gpg]
+	program = c:/Program Files (x86)/GNU/GnuPG/gpg2.exe
