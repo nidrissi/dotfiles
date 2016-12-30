@@ -77,7 +77,6 @@
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
  '(helm-ff-skip-boring-files t)
- '(helm-mode t)
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
@@ -92,70 +91,45 @@
       (file))
      ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
       (file)))))
- '(org-format-latex-header
-   "\\documentclass{scrartcl}
-\\usepackage[usenames]{color}
-[PACKAGES]
-[DEFAULT-PACKAGES]
-\\pagestyle{empty}             % do not remove")
- '(org-latex-default-packages-alist
-(quote
- (("AUTO" "inputenc" t)
-  ("T1" "fontenc" t)
-  ("" "graphicx" t)
-  ("" "grffile" t)
-  ("" "longtable" nil)
-  ("" "wrapfig" nil)
-  ("" "rotating" nil)
-  ("normalem" "ulem" t)
-  ("" "amsmath" t)
-  ("" "textcomp" t)
-  ("" "amssymb" t)
-  ("" "capt-of" nil)
-  ("" "hyperref" nil))))
- '(org-latex-packages-alist (quote (("" "microtype" nil) ("" "mathtools" nil))))
-'(package-selected-packages
-(quote
- (ace-window yaml-mode web-mode visual-fill-column unicode-fonts ssh-agency solarized-theme smart-mode-line-powerline-theme sass-mode org openwith markdown-mode magit jade-mode haskell-mode flycheck flx-ido cperl-mode color-theme browse-kill-ring auctex)))
-'(preview-gs-options
-(quote
- ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
+ '(preview-gs-options
+   (quote
+    ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
  '(projectile-completion-system (quote helm))
-'(projectile-globally-ignored-file-suffixes
-(quote
- (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
+ '(projectile-globally-ignored-file-suffixes
+   (quote
+    (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
  '(projectile-indexing-method (quote alien))
  '(reftex-plug-into-AUCTeX t)
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
-'(safe-local-variable-values
-(quote
- ((eval add-to-list
-        (quote LaTeX-fold-math-spec-list)
-        (quote
-         ("▿"
-          ("ez"))))
-  (eval add-to-list
-        (quote LaTeX-fold-math-spec-list)
-        (quote
-         ("𝕜"
-          ("K"))))
-  (eval add-to-list
-        (quote LaTeX-fold-math-spec-list)
-        (quote
-         ("ш"
-          ("shuffle"))))
-  (eval add-to-list
-        (quote LaTeX-fold-math-spec-list)
-        (quote
-         ("∂_μ"
-          ("dm"))))
-  (eval add-to-list
-        (quote LaTeX-fold-math-spec-list)
-        (quote
-         ("∂_λ"
-          ("dl"))))
-  (eval make-local-variable
-        (quote LaTeX-fold-math-spec-list)))))
+ '(safe-local-variable-values
+   (quote
+    ((eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("▿"
+             ("ez"))))
+     (eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("𝕜"
+             ("K"))))
+     (eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("ш"
+             ("shuffle"))))
+     (eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("∂_μ"
+             ("dm"))))
+     (eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("∂_λ"
+             ("dl"))))
+     (eval make-local-variable
+           (quote LaTeX-fold-math-spec-list)))))
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -169,6 +143,13 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
+
+;; Horrible hack, has to be maintained manually
+(setq my-packages '(ace-window auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
+(defun install-my-packages ()
+  (interactive)
+  (mapc #'package-install my-packages))
+
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
 (cd (getenv "HOME"))
