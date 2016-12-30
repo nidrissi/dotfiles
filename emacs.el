@@ -76,6 +76,7 @@
  '(gc-cons-threshold 20000000)
  '(global-company-mode t)
  '(global-magit-file-mode t)
+ '(helm-mode t)
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
