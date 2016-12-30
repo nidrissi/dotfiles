@@ -328,26 +328,6 @@
       'TeX-expand-list
       '("%a" (lambda nil (expand-file-name (buffer-file-name)))))))
 
-     ;; Output directory: build
-     ;; (add-to-list
-     ;;  'TeX-expand-list
-     ;;  '("%O" (lambda ()
-     ;;           (concat "\"build/"
-     ;;                   (replace-regexp-in-string
-     ;;                    "\"" ""
-     ;;                    (funcall file (TeX-output-extension) t))
-     ;;                   "\""))))
-     ;; (setq TeX-view-program-list-builtin
-     ;;       '(("Okular"
-     ;;          ("okular --unique %O"
-     ;;           (mode-io-correlate "#src:%n%a")))))
-     ;; (add-hook
-     ;;  'LaTeX-mode-hook
-     ;;  (lambda ()
-     ;;    (defun TeX-view ()
-     ;;      (interactive)
-     ;;      (TeX-command "View" 'TeX-active-master 0))))))
-
 ;;; Fonts (used for folding)
 (dolist (x '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
   (set-fontset-font
