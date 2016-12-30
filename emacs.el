@@ -75,6 +75,8 @@
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
+ '(global-company-mode t)
+ '(global-magit-file-mode t)
  '(ido-auto-merge-work-directories-length -1)
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
@@ -191,7 +193,8 @@
                     (mode . sass-mode)
                     (mode . web-mode)
                     (mode . markdown-mode)
-                    (mode . jade-mode)))
+                    (mode . jade-mode)
+                    (mode . typescript-mode)))
          ("git" (or (name . "*magit")
                     (name . ".gitignore")))
          ("emacs" (or (name . "*Messages*")
@@ -218,6 +221,27 @@
 (browse-kill-ring-default-keybindings)
 
 ;; Programming
+;;; Typescript
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; format options
+(setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+
 ;;; Misc prog
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
