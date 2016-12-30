@@ -46,6 +46,7 @@
    "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
  '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(company-idle-delay 0.2)
  '(completion-ignored-extensions
    (quote
     (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
@@ -76,6 +77,7 @@
  '(gc-cons-threshold 20000000)
  '(global-company-mode t)
  '(global-magit-file-mode t)
+ '(global-undo-tree-mode t)
  '(helm-ff-skip-boring-files t)
  '(helm-mode t)
  '(indent-tabs-mode nil)
@@ -220,8 +222,7 @@
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
+  (tide-hl-identifier-mode +1))
 (setq company-tooltip-align-annotations t)
 (add-hook 'before-save-hook 'tide-format-before-save)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
@@ -232,8 +233,8 @@
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-
-;; Ouaibe
+(add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . web-mode)) ; template toolkit
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -245,10 +246,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
-
-;; Markdown
-(add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Magit
 (require 'ssh-agency)
