@@ -76,6 +76,7 @@
  '(gc-cons-threshold 20000000)
  '(global-company-mode t)
  '(global-magit-file-mode t)
+ '(helm-ff-skip-boring-files t)
  '(helm-mode t)
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
@@ -119,6 +120,11 @@
 '(preview-gs-options
 (quote
  ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
+ '(projectile-completion-system (quote helm))
+'(projectile-globally-ignored-file-suffixes
+(quote
+ (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
+ '(projectile-indexing-method (quote alien))
  '(reftex-plug-into-AUCTeX t)
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
 '(safe-local-variable-values
@@ -157,6 +163,7 @@
  '(version-control t)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Init
 (fset 'yes-or-no-p 'y-or-n-p)
 (require 'package)
@@ -167,6 +174,9 @@
 (cd (getenv "HOME"))
 (server-start)
 
+(setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
+      find-program "\"c:/Program Files/Git/usr/bin/find.exe\"")
+
 ;; Interface
 (setq ring-bell-function 'ignore)
 (openwith-mode)
@@ -175,6 +185,8 @@
 (setq visual-fill-column-width 80)
 (global-visual-line-mode)
 (require 'uniquify)
+(projectile-mode)
+(helm-projectile-on)
 
 ;; Keybindings
 (require 'my-mode)
@@ -198,6 +210,7 @@
 (define-key my-mode-map (kbd "C-x C-b") 'helm-buffers-list)
 (define-key my-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key my-mode-map (kbd "C-,") 'helm-mini)
+(define-key my-mode-map (kbd "M-s o") 'helm-occur)
 
 ;; Programming
 ;;; Typescript
