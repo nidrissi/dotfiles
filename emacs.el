@@ -71,17 +71,11 @@
  '(display-time-mode t)
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(echo-keystrokes 0.1)
- '(flx-ido-mode t)
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
  '(global-company-mode t)
  '(global-magit-file-mode t)
- '(ido-auto-merge-work-directories-length -1)
- '(ido-enable-flex-matching t)
- '(ido-everywhere t)
- '(ido-max-window-height 1)
- '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
@@ -181,44 +175,28 @@
 (global-visual-line-mode)
 (require 'uniquify)
 
-;;; Ibuffer
-(setq ibuffer-saved-filter-groups
-      '(("default"
-         ("latex" (or (mode . latex-mode)
-                      (mode . plain-tex-mode)
-                      (mode . tex-output-mode)))
-         ("web" (or (mode . html-mode)
-                    (mode . js-mode)
-                    (mode . css-mode)
-                    (mode . sass-mode)
-                    (mode . web-mode)
-                    (mode . markdown-mode)
-                    (mode . jade-mode)
-                    (mode . typescript-mode)))
-         ("git" (or (name . "*magit")
-                    (name . ".gitignore")))
-         ("emacs" (or (name . "*Messages*")
-                      (name . "*scratch*")
-                      (name . "*Help*"))))))
-(add-hook 'ibuffer-mode-hook
-          (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
-
-
-;; Editing
-;;; Keybindings
+;; Keybindings
 (require 'my-mode)
 (cua-mode t) ; order matters!
-(define-key my-mode-map (kbd "C-,") #'ido-switch-buffer)
+(require 'diminish)                     ; Hide from mode line
+(diminish 'my-mode)
+
 (define-key my-mode-map (kbd "C-;") #'ace-window)
 (define-key my-mode-map (kbd "M-/") #'hippie-expand)
-(define-key my-mode-map (kbd "C-c w") #'woman)
 (define-key my-mode-map (kbd "C-c e") #'eshell)
 (define-key my-mode-map (kbd "C-x C-b") #'ibuffer)
 (define-key my-mode-map (kbd "C-c m") #'magit-status)
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
-(browse-kill-ring-default-keybindings)
+
+;; Helm
+(require 'helm-config)
+(define-key my-mode-map (kbd "M-x") 'helm-M-x)
+(define-key my-mode-map (kbd "C-x C-f") 'helm-find-files)
+(define-key my-mode-map (kbd "C-x C-b") 'helm-buffers-list)
+(define-key my-mode-map (kbd "M-y") 'helm-show-kill-ring)
+(define-key my-mode-map (kbd "C-,") 'helm-mini)
 
 ;; Programming
 ;;; Typescript
@@ -230,16 +208,9 @@
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
   (company-mode +1))
-
-;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
 (add-hook 'before-save-hook 'tide-format-before-save)
-
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-;; format options
 (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
 
 ;;; Misc prog
