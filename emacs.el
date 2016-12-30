@@ -47,6 +47,7 @@
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(company-idle-delay 0.2)
+ '(company-tooltip-align-annotations t)
  '(completion-ignored-extensions
    (quote
     (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
@@ -75,9 +76,6 @@
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
- '(global-company-mode t)
- '(global-magit-file-mode t)
- '(global-undo-tree-mode t)
  '(helm-ff-skip-boring-files t)
  '(helm-mode t)
  '(indent-tabs-mode nil)
@@ -187,8 +185,8 @@
 (setq visual-fill-column-width 80)
 (global-visual-line-mode)
 (require 'uniquify)
-(projectile-mode)
-(helm-projectile-on)
+(global-company-mode)
+(global-undo-tree-mode)
 
 ;; Keybindings
 (require 'my-mode)
@@ -207,12 +205,15 @@
 
 ;; Helm
 (require 'helm-config)
+(helm-mode 1)
 (define-key my-mode-map (kbd "M-x") 'helm-M-x)
 (define-key my-mode-map (kbd "C-x C-f") 'helm-find-files)
 (define-key my-mode-map (kbd "C-x C-b") 'helm-buffers-list)
 (define-key my-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key my-mode-map (kbd "C-,") 'helm-mini)
 (define-key my-mode-map (kbd "M-s o") 'helm-occur)
+(projectile-mode)
+(helm-projectile-on)
 
 ;; Programming
 ;;; Typescript
@@ -223,7 +224,6 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1))
-(setq company-tooltip-align-annotations t)
 (add-hook 'before-save-hook 'tide-format-before-save)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
@@ -250,6 +250,7 @@
 
 ;; Magit
 (require 'ssh-agency)
+(global-magit-file-mode)
 (autoload 'magit-status "magit")
 (setq magit-last-seen-setup-instructions "1.4.0")
 (setenv "SSH_ASKPASS" "git-gui--askpass")
