@@ -13,11 +13,10 @@
 (package-initialize)
 
 ;; Horrible hack, has to be maintained manually
-(setq my-packages '(ace-window auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
+(setq my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
 (defun install-my-packages ()
   (interactive)
   (mapc #'package-install my-packages))
-
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
 (cd (getenv "HOME"))
@@ -38,15 +37,16 @@
 
 ;; Keybindings
 (require 'my-mode)
-(cua-mode t) ; order matters!
-(require 'diminish)                     ; Hide from mode line
-(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode))
+(cua-mode t)                            ; order matters!
+(require 'diminish)                     ; hide from mode line
+(diminish 'my-mode)
 
 (define-key my-mode-map (kbd "C-;") #'ace-window)
 (define-key my-mode-map (kbd "M-/") #'hippie-expand)
 (define-key my-mode-map (kbd "C-c e") #'eshell)
 (define-key my-mode-map (kbd "C-x C-b") #'ibuffer)
 (define-key my-mode-map (kbd "C-c m") #'magit-status)
+(define-key my-mode-map (kbd "C-c SPC") #'ace-jump-mode)
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
