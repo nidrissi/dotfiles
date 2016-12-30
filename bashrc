@@ -1,7 +1,6 @@
 # Note: ~/.ssh/environment should not be used, as it
 #       already has a different purpose in SSH.
 
-# Otherwise conflict with Emacs's ssh-agency...
 env=~/.ssh/agent.env
 
 # Note: Don't bother checking SSH_AGENT_PID. It's not used
