@@ -173,7 +173,7 @@
 (require 'my-mode)
 (cua-mode t) ; order matters!
 (require 'diminish)                     ; Hide from mode line
-(diminish 'my-mode)
+(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode))
 
 (define-key my-mode-map (kbd "C-;") #'ace-window)
 (define-key my-mode-map (kbd "M-/") #'hippie-expand)
