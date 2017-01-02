@@ -87,7 +87,7 @@
  '(menu-bar-mode nil)
  '(openwith-associations
    (quote
-    (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files (x86)/SumatraPDF/SumatraPDF"
+    (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
       (file))
      ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
       (file)))))
@@ -312,7 +312,7 @@
            (setq preview-gs-command "gswin64c.exe")
            (add-to-list 'TeX-view-program-list
                         '("Sumatra PDF"
-                          ("\"C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
+                          ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
                            (mode-io-correlate " -forward-search %b %n") " %o")))
            (assq-delete-all 'output-pdf TeX-view-program-selection)
            (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF"))))
