@@ -46,7 +46,6 @@
    "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
  '(calendar-week-start-day 1)
  '(column-number-mode t)
- '(company-idle-delay 0.2)
  '(company-tooltip-align-annotations t)
  '(completion-ignored-extensions
    (quote
@@ -131,6 +130,7 @@
      (eval make-local-variable
            (quote LaTeX-fold-math-spec-list)))))
  '(show-paren-mode t)
+ '(sml/theme (quote powerline))
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
@@ -161,7 +161,6 @@
 ;; Interface
 (setq ring-bell-function 'ignore)
 (openwith-mode)
-(setq sml/theme 'powerline)
 (sml/setup)
 (setq visual-fill-column-width 80)
 (global-visual-line-mode)
