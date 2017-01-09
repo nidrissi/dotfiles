@@ -37,10 +37,7 @@
 
 ;; Keybindings
 (require 'my-mode)
-(cua-mode t)                            ; order matters!
-(require 'diminish)                     ; hide from mode line
-(diminish 'my-mode)
-
+(cua-mode t) ; order matters!
 (define-key my-mode-map (kbd "C-;") #'ace-window)
 (define-key my-mode-map (kbd "M-/") #'hippie-expand)
 (define-key my-mode-map (kbd "C-c e") #'eshell)
@@ -50,6 +47,9 @@
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
+
+(require 'diminish)                     ; Hide from mode line
+(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode))
 
 ;; Helm
 (require 'helm-config)

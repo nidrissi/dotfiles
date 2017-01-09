@@ -33,7 +33,7 @@
      (output-dvi "xdvi")
      (output-html "xdg-open"))))
  '(backup-by-copying t)
- '(backup-directory-alist (quote (("." . "~/.saves"))))
+ '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
  '(blink-cursor-mode nil)
  '(browse-url-browser-function (quote browse-url-generic))
  '(browse-url-generic-program
