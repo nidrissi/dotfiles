@@ -40,6 +40,7 @@
 (require 'uniquify)
 (global-company-mode)
 (global-undo-tree-mode)
+(global-flycheck-mode)
 
 ;; Keybindings
 (require 'my-mode)
