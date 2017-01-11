@@ -1,3 +1,9 @@
+;;; emacs.el -- My init file
+
+;;; Commentary:
+;;; This is my init file.
+
+;;; Code:
 ;;; Unicode!
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
@@ -13,8 +19,9 @@
 (package-initialize)
 
 ;; Horrible hack, has to be maintained manually
-(setq my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
+(defvar my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
 (defun install-my-packages ()
+  "Install my packages.  Useful to synchronize between computers."
   (interactive)
   (mapc #'package-install my-packages))
 
@@ -29,7 +36,6 @@
 (setq ring-bell-function 'ignore)
 (openwith-mode)
 (sml/setup)
-(setq visual-fill-column-width 80)
 (global-visual-line-mode)
 (require 'uniquify)
 (global-company-mode)
@@ -66,6 +72,7 @@
 ;; Programming
 ;;; Typescript
 (defun setup-tide-mode ()
+  "Setup tide-mode."
   (interactive)
   (tide-setup)
   (flycheck-mode +1)
@@ -195,3 +202,5 @@
    "fontset-default"
    (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
    "STIX"))
+
+;;; emacs.el ends here
