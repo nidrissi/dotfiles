@@ -84,6 +84,9 @@
       (file))
      ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
       (file)))))
+ '(package-selected-packages
+   (quote
+    (yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile haskell-mode flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
@@ -96,7 +99,8 @@
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
  '(safe-local-variable-values
    (quote
-    ((eval add-to-list
+    ((eval web-mode-set-engine "django")
+     (eval add-to-list
            (quote LaTeX-fold-math-spec-list)
            (quote
             ("▿"
