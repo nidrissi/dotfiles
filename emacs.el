@@ -70,6 +70,10 @@
 (projectile-mode)
 (helm-projectile-on)
 
+;; Recentf
+(require 'recentf)
+(recentf-mode 1)
+
 ;; Programming
 ;;; Typescript
 (defun setup-tide-mode ()
