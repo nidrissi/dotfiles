@@ -56,7 +56,7 @@
 (setq disabled-command-function nil)
 
 (require 'diminish)                     ; Hide from mode line
-(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode))
+(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode magit-wip-after-apply-mode magit-wip-after-save-local-mode magit-wip-before-change-mode))
 
 ;; Helm
 (require 'helm-config)

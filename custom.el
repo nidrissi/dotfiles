@@ -76,6 +76,9 @@
  '(initial-scratch-message nil)
  '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
  '(magit-diff-refine-hunk (quote all))
+ '(magit-wip-after-apply-mode t)
+ '(magit-wip-after-save-mode t)
+ '(magit-wip-before-change-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
  '(openwith-associations
