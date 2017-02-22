@@ -1,3 +1,9 @@
+;;; custom --- My custom options
+
+;;; Commentary:
+;;; Options for customize.
+
+;;; Code:
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -76,9 +82,6 @@
  '(initial-scratch-message nil)
  '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
  '(magit-diff-refine-hunk (quote all))
- '(magit-wip-after-apply-mode t)
- '(magit-wip-after-save-mode t)
- '(magit-wip-before-change-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
  '(openwith-associations
@@ -101,6 +104,24 @@
  '(reftex-default-bibliography
    (quote
     ("c:/Users/Najib/Work/phd/texmf/bibtex/bib/main_bib/math.bib")))
+ '(reftex-label-alist
+   (quote
+    (("theorem" 97 "thm." "~\\ref{%s}" t
+      ("theorem"))
+     ("proposition" 97 "prop." "~\\ref{%s}" t
+      ("proposition"))
+     ("corollary" 97 "cor." "~\\ref{%s}" t
+      ("corollary"))
+     ("lemma" 97 "lem." "~\\ref{%s}" t
+      ("lemma"))
+     ("definition" 97 "def." "~\\ref{%s}" t
+      ("definition"))
+     ("example" 97 "exa." "~\\ref{%s}" t
+      ("example"))
+     ("remark" 97 "rmk." "~\\ref{%s}" t
+      ("remark"))
+     ("conjecture" 97 "conj." nil t
+      ("conjecture")))))
  '(reftex-plug-into-AUCTeX t)
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
  '(safe-local-variable-values
