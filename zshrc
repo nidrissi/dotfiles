@@ -94,12 +94,10 @@ bindkey -e
 bindkey ' ' magic-space       # also do history expansion on space
 
 ## Prompt
-myhost=$(print -P %m | tr '[:upper:]' '[:lower:]')
 PROMPT="%{$fg[green]%}%n@%M %B%{$fg[magenta]%}%(4~,./%2~,%~) %{$fg[red]%}%# %f%b"
 PROMPT2="%B%{$fg[magenta]%}%_ %{$fg[red]%}> %f%b"
 RPROMPT="%{$fg[cyan]%}%T%{$fg[white]%}%b"
 export PROMPT PROMPT2
-unset myhost
 
 ## Title
 function title {
