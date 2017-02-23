@@ -183,7 +183,10 @@
           (if (eq TeX-engine 'xetex)
               "-e \"$pdflatex =~ s/pdflatex/xelatex/\"" ""))))
      (add-hook 'LaTeX-mode-hook
-               (lambda () (setq TeX-command-default "LaTeXmk")))
+               (lambda ()
+                 (setq TeX-command-default "LaTeXmk")
+                 ;; I don't know why AUCTeX devs think they know better...
+                 (setq company-minimum-prefix-length 3)))
 
      ;; Windows
      (if (eq system-type 'windows-nt)
