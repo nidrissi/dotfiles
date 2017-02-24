@@ -135,6 +135,7 @@
      (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
      (add-hook 'LaTeX-mode-hook 'TeX-fold-mode)
      (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+     (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
      (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
 
      ;; Fold
@@ -146,6 +147,8 @@
      (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
      (add-to-list 'LaTeX-fold-math-spec-list '("\u00ab" ("og")))
      (add-to-list 'LaTeX-fold-math-spec-list '("\u00bb" ("fg")))
+     (add-to-list 'tex--prettify-symbols-alist '("\\varphi" . 966))
+     (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
 
      ;; reftex
      (TeX-add-style-hook
