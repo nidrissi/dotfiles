@@ -56,9 +56,6 @@
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
 
-(require 'diminish)                     ; Hide from mode line
-(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode magit-wip-after-apply-mode magit-wip-after-save-local-mode magit-wip-before-change-mode))
-
 ;; Helm
 (require 'helm-config)
 (helm-mode 1)
@@ -185,9 +182,9 @@
               "-e \"$pdflatex =~ s/pdflatex/xelatex/\"" ""))))
      (add-hook 'LaTeX-mode-hook
                (lambda ()
-                 (setq TeX-command-default "LaTeXmk")
-                 ;; I don't know why AUCTeX devs think they know better...
-                 (setq company-minimum-prefix-length 3)))
+                 (setq TeX-command-default "LaTeXmk"
+                       ;; I don't know why AUCTeX devs think they know better...
+                       company-minimum-prefix-length 3)))
 
      ;; Windows
      (if (eq system-type 'windows-nt)
@@ -198,18 +195,18 @@
                           ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
                            (mode-io-correlate " -forward-search %b %n") " %o")))
            (assq-delete-all 'output-pdf TeX-view-program-selection)
-           (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF"))))
-
-     ;; Okular forward PDF search requires absolute path.
-     (add-to-list
-      'TeX-expand-list
-      '("%a" (lambda nil (expand-file-name (buffer-file-name)))))))
+           (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF"))))))
 
 ;;; Fonts (used for folding)
-(dolist (x '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
+(dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
   (set-fontset-font
    "fontset-default"
-   (cons (decode-char 'ucs (car x)) (decode-char 'ucs (cdr x)))
+   (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
    "STIX"))
+
+;; Must be last
+;; Hide stuff from the modeline
+(require 'diminish)
+(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode))
 
 ;;; emacs.el ends here
