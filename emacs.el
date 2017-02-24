@@ -19,7 +19,7 @@
 (package-initialize)
 
 ;; Horrible hack, has to be maintained manually
-(defvar my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
+(defvar my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency solarized-theme tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode))
 (defun install-my-packages ()
   "Install my packages.  Useful to synchronize between computers."
   (interactive)
@@ -36,6 +36,7 @@
 (setq ring-bell-function 'ignore)
 (openwith-mode)
 (sml/setup)
+(load-theme 'solarized-dark)
 (global-visual-line-mode)
 (require 'uniquify)
 (global-company-mode)

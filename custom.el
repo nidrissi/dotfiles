@@ -42,8 +42,6 @@
  '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
  '(blink-cursor-mode nil)
  '(browse-url-browser-function (quote browse-url-generic))
- '(browse-url-generic-program
-   "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(company-tooltip-align-annotations t)
@@ -60,12 +58,10 @@
  '(cua-remap-control-z nil)
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "2997ecd20f07b99259bddba648555335ffb7a7d908d8d3e6660ecbec415f6b95" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
  '(default-frame-alist
     (quote
-     ((background-color . "black")
-      (foreground-color . "white")
-      (font . "DejaVu Sans Mono-12")
+     ((font . "DejaVu Sans Mono-12")
       (vertical-scroll-bars . right))))
  '(delete-old-versions t)
  '(display-time-mode t)
@@ -92,7 +88,7 @@
       (file)))))
  '(package-selected-packages
    (quote
-    (yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile haskell-mode flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile haskell-mode flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
@@ -156,8 +152,10 @@
            (quote LaTeX-fold-math-spec-list)))))
  '(show-paren-mode t)
  '(sml/theme (quote powerline))
+ '(solarized-high-contrast-mode-line t)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(version-control t)
- '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow))))
+ '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
+ '(x-underline-at-descent-line t))
