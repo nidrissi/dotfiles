@@ -35,8 +35,8 @@
 ;; Interface
 (setq ring-bell-function 'ignore)
 (openwith-mode)
-(sml/setup)
 (load-theme 'solarized-dark)
+(sml/setup)
 (global-visual-line-mode)
 (require 'uniquify)
 (global-company-mode)
