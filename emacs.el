@@ -18,67 +18,85 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; Horrible hack, has to be maintained manually
-(defvar my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency solarized-theme tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode dired-k direx))
-(defun install-my-packages ()
-  "Install my packages.  Useful to synchronize between computers."
-  (interactive)
-  (mapc #'package-install my-packages))
-
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
 (cd (getenv "HOME"))
 (server-start)
 
+;; Must be near the beginning
 (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
       find-program "\"c:/Program Files/Git/usr/bin/find.exe\"")
+
+;; use-package
+(require 'use-package)
 
 ;; Interface
 (setq ring-bell-function 'ignore)
 (openwith-mode)
-(load-theme 'solarized-dark)
-(sml/setup)
+(use-package solarized-theme
+  :config
+  (load-theme 'solarized-dark t))
+(use-package smart-mode-line
+  :config
+  (sml/setup))
 (global-visual-line-mode)
-(require 'uniquify)
-(global-company-mode)
-(global-undo-tree-mode)
+(use-package uniquify)
+(use-package company-mode
+  :config
+  (global-company-mode))
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
 
 ;; dired
-(define-key dired-mode-map (kbd "K") 'dired-k)
-(define-key dired-mode-map (kbd "g") 'dired-k)
-(add-hook 'dired-initial-position-hook 'dired-k)
-(add-hook 'dired-after-readin-hook #'dired-k-no-revert)
-(define-key my-mode-map (kbd "C-$") 'direx-project:jump-to-project-root-other-window)
-(eval-after-load "dired"
-  '(add-hook 'direx:direx-mode-hook 'direx-k))
+(use-package dired
+  :defer t
+  :config
+  (define-key dired-mode-map (kbd "K") 'dired-k)
+  (define-key dired-mode-map (kbd "g") 'dired-k)
+  (add-hook 'dired-initial-position-hook 'dired-k)
+  (add-hook 'dired-after-readin-hook #'dired-k-no-revert))
+(use-package dired-k
+  :commands (dired-k direx-k))
+(use-package direx
+  :bind ("C-$" . direx-project:jump-to-project-root-other-window)
+  :config
+  (add-hook 'direx:direx-mode-hook 'direx-k))
 
-;; Keybindings
-(require 'my-mode)
-(cua-mode t) ; order matters!
-(define-key my-mode-map (kbd "C-;") #'ace-window)
-(define-key my-mode-map (kbd "M-/") #'hippie-expand)
-(define-key my-mode-map (kbd "C-c e") #'eshell)
-(define-key my-mode-map (kbd "C-x C-b") #'ibuffer)
-(define-key my-mode-map (kbd "C-c m") #'magit-status)
-(define-key my-mode-map (kbd "C-c SPC") #'ace-jump-mode)
+(cua-mode t)
+
+(use-package ace-window :bind ("C-;" . ace-window))
+(use-package hippie-exp :bind ("M-/" . hippie-expand))
+(use-package eshell :bind ("C-c e" . eshell))
+(use-package ace-jump-mode :bind ("C-c SPC" . ace-jump-mode))
+
+;; Disable stupid stuff
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
 
 ;; Helm
-(require 'helm-config)
-(helm-mode 1)
-(define-key my-mode-map (kbd "M-x") 'helm-M-x)
-(define-key my-mode-map (kbd "C-x C-f") 'helm-find-files)
-(define-key my-mode-map (kbd "C-x C-b") 'helm-buffers-list)
-(define-key my-mode-map (kbd "M-y") 'helm-show-kill-ring)
-(define-key my-mode-map (kbd "C-,") 'helm-mini)
-(define-key my-mode-map (kbd "M-s o") 'helm-occur)
-(projectile-mode)
-(helm-projectile-on)
+(use-package helm
+  :init
+  :config
+  (helm-mode 1)
+  :bind
+  (("M-x" . helm-M-x)
+   ("C-x C-f" . helm-find-files)
+   ("C-x C-b" . helm-buffers-list)
+   ("M-y" . helm-show-kill-ring)
+   ("C-," . helm-mini)
+   ("M-s o" . helm-occur)))
+(use-package projectile
+  :init
+  (require 'helm-config)
+  :config
+  (projectile-mode)
+  (helm-projectile-on))
 
 ;; Recentf
-(require 'recentf)
-(recentf-mode 1)
+(use-package recentf
+  :config
+  (recentf-mode 1))
 
 ;; Programming
 ;;; Typescript
@@ -90,123 +108,126 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1))
-(add-hook 'before-save-hook 'tide-format-before-save)
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-(setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+(use-package tide
+  :mode "\\.ts\\'"
+  :config
+  (add-hook 'before-save-hook 'tide-format-before-save)
+  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil)))
 
 ;;; Misc prog
-(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown?\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md?\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.\\([tT][tT]\\)\\'" . web-mode)) ; template toolkit
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.scss?\\'" . sass-mode))
-(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(use-package cperl-mode
+  :mode "\\.\\([pP][Llm]\\|al\\)\\'"
+  :interpreter ("perl" "perl5" "miniperl"))
+(use-package markdown-mode :mode ("\\.markdown?\\'" "\\.md?\\'"))
+(use-package web-mode
+  :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
+         "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
+         "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'"))
+(use-package sass-mode :mode "\\.scss?\\'")
+(use-package jade-mode :mode ("\\.jade\\'" . jade-mode))
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; Magit
-(require 'ssh-agency)
-(global-magit-file-mode)
-(autoload 'magit-status "magit")
-(setq magit-last-seen-setup-instructions "1.4.0")
-(setenv "SSH_ASKPASS" "git-gui--askpass")
+(use-package ssh-agency)
+(use-package magit
+  :bind ("C-c m" . magit-status)
+  :init
+  (global-magit-file-mode)
+  :config
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  (setenv "SSH_ASKPASS" "git-gui--askpass"))
 
 ;; AUCTeX
-(setq ispell-tex-skip-alists
-      (list
-       (append
-        (car ispell-tex-skip-alists)
-        '(("\\\\cref" ispell-tex-arg-end)
-          ("\\\\Cref" ispell-tex-arg-end)
-          ("\\\\import" ispell-tex-arg-end 2)
-          ("\\\\textcite" ispell-tex-arg-end)))
-       (cadr ispell-tex-skip-alists)))
+(use-package reftex
+  :defer t
+  :config
+  (add-to-list 'reftex-bibliography-commands "addbibresource"))
 
-(eval-after-load "reftex"
-  '(progn
-     (add-to-list 'reftex-bibliography-commands "addbibresource")))
+(use-package latex
+  :mode "\\.tex\\'"
+  :init
+  (setq ispell-tex-skip-alists
+        (list
+         (append
+          (car ispell-tex-skip-alists)
+          '(("\\\\cref" ispell-tex-arg-end)
+            ("\\\\Cref" ispell-tex-arg-end)
+            ("\\\\import" ispell-tex-arg-end 2)
+            ("\\\\textcite" ispell-tex-arg-end)))
+         (cadr ispell-tex-skip-alists)))
+  :config
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+  (add-hook 'LaTeX-mode-hook 'TeX-fold-mode)
+  (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+  (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
+  (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
 
-(eval-after-load "latex"
-  '(progn
-     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-     (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
-     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-     (add-hook 'LaTeX-mode-hook 'TeX-fold-mode)
-     (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-     (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
-     (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
+   ;; Fold
+   (add-to-list 'LaTeX-fold-macro-spec-list '("[r]" ("cref" "Cref")))
+   (add-to-list 'LaTeX-fold-macro-spec-list '("[c]" ("textcite")))
+   (add-to-list 'LaTeX-fold-macro-spec-list '("[f]" ("tablefootnote")))
+   (add-to-list 'LaTeX-fold-macro-spec-list '("[n]" ("nomenclature")))
+   (add-to-list 'LaTeX-fold-math-spec-list '("[" ("lbrack")))
+   (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
+   (add-to-list 'LaTeX-fold-math-spec-list '("\u00ab" ("og")))
+   (add-to-list 'LaTeX-fold-math-spec-list '("\u00bb" ("fg")))
+   (add-to-list 'tex--prettify-symbols-alist '("\\varphi" . 966))
+   (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
 
-     ;; Fold
-     (add-to-list 'LaTeX-fold-macro-spec-list '("[r]" ("cref" "Cref")))
-     (add-to-list 'LaTeX-fold-macro-spec-list '("[c]" ("textcite")))
-     (add-to-list 'LaTeX-fold-macro-spec-list '("[f]" ("tablefootnote")))
-     (add-to-list 'LaTeX-fold-macro-spec-list '("[n]" ("nomenclature")))
-     (add-to-list 'LaTeX-fold-math-spec-list '("[" ("lbrack")))
-     (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
-     (add-to-list 'LaTeX-fold-math-spec-list '("\u00ab" ("og")))
-     (add-to-list 'LaTeX-fold-math-spec-list '("\u00bb" ("fg")))
-     (add-to-list 'tex--prettify-symbols-alist '("\\varphi" . 966))
-     (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
+   ;; reftex
+   (TeX-add-style-hook
+    "cleveref"
+    (lambda ()
+      (if (boundp 'reftex-ref-style-alist)
+          (add-to-list
+           'reftex-ref-style-alist
+           '("Cleveref" "cleveref"
+             (("\\cref" ?c) ("\\Cref" ?C) ("\\cpageref" ?d) ("\\Cpageref" ?D)))))
+      (reftex-ref-style-activate "Cleveref")
+      (TeX-add-symbols
+       '("cref" TeX-arg-ref)
+       '("Cref" TeX-arg-ref)
+       '("cpageref" TeX-arg-ref)
+       '("Cpageref" TeX-arg-ref))))
 
-     ;; reftex
-     (TeX-add-style-hook
-      "cleveref"
+   ;; LaTeXmk
+   (add-to-list
+    'TeX-command-list
+    '("LaTeXmk" "latexmk %(-PDF) %(-xelatex) %s" TeX-run-TeX nil t
+      :help "Run Latexmk on file"))
+   (add-to-list
+    'TeX-expand-list
+    '("%(-PDF)"
       (lambda ()
-        (if (boundp 'reftex-ref-style-alist)
-            (add-to-list
-             'reftex-ref-style-alist
-             '("Cleveref" "cleveref"
-               (("\\cref" ?c) ("\\Cref" ?C) ("\\cpageref" ?d) ("\\Cpageref" ?D)))))
-        (reftex-ref-style-activate "Cleveref")
-        (TeX-add-symbols
-         '("cref" TeX-arg-ref)
-         '("Cref" TeX-arg-ref)
-         '("cpageref" TeX-arg-ref)
-         '("Cpageref" TeX-arg-ref))))
+        (if (or TeX-PDF-mode TeX-DVI-via-PDFTeX)
+            "-pdf" ""))))
+   (add-to-list
+    'TeX-expand-list
+    '("%(-xelatex)"
+      (lambda ()
+        (if (eq TeX-engine 'xetex)
+            "-e \"$pdflatex =~ s/pdflatex/xelatex/\"" ""))))
+   (add-hook 'LaTeX-mode-hook
+             (lambda ()
+               (setq TeX-command-default "LaTeXmk"
+                     ;; I don't know why AUCTeX devs think they know better...
+                     company-minimum-prefix-length 3)))
 
-     ;; LaTeXmk
-     (add-to-list
-      'TeX-command-list
-      '("LaTeXmk" "latexmk %(-PDF) %(-xelatex) %s" TeX-run-TeX nil t
-        :help "Run Latexmk on file"))
-     (add-to-list
-      'TeX-expand-list
-      '("%(-PDF)"
-        (lambda ()
-          (if (or TeX-PDF-mode TeX-DVI-via-PDFTeX)
-              "-pdf" ""))))
-     (add-to-list
-      'TeX-expand-list
-      '("%(-xelatex)"
-        (lambda ()
-          (if (eq TeX-engine 'xetex)
-              "-e \"$pdflatex =~ s/pdflatex/xelatex/\"" ""))))
-     (add-hook 'LaTeX-mode-hook
-               (lambda ()
-                 (setq TeX-command-default "LaTeXmk"
-                       ;; I don't know why AUCTeX devs think they know better...
-                       company-minimum-prefix-length 3)))
-
-     ;; Windows
-     (if (eq system-type 'windows-nt)
-         (progn
-           (setq preview-gs-command "gswin64c.exe")
-           (add-to-list 'TeX-view-program-list
-                        '("Sumatra PDF"
-                          ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
-                           (mode-io-correlate " -forward-search %b %n") " %o")))
-           (assq-delete-all 'output-pdf TeX-view-program-selection)
-           (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF"))))))
+   ;; Windows
+   (if (eq system-type 'windows-nt)
+       (progn
+         (setq preview-gs-command "gswin64c.exe")
+         (add-to-list 'TeX-view-program-list
+                      '("Sumatra PDF"
+                        ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
+                         (mode-io-correlate " -forward-search %b %n") " %o")))
+         (assq-delete-all 'output-pdf TeX-view-program-selection)
+         (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF")))))
 
 ;;; Fonts (used for folding)
 (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
@@ -217,7 +238,8 @@
 
 ;; Must be last
 ;; Hide stuff from the modeline
-(require 'diminish)
-(mapc #'diminish '(my-mode undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode))
+(use-package diminish
+  :config
+  (mapc #'diminish '(undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode)))
 
 ;;; emacs.el ends here
