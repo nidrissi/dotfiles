@@ -18,7 +18,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lib"))
 (cd (getenv "HOME"))
 (server-start)
 
@@ -38,12 +37,17 @@
 (use-package smart-mode-line
   :config
   (sml/setup))
+
 (global-visual-line-mode)
+(diminish 'visual-line-mode)
+
 (use-package uniquify)
 (use-package company-mode
+  :diminish company-mode
   :config
   (global-company-mode))
 (use-package undo-tree
+  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode))
 
@@ -76,7 +80,7 @@
 
 ;; Helm
 (use-package helm
-  :init
+  :diminish helm-mode
   :config
   (helm-mode 1)
   :bind
@@ -87,6 +91,7 @@
    ("C-," . helm-mini)
    ("M-s o" . helm-occur)))
 (use-package projectile
+  :diminish projectile-mode
   :init
   (require 'helm-config)
   :config
@@ -235,11 +240,5 @@
    "fontset-default"
    (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
    "STIX"))
-
-;; Must be last
-;; Hide stuff from the modeline
-(use-package diminish
-  :config
-  (mapc #'diminish '(undo-tree-mode visual-line-mode helm-mode company-mode projectile-mode)))
 
 ;;; emacs.el ends here
