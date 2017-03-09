@@ -42,7 +42,7 @@
 (diminish 'visual-line-mode)
 
 (use-package uniquify)
-(use-package company-mode
+(use-package company
   :diminish company-mode
   :config
   (global-company-mode))
