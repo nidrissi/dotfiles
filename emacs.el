@@ -19,7 +19,7 @@
 (package-initialize)
 
 ;; Horrible hack, has to be maintained manually
-(defvar my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency solarized-theme tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode dired-k))
+(defvar my-packages '(ace-window ace-jump-mode auctex company diminish flycheck git-commit haskell-mode helm helm-projectile magit markdown-mode openwith powerline powershell projectile rainbow-delimiters sass-mode smart-mode-line smart-mode-line-powerline-theme ssh-agency solarized-theme tide tuareg typescript-mode undo-tree visual-fill-column web-mode with-editor yaml-mode dired-k direx))
 (defun install-my-packages ()
   "Install my packages.  Useful to synchronize between computers."
   (interactive)
@@ -42,12 +42,14 @@
 (global-company-mode)
 (global-undo-tree-mode)
 
-;; dired-k
-(require 'dired-k)
+;; dired
 (define-key dired-mode-map (kbd "K") 'dired-k)
 (define-key dired-mode-map (kbd "g") 'dired-k)
 (add-hook 'dired-initial-position-hook 'dired-k)
 (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
+(define-key my-mode-map (kbd "C-$") 'direx-project:jump-to-project-root-other-window)
+(eval-after-load "dired"
+  '(add-hook 'direx:direx-mode-hook 'direx-k))
 
 ;; Keybindings
 (require 'my-mode)
