@@ -91,10 +91,10 @@
    ("C-," . helm-mini)
    ("M-s o" . helm-occur)))
 (use-package projectile
+  :bind ("C-c p p" . helm-projectile-switch-project)
   :diminish projectile-mode
-  :init
-  (require 'helm-config)
   :config
+  (require 'helm-config)
   (projectile-mode)
   (helm-projectile-on))
 
@@ -136,12 +136,11 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; Magit
-(use-package ssh-agency)
 (use-package magit
   :bind ("C-c m" . magit-status)
-  :init
-  (global-magit-file-mode)
   :config
+  (use-package ssh-agency)
+  (global-magit-file-mode)
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setenv "SSH_ASKPASS" "git-gui--askpass"))
 
