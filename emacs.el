@@ -39,7 +39,7 @@
   :config
   (sml/setup))
 
-(global-visual-line-mode)
+(add-hook 'after-init-hook 'global-visual-line-mode)
 (diminish 'visual-line-mode)
 
 (use-package uniquify)
@@ -47,12 +47,12 @@
   :ensure t
   :diminish company-mode
   :config
-  (global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode))
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
   :config
-  (global-undo-tree-mode))
+  (add-hook 'after-init-hook 'global-undo-tree-mode))
 
 ;; dired
 (use-package dired
@@ -100,14 +100,12 @@
 
 (use-package helm-projectile
   :ensure t
+  :diminish projectile-mode
   :bind
   (("C-c p p" . helm-projectile-switch-project)
-   ("C-c p h" . helm-projectile)))
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode
+   ("C-c p h" . helm-projectile))
   :config
-  (require 'helm-config)
+  (use-package projectile :ensure t)
   (projectile-mode)
   (helm-projectile-on))
 
@@ -178,7 +176,7 @@
   :config
   (add-to-list 'reftex-bibliography-commands "addbibresource"))
 
-(use-package tex
+(use-package latex
   :ensure auctex
   :mode ("\\.tex'" . latex-mode)
   :init
