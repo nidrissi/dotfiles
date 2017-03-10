@@ -64,7 +64,7 @@
 
 (cua-mode t)
 
-(use-package ace-window :bind ("C-;" . ace-window))
+(use-package ace-window :bind ("C-$" . ace-window))
 (use-package hippie-exp :bind ("M-/" . hippie-expand))
 (use-package eshell :bind ("C-c e" . eshell))
 (use-package ace-jump-mode :bind ("C-c SPC" . ace-jump-mode))
@@ -84,7 +84,7 @@
    ("C-x C-f" . helm-find-files)
    ("C-x C-b" . helm-buffers-list)
    ("M-y" . helm-show-kill-ring)
-   ("C-," . helm-mini)
+   ("C-!" . helm-mini)
    ("M-s o" . helm-occur)))
 (use-package projectile
   :bind ("C-c p p" . helm-projectile-switch-project)
