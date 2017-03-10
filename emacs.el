@@ -31,9 +31,11 @@
 (setq ring-bell-function 'ignore)
 (openwith-mode)
 (use-package solarized-theme
+  :ensure t
   :config
   (load-theme 'solarized-dark t))
 (use-package smart-mode-line
+  :ensure t
   :config
   (sml/setup))
 
@@ -42,10 +44,12 @@
 
 (use-package uniquify)
 (use-package company
+  :ensure t
   :diminish company-mode
   :config
   (global-company-mode))
 (use-package undo-tree
+  :ensure t
   :diminish undo-tree-mode
   :config
   (global-undo-tree-mode))
@@ -60,14 +64,20 @@
   :init
   (add-hook 'dired-initial-position-hook 'dired-k)
   (add-hook 'dired-after-readin-hook 'dired-k-no-revert))
-(use-package dired-k :commands dired-k)
+(use-package dired-k
+ :ensure t
+ :commands dired-k)
 
 (cua-mode t)
 
-(use-package ace-window :bind ("C-$" . ace-window))
+(use-package ace-window
+  :ensure t
+  :bind ("C-$" . ace-window))
 (use-package hippie-exp :bind ("M-/" . hippie-expand))
 (use-package eshell :bind ("C-c e" . eshell))
-(use-package ace-jump-mode :bind ("C-c SPC" . ace-jump-mode))
+(use-package ace-jump-mode
+  :ensure t
+  :bind ("C-c SPC" . ace-jump-mode))
 
 ;; Disable stupid stuff
 (global-unset-key (kbd "C-z"))
@@ -76,6 +86,7 @@
 
 ;; Helm
 (use-package helm
+  :ensure t
   :diminish helm-mode
   :config
   (helm-mode 1)
@@ -86,9 +97,14 @@
    ("M-y" . helm-show-kill-ring)
    ("C-!" . helm-mini)
    ("M-s o" . helm-occur)))
+
+(use-package helm-projectile
+  :ensure t
+  :bind
+  (("C-c p p" . helm-projectile-switch-project)
+   ("C-c p h" . helm-projectile)))
 (use-package projectile
-  :bind ("C-c p p" . helm-projectile-switch-project
-         "C-c p h" . helm-projectile)
+  :ensure t
   :diminish projectile-mode
   :config
   (require 'helm-config)
@@ -109,12 +125,14 @@
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1))
 (use-package tide
+  :ensure t
   :commands tide-setup
   :config
   (setq tide-format-options
         '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
           :placeOpenBraceOnNewLineForFunctions nil)))
-(use-package typsecript-mode
+(use-package typescript-mode
+  :ensure t
   :mode "\\.ts'"
   :init
   (add-hook 'before-save-hook 'tide-format-before-save)
@@ -124,19 +142,28 @@
 (use-package cperl-mode
   :mode "\\.\\([pP][Llm]\\|al\\)\\'"
   :interpreter ("perl" "perl5" "miniperl"))
-(use-package markdown-mode :mode ("\\.markdown?\\'" "\\.md?\\'"))
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.markdown?\\'" "\\.md?\\'"))
 (use-package web-mode
+  :ensure t
   :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
          "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
          "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'"))
-(use-package sass-mode :mode "\\.scss?\\'")
-(use-package jade-mode :mode "\\.jade\\'")
+(use-package sass-mode
+  :ensure t
+  :mode "\\.scss?\\'")
+(use-package jade-mode
+  :ensure t
+  :mode "\\.jade\\'")
 (use-package rainbow-delimiters
+  :ensure t
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; Magit
 (use-package magit
+  :ensure t
   :bind ("C-c m" . magit-status)
   :config
   (use-package ssh-agency)
@@ -146,11 +173,13 @@
 
 ;; AUCTeX
 (use-package reftex
+  :ensure t
   :defer t
   :config
   (add-to-list 'reftex-bibliography-commands "addbibresource"))
 
-(use-package latex
+(use-package tex
+  :ensure auctex
   :mode ("\\.tex'" . latex-mode)
   :init
   (setq ispell-tex-skip-alists
