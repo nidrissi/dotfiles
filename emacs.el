@@ -59,7 +59,7 @@
         ("g" . dired-k))
   :init
   (add-hook 'dired-initial-position-hook 'dired-k)
-  (add-hook 'dired-after-readin-hook #'dired-k-no-revert))
+  (add-hook 'dired-after-readin-hook 'dired-k-no-revert))
 (use-package dired-k :commands dired-k)
 
 (cua-mode t)
@@ -87,7 +87,8 @@
    ("C-!" . helm-mini)
    ("M-s o" . helm-occur)))
 (use-package projectile
-  :bind ("C-c p p" . helm-projectile-switch-project)
+  :bind ("C-c p p" . helm-projectile-switch-project
+         "C-c p h" . helm-projectile)
   :diminish projectile-mode
   :config
   (require 'helm-config)
@@ -95,9 +96,7 @@
   (helm-projectile-on))
 
 ;; Recentf
-(use-package recentf
-  :config
-  (recentf-mode 1))
+(use-package recentf :config (recentf-mode 1))
 
 ;; Programming
 ;;; Typescript
@@ -112,7 +111,9 @@
 (use-package tide
   :commands tide-setup
   :config
-  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil)))
+  (setq tide-format-options
+        '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
+          :placeOpenBraceOnNewLineForFunctions nil)))
 (use-package typsecript-mode
   :mode "\\.ts'"
   :init
@@ -132,7 +133,7 @@
 (use-package jade-mode :mode "\\.jade\\'")
 (use-package rainbow-delimiters
   :init
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; Magit
 (use-package magit
