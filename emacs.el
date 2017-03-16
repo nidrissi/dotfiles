@@ -62,12 +62,16 @@
         ("K" . dired-k)
         ("g" . dired-k))
   :init
-  (add-hook 'dired-mode-hook 'dired-omit-mode)
   (add-hook 'dired-initial-position-hook 'dired-k)
   (add-hook 'dired-after-readin-hook 'dired-k-no-revert))
 (use-package dired-k
  :ensure t
  :commands dired-k)
+(use-package dired-x
+  :commands dired-omit-mode
+  :init
+  (add-hook 'dired-mode-hook 'dired-omit-mode))
+
 
 (cua-mode t)
 
