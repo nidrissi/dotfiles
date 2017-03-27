@@ -93,7 +93,7 @@
 (use-package helm
   :ensure t
   :diminish helm-mode
-  :config
+  :init
   (helm-mode 1)
   :bind
   (("M-x" . helm-M-x)
