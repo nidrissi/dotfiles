@@ -223,6 +223,7 @@
   (add-to-list 'tex--prettify-symbols-alist '("\\varphi" . 966))
   (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
   (add-to-list 'tex--prettify-symbols-alist '("\\vartheta" . 977))
+  (add-to-list 'tex--prettify-symbols-alist '("\\varnothing" . 8709))
 
   ;; reftex
   (TeX-add-style-hook
