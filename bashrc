@@ -1,3 +1,5 @@
+# SSH
+
 # Note: ~/.ssh/environment should not be used, as it
 #       already has a different purpose in SSH.
 
@@ -46,3 +48,11 @@ elif ! agent_has_keys; then
 fi
 
 unset env
+
+# Git subrepo
+
+if [[ -f "/c/users/najib/programmes/git-subrepo/.rc" ]]; then
+    source "/c/users/najib/programmes/git-subrepo/.rc"
+elif [[ -f "/e/programmes/git-subrepo/.rc" ]]; then
+    source "/e/programmes/git-subrepo/.rc"
+fi
