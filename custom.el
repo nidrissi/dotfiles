@@ -70,6 +70,7 @@
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
+ '(git-gutter:modified-sign "#")
  '(helm-ff-skip-boring-files t)
  '(helm-mode-fuzzy-match t)
  '(indent-tabs-mode nil)
