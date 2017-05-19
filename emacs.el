@@ -173,6 +173,10 @@
   (global-magit-file-mode)
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setenv "SSH_ASKPASS" "git-gui--askpass"))
+(use-package git-gutter
+  :ensure t
+  :init
+  (global-git-gutter-mode))
 
 ;; AUCTeX
 (use-package reftex
