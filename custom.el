@@ -123,7 +123,22 @@
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
  '(safe-local-variable-values
    (quote
-    ((eval web-mode-set-engine "django")
+    ((eval add-to-list
+           (quote TeX-fold-macro-spec-list)
+           (quote
+            ("[n{1}]"
+             ("nomnom"))))
+     (eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("¡"
+             ("ashk"))))
+     (eval add-to-list
+           (quote LaTeX-fold-math-spec-list)
+           (quote
+            ("d"
+             ("dd"))))
+     (eval web-mode-set-engine "django")
      (eval add-to-list
            (quote LaTeX-fold-math-spec-list)
            (quote
