@@ -117,8 +117,12 @@
 ;; Recentf
 (use-package recentf :config (recentf-mode 1))
 
-;; Programming
-;;; Typescript
+;; Flyspell
+(use-package flyspell-correct-helm
+  :ensure t
+  :bind ("M-*" . flyspell-correct-previous-word-generic))
+
+;; Typescript
 (defun setup-tide-mode ()
   "Setup tide-mode."
   (interactive)
