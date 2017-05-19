@@ -175,6 +175,7 @@
   (setenv "SSH_ASKPASS" "git-gui--askpass"))
 (use-package git-gutter
   :ensure t
+  :diminish git-gutter-mode
   :init
   (global-git-gutter-mode))
 
