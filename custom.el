@@ -71,6 +71,7 @@
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
  '(git-gutter:modified-sign "#")
+ '(helm-ag-base-command "c:/cygwin64/bin/ag --vimgrep")
  '(helm-ff-skip-boring-files t)
  '(helm-mode-fuzzy-match t)
  '(indent-tabs-mode nil)
@@ -89,7 +90,7 @@
       (file)))))
  '(package-selected-packages
    (quote
-    (git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile haskell-mode flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile haskell-mode flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
