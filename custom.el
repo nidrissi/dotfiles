@@ -71,7 +71,7 @@
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(gc-cons-threshold 20000000)
  '(git-gutter:modified-sign "#")
- '(helm-ag-base-command "c:/cygwin64/bin/ag --vimgrep")
+ '(helm-ag-base-command "c:/cygwin64/bin/ag.exe --vimgrep")
  '(helm-ff-skip-boring-files t)
  '(helm-mode-fuzzy-match t)
  '(indent-tabs-mode nil)
