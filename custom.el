@@ -15,7 +15,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(LaTeX-amsmath-label "eq.")
  '(LaTeX-command "latex -file-line-error")
+ '(LaTeX-electric-left-right-brace t)
+ '(LaTeX-equation-label "eq.")
+ '(LaTeX-figure-label "fig.")
  '(LaTeX-fill-break-at-separators (quote (\\\[ \\\])))
  '(LaTeX-math-abbrev-prefix "²")
  '(LaTeX-math-list
@@ -23,8 +27,11 @@
     ((111 "circ" "Ring operator" 8728)
      (75 "Bbbk" "Blackboard bold k" 120156)
      (224 "otimes" "Circled times" 8855))))
+ '(LaTeX-table-label "tab.")
  '(TeX-PDF-mode t)
  '(TeX-auto-save t)
+ '(TeX-electric-escape t)
+ '(TeX-electric-math (quote ("$" . "$")))
  '(TeX-electric-sub-and-superscript t)
  '(TeX-parse-self t)
  '(TeX-quote-language-alist (quote (("french" "\\og{}" "\\fg{}" nil))))
@@ -69,6 +76,7 @@
  '(echo-keystrokes 0.1)
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(flyspell-use-meta-tab nil)
  '(gc-cons-threshold 20000000)
  '(git-gutter:modified-sign "#")
  '(helm-ag-base-command "c:/cygwin64/bin/ag.exe --vimgrep")
