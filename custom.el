@@ -109,7 +109,7 @@
  '(projectile-indexing-method (quote alien))
  '(reftex-default-bibliography
    (quote
-    ("c:/Users/Najib/Work/phd/texmf/bibtex/bib/main_bib/math.bib")))
+    ("c:/Users/Najib/Work/phd/texmf/bibtex/bib/mainbib_bib/mainbib.bib")))
  '(reftex-label-alist
    (quote
     (("theorem" 97 "thm." "~\\ref{%s}" t
