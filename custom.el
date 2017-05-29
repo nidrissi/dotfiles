@@ -90,7 +90,7 @@
       (file)))))
  '(package-selected-packages
    (quote
-    (helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (yasnippet helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
@@ -105,6 +105,8 @@
  '(reftex-label-alist
    (quote
     (("theorem" 97 "thm." "~\\ref{%s}" t
+      ("theorem"))
+     ("theoremintro" 97 "thm." "~\\ref{%s}" t
       ("theorem"))
      ("proposition" 97 "prop." "~\\ref{%s}" t
       ("proposition"))
