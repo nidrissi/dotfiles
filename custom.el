@@ -79,7 +79,7 @@
  '(flyspell-use-meta-tab nil)
  '(gc-cons-threshold 20000000)
  '(git-gutter:modified-sign "#")
- '(helm-ag-base-command "c:/cygwin64/bin/ag.exe --vimgrep")
+ '(helm-ag-base-command "c:/cygwin64/bin/ag --vimgrep --nocolor --nogroup")
  '(helm-ff-skip-boring-files t)
  '(helm-mode-fuzzy-match t)
  '(indent-tabs-mode nil)
