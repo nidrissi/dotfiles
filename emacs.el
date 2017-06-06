@@ -253,7 +253,7 @@
   ;; LaTeXmk
   (add-to-list
    'TeX-command-list
-   '("LaTeXmk" "latexmk %(-PDF) %(-xelatex) %s" TeX-run-TeX nil t
+   '("LaTeXmk" "latexmk %(-PDF) %(-xelatex) %(-lualatex) %s" TeX-run-TeX nil t
      :help "Run Latexmk on file"))
   (add-to-list
    'TeX-expand-list
@@ -267,6 +267,12 @@
      (lambda ()
        (if (eq TeX-engine 'xetex)
            "-e \"$pdflatex =~ s/pdflatex/xelatex/\"" ""))))
+  (add-to-list
+   'TeX-expand-list
+   '("%(-lualatex)"
+     (lambda ()
+       (if (eq TeX-engine 'luatex)
+           "-e \"$pdflatex =~ s/pdflatex/lualatex/\"" ""))))
 
   ;; Windows
   (if (eq system-type 'windows-nt)
