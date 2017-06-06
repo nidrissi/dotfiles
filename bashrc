@@ -1,4 +1,6 @@
-# SSH
+if [ "$(uname -o)" = "Cygwin" ]; then
+    return
+fi
 
 # Note: ~/.ssh/environment should not be used, as it
 #       already has a different purpose in SSH.
