@@ -45,6 +45,7 @@
       "dvips and gv")
      (output-dvi "xdvi")
      (output-html "xdg-open"))))
+ '(auctex-latexmk-inherit-TeX-PDF-mode t)
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
  '(blink-cursor-mode nil)
@@ -87,6 +88,7 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+ '(load-prefer-newer t)
  '(magit-diff-refine-hunk (quote all))
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
@@ -98,7 +100,7 @@
       (file)))))
  '(package-selected-packages
    (quote
-    (yasnippet helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (auctex-latexmk yasnippet helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide ssh-agency smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-options
    (quote
@@ -135,7 +137,8 @@
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
  '(safe-local-variable-values
    (quote
-    ((eval add-to-list
+    ((TeX-command-extra-options . "-shell-escape")
+     (eval add-to-list
            (quote TeX-fold-macro-spec-list)
            (quote
             ("[n{1}]"

@@ -251,28 +251,8 @@
       '("Cpageref" TeX-arg-ref))))
 
   ;; LaTeXmk
-  (add-to-list
-   'TeX-command-list
-   '("LaTeXmk" "latexmk %(-PDF) %(-xelatex) %(-lualatex) %s" TeX-run-TeX nil t
-     :help "Run Latexmk on file"))
-  (add-to-list
-   'TeX-expand-list
-   '("%(-PDF)"
-     (lambda ()
-       (if (or TeX-PDF-mode TeX-DVI-via-PDFTeX)
-           "-pdf" ""))))
-  (add-to-list
-   'TeX-expand-list
-   '("%(-xelatex)"
-     (lambda ()
-       (if (eq TeX-engine 'xetex)
-           "-e \"$pdflatex =~ s/pdflatex/xelatex/\"" ""))))
-  (add-to-list
-   'TeX-expand-list
-   '("%(-lualatex)"
-     (lambda ()
-       (if (eq TeX-engine 'luatex)
-           "-e \"$pdflatex =~ s/pdflatex/lualatex/\"" ""))))
+  (use-package auctex-latexmk :ensure t)
+  (auctex-latexmk-setup)
 
   ;; Windows
   (if (eq system-type 'windows-nt)

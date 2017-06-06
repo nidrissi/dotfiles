@@ -1,5 +1,3 @@
-$pdflatex = 'pdflatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S';
-
 # for nomenclature
 add_cus_dep("nlo", "nls", 0, "nlo2nls");
 sub nlo2nls {
