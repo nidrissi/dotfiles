@@ -173,7 +173,6 @@
   :ensure t
   :bind ("C-c m" . magit-status)
   :config
-  (use-package ssh-agency)
   (global-magit-file-mode)
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setenv "SSH_ASKPASS" "git-gui--askpass"))
