@@ -17,7 +17,6 @@
  ;; If there is more than one, they won't work right.
  '(LaTeX-amsmath-label "eq.")
  '(LaTeX-command "latex -file-line-error")
- '(LaTeX-electric-left-right-brace t)
  '(LaTeX-equation-label "eq.")
  '(LaTeX-figure-label "fig.")
  '(LaTeX-fill-break-at-separators (quote (\\\[ \\\])))
@@ -31,7 +30,6 @@
  '(TeX-PDF-mode t)
  '(TeX-auto-save t)
  '(TeX-complete-expert-commands t)
- '(TeX-electric-math (quote ("$" . "$")))
  '(TeX-electric-sub-and-superscript t)
  '(TeX-parse-self t)
  '(TeX-quote-language-alist (quote (("french" "\\og{}" "\\fg{}" nil))))
@@ -100,7 +98,7 @@
       (file)))))
  '(package-selected-packages
    (quote
-    (auctex-latexmk yasnippet helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (smartparens company-emoji auctex-latexmk yasnippet helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-options
    (quote

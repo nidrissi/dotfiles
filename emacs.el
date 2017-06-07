@@ -168,6 +168,12 @@
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
+;; smartparens
+(use-package smartparens-config
+  :ensure smartparens
+  :init
+  (smartparens-global-mode))
+
 ;; Magit
 (use-package magit
   :ensure t
