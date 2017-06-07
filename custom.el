@@ -36,6 +36,12 @@
  '(TeX-source-correlate-method (quote synctex))
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
+ '(TeX-view-program-list
+   (quote
+    (("Sumatra PDF"
+      ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
+       (mode-io-correlate " -forward-search %b %n")
+       " %o")))))
  '(TeX-view-program-selection
    (quote
     ((output-pdf "Sumatra PDF")
@@ -100,6 +106,7 @@
    (quote
     (smartparens company-emoji auctex-latexmk yasnippet helm-ag git-gutter flyspell-correct-helm jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit helm-projectile flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
+ '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
    (quote
     ("-q" "-dNOPAUSE" "-DNOPLATFONTS" "-dPrinted" "-dTextAlphaBits=4" "-dGraphicsAlphaBits=4")))
@@ -179,7 +186,6 @@
              ("dl"))))
      (eval make-local-variable
            (quote LaTeX-fold-math-spec-list)))))
- '(show-paren-mode t)
  '(sml/replacer-regexp-list
    (quote
     (("^~/\\.emacs\\.d/elpa/" ":ELPA:")

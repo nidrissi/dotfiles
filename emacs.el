@@ -257,18 +257,7 @@
 
   ;; LaTeXmk
   (use-package auctex-latexmk :ensure t)
-  (auctex-latexmk-setup)
-
-  ;; Windows
-  (if (eq system-type 'windows-nt)
-      (progn
-        (setq preview-gs-command "gswin64c.exe")
-        (add-to-list 'TeX-view-program-list
-                     '("Sumatra PDF"
-                       ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
-                        (mode-io-correlate " -forward-search %b %n") " %o")))
-        (assq-delete-all 'output-pdf TeX-view-program-selection)
-        (add-to-list 'TeX-view-program-selection '(output-pdf "Sumatra PDF")))))
+  (auctex-latexmk-setup))
 
 ;;; Fonts (used for folding)
 (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
