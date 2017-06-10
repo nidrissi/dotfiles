@@ -218,7 +218,7 @@
   (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
   (add-hook 'LaTeX-mode-hook
             (lambda ()
-              (setq TeX-command-default "LaTeXmk"
+              (setq TeX-command-default "LatexMk"
                     ;; I don't know why AUCTeX devs think they know better...
                     company-minimum-prefix-length 3)))
 
