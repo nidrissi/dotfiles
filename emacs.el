@@ -54,6 +54,15 @@
   :config
   (add-hook 'after-init-hook 'global-undo-tree-mode))
 
+(use-package volatile-highlights
+  :ensure t
+  :diminish volatile-highlights-mode
+  :init
+  (volatile-highlights-mode t)
+  :config
+  (vhl/define-extension 'undo-tree 'undo-tree-yank 'undo-tree-move)
+  (vhl/install-extension 'undo-tree))
+
 ;; dired
 (use-package dired
   :commands dired
