@@ -253,7 +253,7 @@
   (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
   (add-to-list 'tex--prettify-symbols-alist '("\\vartheta" . 977))
   (add-to-list 'tex--prettify-symbols-alist '("\\varnothing" . 8709))
-  (add-to-list 'tex--prettify-symbols-alist '("\\varpi" . 982)))
+  (add-to-list 'tex--prettify-symbols-alist '("\\varpi" . 982))
 
   ;; reftex
   (TeX-add-style-hook
