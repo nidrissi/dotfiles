@@ -104,38 +104,38 @@
 (global-unset-key (kbd "<f9>"))
 (setq disabled-command-function nil)
 
-;; Helm
-(use-package helm
+;; Ivy
+(use-package ivy
   :ensure t
-  :diminish helm-mode
+  :diminish ivy-mode
   :init
-  (helm-mode 1)
+  (ivy-mode 1)
   :bind
-  (("M-x" . helm-M-x)
-   ("C-x C-f" . helm-find-files)
-   ("C-x C-b" . helm-buffers-list)
-   ("M-y" . helm-show-kill-ring)
-   ("C-!" . helm-mini)
-   ("M-s o" . helm-occur)))
+  (("C-s" . swiper)
+   ("M-x" . counsel-M-x)
+   ("M-y" . counsel-yank-pop)
+   ("C-x C-f" . counsel-find-file)
+   ("C-!" . ivy-switch-buffer)
+   ("<f1> f" . counsel-describe-function)
+   ("<f1> v" . counsel-describe-variable)
+   ("<f1> l" . counsel-find-library)
+   ("<f2> i" . counsel-info-lookup-symbol)
+   ("<f2> u" . counsel-unicode-char)
+   ("C-c g" . counsel-git)
+   ("C-c j" . counsel-git-grep)
+   ("C-c k" . counsel-ag)
+   ("C-c C-r" . ivy-resume)))
 
-(use-package helm-projectile
+(use-package counsel-projectile
   :ensure t
   :diminish projectile-mode
-  :bind
-  (("C-c p p" . helm-projectile-switch-project)
-   ("C-c p h" . helm-projectile))
+  :bind (("C-c p SPC" . counsel-projectile))
   :config
-  (use-package projectile :ensure t)
   (projectile-mode)
-  (helm-projectile-on))
+  (counsel-projectile-on))
 
 ;; Recentf
 (use-package recentf :config (recentf-mode 1))
-
-;; Flyspell
-(use-package flyspell-correct-helm
-  :ensure t
-  :bind ("M-*" . flyspell-correct-previous-word-generic))
 
 ;; Typescript
 (defun setup-tide-mode ()
