@@ -110,6 +110,7 @@
   :diminish ivy-mode
   :init
   (ivy-mode 1)
+  (setq counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions))
   :bind
   (("C-s" . swiper)
    ("M-x" . counsel-M-x)
