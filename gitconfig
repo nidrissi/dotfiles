@@ -15,3 +15,5 @@
 	rebase = preserve
 [gpg]
 	program = c:/Program Files (x86)/GNU/GnuPG/gpg2.exe
+[magit]
+	hideCampaign = true
