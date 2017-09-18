@@ -30,10 +30,10 @@
 ;; Interface
 (setq ring-bell-function 'ignore)
 (openwith-mode)
-(use-package solarized-theme
+(use-package zenburn-theme
   :ensure t
   :config
-  (load-theme 'solarized-dark t))
+  (load-theme 'zenburn t))
 (use-package smart-mode-line
   :ensure t
   :config
