@@ -188,6 +188,7 @@
 ;; smartparens
 (use-package smartparens-config
   :ensure smartparens
+  :diminish smartparens-mode
   :init
   (smartparens-global-mode))
 
