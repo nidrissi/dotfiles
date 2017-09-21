@@ -39,8 +39,9 @@
   :config
   (sml/setup))
 
-(add-hook 'after-init-hook 'global-visual-line-mode)
-(diminish 'visual-line-mode)
+;; Kills swiper speed
+;; (add-hook 'after-init-hook 'global-visual-line-mode)
+;; (diminish 'visual-line-mode)
 
 (use-package uniquify)
 (use-package company
