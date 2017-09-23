@@ -64,12 +64,6 @@
   (vhl/define-extension 'undo-tree 'undo-tree-yank 'undo-tree-move)
   (vhl/install-extension 'undo-tree))
 
-(use-package anzu
-  :ensure t
-  :diminish anzu-mode
-  :init
-  (global-anzu-mode +1))
-
 ;; dired
 (use-package dired
   :commands dired
