@@ -50,11 +50,3 @@ elif ! agent_has_keys; then
 fi
 
 unset env
-
-# Git subrepo
-
-if [[ -f "/c/users/najib/programmes/git-subrepo/.rc" ]]; then
-    source "/c/users/najib/programmes/git-subrepo/.rc"
-elif [[ -f "/e/programmes/git-subrepo/.rc" ]]; then
-    source "/e/programmes/git-subrepo/.rc"
-fi
