@@ -180,11 +180,11 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; smartparens
-(use-package smartparens-config
-  :ensure smartparens
-  :diminish smartparens-mode
-  :init
-  (smartparens-global-mode))
+;; (use-package smartparens-config
+;;   :ensure smartparens
+;;   :diminish smartparens-mode
+;;   :init
+;;   (smartparens-global-mode))
 
 ;; Magit
 (use-package magit
@@ -199,6 +199,10 @@
   :diminish git-gutter-mode
   :init
   (global-git-gutter-mode))
+(use-package gitconfig-mode
+  :ensure t)
+(use-package gitignore-mode
+  :ensure t)
 
 ;; AUCTeX
 (use-package reftex
@@ -267,7 +271,6 @@
       '("Cref" TeX-arg-ref)
       '("cpageref" TeX-arg-ref)
       '("Cpageref" TeX-arg-ref))))
-
   ;; LaTeXmk
   (use-package auctex-latexmk :ensure t)
   (auctex-latexmk-setup))

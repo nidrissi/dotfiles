@@ -105,6 +105,8 @@
     (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
       (file))
      ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
+      (file))
+     ("\\.svgz?" "start"
       (file)))))
  '(org-latex-classes
    (quote
@@ -141,7 +143,7 @@
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(package-selected-packages
    (quote
-    (ivy-hydra counsel-projectile counsel volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk yasnippet git-gutter jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tide smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk yasnippet git-gutter jade-mode projectile-mode ace-jump-mode esup use-package direx dired-k solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit flx-ido diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
@@ -154,7 +156,8 @@
  '(projectile-indexing-method (quote alien))
  '(reftex-default-bibliography
    (quote
-    ("c:/Users/Najib/Work/phd/texmf/bibtex/bib/mainbib_bib/mainbib.bib")))
+    ("c:/Users/Najib/Work/math/texmf/bibtex/bib/mainbib_bib/mainbib.bib")))
+ '(reftex-insert-label-flags (quote ("s" "asft")))
  '(reftex-label-alist
    (quote
     (("theorem" 97 "thm." "~\\ref{%s}" t
