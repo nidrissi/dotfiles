@@ -180,11 +180,11 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; smartparens
-;; (use-package smartparens-config
-;;   :ensure smartparens
-;;   :diminish smartparens-mode
-;;   :init
-;;   (smartparens-global-mode))
+(use-package smartparens-config
+  :ensure smartparens
+  :diminish smartparens-mode
+  :init
+  (smartparens-global-mode))
 
 ;; Magit
 (use-package magit
