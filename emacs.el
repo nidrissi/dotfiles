@@ -198,7 +198,8 @@
   :init
   (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
   (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
-  (add-hook 'dired-mode-hook 'diff-hl-dired-mode-unless-remote))
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode-unless-remote)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (use-package gitconfig-mode
   :ensure t)
