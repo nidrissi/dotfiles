@@ -64,17 +64,6 @@
   (vhl/define-extension 'undo-tree 'undo-tree-yank 'undo-tree-move)
   (vhl/install-extension 'undo-tree))
 
-;; dired
-(use-package dired
-  :commands dired
-  :bind
-  (:map dired-mode-map
-        ("K" . dired-k)
-        ("g" . dired-k))
-  :init
-  (add-hook 'dired-initial-position-hook 'dired-k)
-  (add-hook 'dired-after-readin-hook 'dired-k-no-revert))
-
 (use-package dired-x
   :commands dired-omit-mode
   :init
@@ -196,8 +185,7 @@
 (use-package diff-hl
   :ensure t
   :init
-  (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
-  (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
+  (global-diff-hl-mode)
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode-unless-remote)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
