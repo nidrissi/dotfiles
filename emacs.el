@@ -74,9 +74,7 @@
   :init
   (add-hook 'dired-initial-position-hook 'dired-k)
   (add-hook 'dired-after-readin-hook 'dired-k-no-revert))
-(use-package dired-k
- :ensure t
- :commands dired-k)
+
 (use-package dired-x
   :commands dired-omit-mode
   :init
@@ -194,11 +192,14 @@
   (global-magit-file-mode)
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setenv "SSH_ASKPASS" "git-gui--askpass"))
-(use-package git-gutter
+
+(use-package diff-hl
   :ensure t
-  :diminish git-gutter-mode
   :init
-  (global-git-gutter-mode))
+  (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+  (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode-unless-remote))
+
 (use-package gitconfig-mode
   :ensure t)
 (use-package gitignore-mode
