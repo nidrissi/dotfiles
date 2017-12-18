@@ -178,6 +178,7 @@
       ("remark"))
      ("conjecture" 97 "conj." nil t
       ("conjecture")))))
+ '(reftex-label-ignored-macros-and-environments (quote ("tikzpicture" "tikzcd")))
  '(reftex-plug-into-AUCTeX t)
  '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
  '(safe-local-variable-values
