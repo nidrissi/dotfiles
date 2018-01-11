@@ -39,16 +39,14 @@
   :config
   (sml/setup))
 
-;; Kills swiper speed
-;; (add-hook 'after-init-hook 'global-visual-line-mode)
-;; (diminish 'visual-line-mode)
-
 (use-package uniquify)
+
 (use-package company
   :ensure t
   :diminish company-mode
   :config
   (add-hook 'after-init-hook 'global-company-mode))
+
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
@@ -69,6 +67,9 @@
   :init
   (add-hook 'dired-mode-hook 'dired-omit-mode))
 
+(use-package multiple-cursors
+  :ensure t
+  :bind ("C-c c" . mc/edit-lines))
 
 (cua-mode t)
 
