@@ -71,8 +71,6 @@
   :ensure t
   :bind ("C-c c" . mc/edit-lines))
 
-(cua-mode t)
-
 (use-package ace-window
   :ensure t
   :bind ("C-$" . ace-window))
@@ -115,8 +113,7 @@
   :diminish projectile-mode
   :bind (("C-c p SPC" . counsel-projectile))
   :config
-  (projectile-mode)
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 ;; Recentf
 (use-package recentf :config (recentf-mode 1))
