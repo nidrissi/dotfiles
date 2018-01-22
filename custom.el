@@ -65,10 +65,6 @@
  '(cperl-close-paren-offset -4)
  '(cperl-indent-level 4)
  '(cperl-indent-parens-as-block t)
- '(cua-mode t nil (cua-base))
- '(cua-prefix-override-inhibit-delay 0.4)
- '(cua-remap-control-v nil)
- '(cua-remap-control-z nil)
  '(custom-safe-themes
    (quote
     ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "2997ecd20f07b99259bddba648555335ffb7a7d908d8d3e6660ecbec415f6b95" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" default)))
