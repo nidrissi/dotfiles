@@ -111,8 +111,7 @@
 (use-package counsel-projectile
   :ensure t
   :diminish projectile-mode
-  :bind (("C-c p SPC" . counsel-projectile))
-  :config
+  :init
   (counsel-projectile-mode))
 
 ;; Recentf
