@@ -201,6 +201,7 @@
 (use-package latex
   :ensure auctex
   :mode ("\\.tex'" . latex-mode)
+  :bind (:map LaTeX-mode-map ("C-c C-k" . my-TeX-kill-job))
   :init
   (setq ispell-tex-skip-alists
         (list
@@ -260,7 +261,19 @@
       '("Cpageref" TeX-arg-ref))))
   ;; LaTeXmk
   (use-package auctex-latexmk :ensure t)
-  (auctex-latexmk-setup))
+  (auctex-latexmk-setup)
+
+  ;; Custom kill function
+  (defun my-TeX-kill-job ()
+    "Kill the currently running TeX job but ask for confirmation before."
+    (interactive)
+    (let ((process (TeX-active-process)))
+      (if process
+          (if (y-or-n-p "Kill current TeX process?")
+              (kill-process process)
+            (error "Canceled kill."))
+        ;; Should test for TeX background process here.
+        (error "No TeX process to kill")))))
 
 ;;; Fonts (used for folding)
 (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))

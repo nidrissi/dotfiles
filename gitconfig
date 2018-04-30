@@ -19,3 +19,5 @@
 	program = c:/Program Files (x86)/GNU/GnuPG/gpg2.exe
 [magit]
 	hideCampaign = true
+[credential]
+	helper = wincred

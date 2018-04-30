@@ -92,6 +92,7 @@
  '(ivy-count-format "(%d/%d) ")
  '(ivy-mode t)
  '(ivy-use-virtual-buffers t)
+ '(js-indent-level 2)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk (quote all))
  '(markdown-enable-math t)
@@ -139,7 +140,7 @@
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(package-selected-packages
    (quote
-    (multiple-cursors jade-mode diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk yasnippet projectile-mode ace-jump-mode esup use-package direx solarized-theme moe-theme zenburn-theme yaml-mode web-mode visual-fill-column unicode-fonts undo-tree tuareg tide smart-mode-line-powerline-theme sass-mode rainbow-delimiters powershell org openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters org openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
@@ -176,7 +177,6 @@
       ("conjecture")))))
  '(reftex-label-ignored-macros-and-environments (quote ("tikzpicture" "tikzcd")))
  '(reftex-plug-into-AUCTeX t)
- '(reftex-section-prefixes (quote ((0 . "part.") (1 . "cha.") (t . "sec."))))
  '(safe-local-variable-values
    (quote
     ((TeX-command-extra-options . "-shell-escape")
@@ -230,6 +230,7 @@
      ("^~/Documents/" ":Doc:")
      ("^~/Google Drive/" ":GDrive:")
      ("^~/Work/" ":Work:"))))
+ '(standard-indent 2)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
