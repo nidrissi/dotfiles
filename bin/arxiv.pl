@@ -8,7 +8,7 @@ use Date::Parse;
 
 my $twig=XML::Twig->new();
 
-die 'Usage: foo.pl arxiv_id' unless $#ARGV == 0;
+die 'Usage: arxiv.pl arxiv_id' unless $#ARGV == 0;
 $twig->parse(get("http://export.arxiv.org/api/query?search_query=id:$ARGV[0]"));
 
 my $root = $twig->root;
