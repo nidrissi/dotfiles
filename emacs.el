@@ -106,6 +106,7 @@
    ("C-c g" . counsel-git)
    ("C-c j" . counsel-git-grep)
    ("C-c k" . counsel-ag)
+   ("C-c r" . counsel-mark-ring)
    ("C-c C-r" . ivy-resume)))
 
 (use-package counsel-projectile

@@ -61,7 +61,7 @@
    (quote
     (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf" ".ilg" ".ind" ".tdo")))
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(counsel-ag-base-command "c:/cygwin64/bin/ag --vimgrep --nocolor --nogroup %s")
+ '(counsel-ag-base-command "C:/msys64/mingw64/bin/ag --vimgrep --nocolor --nogroup %s")
  '(cperl-close-paren-offset -4)
  '(cperl-indent-level 4)
  '(cperl-indent-parens-as-block t)
@@ -88,7 +88,23 @@
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(ispell-program-name "c:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+ '(ispell-dictionary "american")
+ '(ispell-local-dictionary-alist
+   (quote
+    ((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+          ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+          nil iso-8859-1)
+     (#("american" 0 1
+        (idx 0))
+      "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+      ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+      nil iso-8859-1)
+     (#("fr-moderne" 0 1
+        (idx 2))
+      "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
+      ("-d" "fr-moderne" "-p" "C:\\users\\najib\\hunspell\\personal.fr")
+      nil utf-8))))
+ '(ispell-program-name "c:/msys64/mingw64/bin/hunspell.exe")
  '(ivy-count-format "(%d/%d) ")
  '(ivy-mode t)
  '(ivy-use-virtual-buffers t)
@@ -223,6 +239,7 @@
              ("dl"))))
      (eval make-local-variable
            (quote LaTeX-fold-math-spec-list)))))
+ '(set-mark-command-repeat-pop t)
  '(sml/replacer-regexp-list
    (quote
     (("^~/\\.emacs\\.d/elpa/" ":ELPA:")
