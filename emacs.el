@@ -29,7 +29,10 @@
 
 ;; Interface
 (setq ring-bell-function 'ignore)
-(openwith-mode)
+(use-package openwith
+  :ensure t
+  :init
+  (openwith-mode))
 (use-package zenburn-theme
   :ensure t
   :config
@@ -277,10 +280,11 @@
         (error "No TeX process to kill")))))
 
 ;;; Fonts (used for folding)
-(dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
-  (set-fontset-font
-   "fontset-default"
-   (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
-   "STIX"))
+(if window-system
+    (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
+      (set-fontset-font
+       "fontset-default"
+       (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
+       "STIX")))
 
 ;;; emacs.el ends here
