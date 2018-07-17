@@ -33,10 +33,11 @@
   :ensure t
   :init
   (openwith-mode))
-(use-package zenburn-theme
-  :ensure t
-  :config
-  (load-theme 'zenburn t))
+(if (display-graphic-p)
+    (use-package zenburn-theme
+      :ensure t
+      :config
+      (load-theme 'zenburn t)))
 (use-package smart-mode-line
   :ensure t
   :config
@@ -280,7 +281,7 @@
         (error "No TeX process to kill")))))
 
 ;;; Fonts (used for folding)
-(if window-system
+(if (display-graphic-p)
     (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ef) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
       (set-fontset-font
        "fontset-default"
