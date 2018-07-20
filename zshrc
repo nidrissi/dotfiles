@@ -122,6 +122,9 @@ alias ll='ls -Ahl'
 alias run-help >&/dev/null && unalias run-help
 autoload run-help
 
+# env
+export EDITOR='emacs'
+
 # Recompile
 autoload -U zrecompile
 zrecompile -p \
