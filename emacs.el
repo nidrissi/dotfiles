@@ -116,8 +116,9 @@
 (use-package counsel-projectile
   :ensure t
   :diminish projectile-mode
-  :init
-  (counsel-projectile-mode))
+  ;; https://github.com/dmacvicar/dotfiles/commit/e07170e4378d84bf17415d49c0e820f32de49503
+  :preface (setq projectile-keymap-prefix (kbd "C-c C-p"))
+  :init (counsel-projectile-mode))
 
 ;; Recentf
 (use-package recentf :config (recentf-mode 1))
