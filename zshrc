@@ -13,7 +13,7 @@ ZSH_THEME="agnoster"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -38,12 +38,19 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(
     cpanm
     git
+    zsh-dircolors-solarized
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+eval $(dircolors $HOME/.dir_colors)
 export EDITOR='emacs'
 alias ll='ls -Ahl'
 [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+
+autoload -U zrecompile
+zrecompile -p \
+    -R ~/.zshrc -- \
+    -M ~/.zcompdump
