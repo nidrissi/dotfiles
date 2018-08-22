@@ -24,3 +24,4 @@ Font=DejaVu Sans Mono for Powerline
 FontHeight=12
 Columns=160
 Rows=40
+CursorBlinks=no
