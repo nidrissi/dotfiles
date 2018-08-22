@@ -251,6 +251,7 @@
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(vc-follow-symlinks t)
  '(version-control t)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(x-underline-at-descent-line t))
