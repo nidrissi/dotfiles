@@ -37,6 +37,8 @@ export EDITOR='emacs'
 alias ll='ls -Ahl'
 [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
+function precmd() { rehash }
+
 autoload -U zrecompile
 zrecompile -p \
     -R ~/.zshrc -- \
