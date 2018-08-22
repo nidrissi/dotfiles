@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -41,11 +42,12 @@ plugins=(
     zsh-dircolors-solarized
 )
 
+# before?
+eval $(dircolors $HOME/.dir_colors)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-eval $(dircolors $HOME/.dir_colors)
 export EDITOR='emacs'
 alias ll='ls -Ahl'
 [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
