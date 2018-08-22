@@ -1,133 +1,49 @@
-#!/bin/zsh
-# .zshrc
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Init
-## Tramp (Emacs)
-if [ "$TERM" = "dumb" ] ; then
-    export PS1='$ '
-    unsetopt zle
-    return 0
-fi
+# Path to your oh-my-zsh installation.
+export ZSH="/home/najib/.oh-my-zsh"
 
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="agnoster"
 
-# Completion configuration
-## Pretty colors
-eval $(dircolors -b ~/.dir_colors)
-autoload -U colors; colors
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-## Completers list
-zstyle ':completion:*' completer _expand _complete _ignored
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-## Formatting & Messages
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*' group-name ''
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-## Insert all possibilites for _expand completer
-zstyle ':completion:*:expand:*' tag-order all-expansions
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="dd/mm/yyyy"
 
-## Completion for processes
-[ "$USER" = "root" ] && SWITCH='-A' || SWITCH="-u ${USER}"
-zstyle ':completion:*:processes*' menu yes select
-zstyle ':completion:*:processes-names' command \
-    "ps c $SWITCH -o command | uniq"
-zstyle ':completion:*:processes' command \
-    "ps c $SWITCH -o pid -o command | uniq"
-unset SWITCH
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-## Color in ls completion
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    cpanm
+    git
+)
 
-## Ignore *~ files and _* functions
-zstyle ':completion:*:functions' ignored-patterns '_*'
-zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?~'
-zstyle ':completion:*:rm:*' ignore-line yes
+source $ZSH/oh-my-zsh.sh
 
-## Ignore some files for editors
-binary=(.o .zo .zi .zix '.sw?' .jpg .gif .dvi .dvi.gz)
-edit_ignore=(.aux .old .log '#' '~' $binary)
-editors=(pico vim '*emacs' nedit nano joe mcedit cooledit)
+# User configuration
 
-zstyle ":completion:*:*:(${(j:*|:)editors}*):*" ignored-patterns \
-\*${^edit_ignore}
-zstyle ":completion:*:*:cat:*" ignored-patterns \*${^binary} '*.gz'
-
-unset binary editors edit_ignore
-
-## Install it, load it
-zstyle :compinstall filename '~/.zshrc'
-autoload -Uz compinit
-compinit
-
-
-# Options
-
-## History
-HISTFILE=~/.history
-HISTSIZE=10000
-SAVEHIST=${HISTSIZE}
-setopt \
-    share_history \
-    hist_ignore_dups \
-    hist_verify \
-    hist_no_store \
-    hist_ignore_space \
-    extended_history
-
-## Others
-DIRSTACKSIZE=20
-setopt \
-    NO_auto_menu \
-    extended_glob \
-    auto_pushd \
-    interactive_comments \
-    print_exit_value \
-    auto_cd
-
-
-# Misc
-
-## Some nice key bindings
-bindkey -e
-bindkey ' ' magic-space       # also do history expansion on space
-
-## Prompt
-PROMPT="%{$fg[green]%}%n@%M %B%{$fg[magenta]%}%(4~,./%2~,%~) %{$fg[red]%}%# %f%b"
-PROMPT2="%B%{$fg[magenta]%}%_ %{$fg[red]%}> %f%b"
-RPROMPT="%{$fg[cyan]%}%T%{$fg[white]%}%b"
-export PROMPT PROMPT2
-
-## Title
-function title {
-    case $TERM in
-        xterm*|*rxvt*|screen)
-            print -Pn "\e]2; $* \a"
-            ;;
-    esac
-}
-function precmd { title "%~ %#"; rehash }
-function preexec { title "%~ %# $2" }
-
-## Aliases
-alias j='jobs -l'
-alias d='dirs -v'
-alias p=popd
-### Colors
-alias ls='ls --color=auto -F'
-alias ll='ls -Ahl'
-
-## ESC h to run help
-alias run-help >&/dev/null && unalias run-help
-autoload run-help
-
-# env
 export EDITOR='emacs'
-
-# Recompile
-autoload -U zrecompile
-zrecompile -p \
-    -R ~/.zshrc -- \
-    -M ~/.zcompdump
+alias ll='ls -Ahl'
 [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
