@@ -35,8 +35,10 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export EDITOR='emacs'
 alias ll='ls -Ahl'
+zstyle ':completion:*' verbose yes
 [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
+# rehash every time
 function precmd() { rehash }
 
 autoload -U zrecompile
