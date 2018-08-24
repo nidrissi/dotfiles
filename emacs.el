@@ -21,8 +21,9 @@
 (server-start)
 
 ;; Must be near the beginning
-(setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
-      find-program "\"c:/Program Files/Git/usr/bin/find.exe\"")
+(if (eq system-type 'windows-nt)
+    (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
+          find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
 
 ;; use-package
 (require 'use-package)

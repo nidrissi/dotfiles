@@ -173,23 +173,23 @@
  '(reftex-insert-label-flags (quote ("s" "asft")))
  '(reftex-label-alist
    (quote
-    (("theorem" 97 "thm." "~\\ref{%s}" t
+    (("theorem" 97 "thm:" "~\\ref{%s}" t
       ("theorem"))
-     ("theoremintro" 97 "thm." "~\\ref{%s}" t
+     ("theoremintro" 97 "thm:" "~\\ref{%s}" t
       ("theorem"))
-     ("proposition" 97 "prop." "~\\ref{%s}" t
+     ("proposition" 97 "prop:" "~\\ref{%s}" t
       ("proposition"))
-     ("corollary" 97 "cor." "~\\ref{%s}" t
+     ("corollary" 97 "cor:" "~\\ref{%s}" t
       ("corollary"))
-     ("lemma" 97 "lem." "~\\ref{%s}" t
+     ("lemma" 97 "lem:" "~\\ref{%s}" t
       ("lemma"))
-     ("definition" 97 "def." "~\\ref{%s}" t
+     ("definition" 97 "def:" "~\\ref{%s}" t
       ("definition"))
-     ("example" 97 "exa." "~\\ref{%s}" t
+     ("example" 97 "exa:" "~\\ref{%s}" t
       ("example"))
-     ("remark" 97 "rmk." "~\\ref{%s}" t
+     ("remark" 97 "rmk:" "~\\ref{%s}" t
       ("remark"))
-     ("conjecture" 97 "conj." nil t
+     ("conjecture" 97 "conj:" nil t
       ("conjecture")))))
  '(reftex-label-ignored-macros-and-environments (quote ("tikzpicture" "tikzcd")))
  '(reftex-plug-into-AUCTeX t)
