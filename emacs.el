@@ -33,11 +33,10 @@
   :ensure t
   :init
   (openwith-mode))
-(if (display-graphic-p)
-    (use-package zenburn-theme
-      :ensure t
-      :config
-      (load-theme 'zenburn t)))
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (load-theme 'zenburn t))
 (use-package smart-mode-line
   :ensure t
   :config
