@@ -2,6 +2,8 @@ if [ "$(uname -o)" = "Cygwin" ]; then
     return
 fi
 
+eval $(dircolors ~/Work/dotfiles/dir_colors)
+
 # Note: ~/.ssh/environment should not be used, as it
 #       already has a different purpose in SSH.
 
