@@ -1,5 +1,5 @@
 # -*- mode: sh; -*-
-export ZSH="/home/najib/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 
 # Uncomment the following line to enable command auto-correction.
@@ -25,7 +25,7 @@ HIST_STAMPS="%d/%m/%Y"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(cpanm git ssh-agent zsh-dircolors-solarized)
+plugins=(cpanm git ssh-agent)
 
 # Must be before
 eval $(dircolors $HOME/.dir_colors)
