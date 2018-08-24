@@ -40,6 +40,7 @@
 (use-package smart-mode-line
   :ensure t
   :config
+  (setq sml/theme 'powerline)
   (sml/setup))
 
 (use-package uniquify)
