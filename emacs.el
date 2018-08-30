@@ -56,6 +56,7 @@
   (sml/setup))
 
 (use-package uniquify)
+(use-package diminish :ensure t)
 
 (use-package company
   :ensure t
