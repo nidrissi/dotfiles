@@ -113,6 +113,7 @@
    ("C-c k" . counsel-ag)
    ("C-c r" . counsel-mark-ring)
    ("C-c C-r" . ivy-resume)))
+(use-package ivy-hydra :ensure t)
 
 (use-package counsel-projectile
   :ensure t
