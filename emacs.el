@@ -33,7 +33,19 @@
 (use-package openwith
   :ensure t
   :init
-  (openwith-mode))
+  (openwith-mode)
+  (setq openwith-associations
+        (if (eq system-type 'windows-nt)
+            '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
+               (file))
+              ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
+               (file))
+              ("\\.svgz?" "start"
+               (file)))
+          '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
+             (file))))))
+
+
 (use-package zenburn-theme
   :ensure t
   :config
@@ -281,7 +293,21 @@
               (kill-process process)
             (error "Canceled kill."))
         ;; Should test for TeX background process here.
-        (error "No TeX process to kill")))))
+        (error "No TeX process to kill"))))
+
+  ;; viewers
+  (if (eq system-type 'windows-nt)
+      (setq TeX-view-program-list
+            '(("Sumatra PDF"
+               ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
+                (mode-io-correlate " -forward-search %b %n")
+                " %o")))
+            TeX-view-program-selection
+            '((output-pdf "Sumatra PDF")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-html "xdg-open")))))
 
 ;;; Fonts (used for folding)
 (if (display-graphic-p)

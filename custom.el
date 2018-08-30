@@ -36,19 +36,6 @@
  '(TeX-source-correlate-method (quote synctex))
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
- '(TeX-view-program-list
-   (quote
-    (("Sumatra PDF"
-      ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
-       (mode-io-correlate " -forward-search %b %n")
-       " %o")))))
- '(TeX-view-program-selection
-   (quote
-    ((output-pdf "Sumatra PDF")
-     ((output-dvi style-pstricks)
-      "dvips and gv")
-     (output-dvi "xdvi")
-     (output-html "xdg-open"))))
  '(auctex-latexmk-inherit-TeX-PDF-mode t)
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
@@ -113,14 +100,6 @@
  '(magit-diff-refine-hunk (quote all))
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
- '(openwith-associations
-   (quote
-    (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
-      (file))
-     ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
-      (file))
-     ("\\.svgz?" "start"
-      (file)))))
  '(org-latex-classes
    (quote
     (("beamer" "\\documentclass[presentation]{beamer}"
