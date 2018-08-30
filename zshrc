@@ -2,6 +2,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 
+DEFAULT_USER="najib"
+
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
@@ -34,7 +36,7 @@ export EDITOR='emacs'
 alias ll='ls -Ahl'
 zstyle ':completion:*' verbose yes
 
-[ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+# [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
 # rehash every time
 function precmd() { rehash }
