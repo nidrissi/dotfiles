@@ -20,7 +20,7 @@
  '(LaTeX-equation-label "eq.")
  '(LaTeX-figure-label "fig.")
  '(LaTeX-fill-break-at-separators (quote (\\\[ \\\])))
- '(LaTeX-math-abbrev-prefix "²")
+ '(LaTeX-math-abbrev-prefix "œ")
  '(LaTeX-math-list
    (quote
     ((111 "circ" "Ring operator" 8728)
@@ -76,22 +76,6 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(ispell-dictionary "american")
- '(ispell-local-dictionary-alist
-   (quote
-    ((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-          ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
-          nil iso-8859-1)
-     (#("american" 0 1
-        (idx 0))
-      "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-      ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
-      nil iso-8859-1)
-     (#("fr-moderne" 0 1
-        (idx 2))
-      "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
-      ("-d" "fr-moderne" "-p" "C:\\users\\najib\\hunspell\\personal.fr")
-      nil utf-8))))
- '(ispell-program-name "c:/msys64/mingw64/bin/hunspell.exe")
  '(ivy-count-format "(%d/%d) ")
  '(ivy-mode t)
  '(ivy-use-virtual-buffers t)
@@ -135,7 +119,7 @@
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(package-selected-packages
    (quote
-    (ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters org openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters org openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options

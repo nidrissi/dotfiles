@@ -24,7 +24,7 @@ HIST_STAMPS="%d/%m/%Y"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(cpanm git ssh-agent)
+plugins=(cpanm git)
 
 # Must be before
 eval $(dircolors $HOME/.dir_colors)

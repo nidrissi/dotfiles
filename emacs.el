@@ -197,7 +197,8 @@
   :config
   (global-magit-file-mode)
   (setq magit-last-seen-setup-instructions "1.4.0")
-  (setenv "SSH_ASKPASS" "git-gui--askpass"))
+  (if (eq system-type 'windows-nt)
+      (setenv "SSH_ASKPASS" "git-gui--askpass")))
 
 (use-package diff-hl
   :ensure t
@@ -210,6 +211,30 @@
   :ensure t)
 (use-package gitignore-mode
   :ensure t)
+
+;; ispell
+(use-package ispell
+  :defer t
+  :config
+  (setq ispell-program-name
+        (if (eq system-type 'windows-nt)
+            "c:/msys64/mingw64/bin/hunspell.exe"
+          "hunspell"))
+  (if (eq system-type 'windows-nt)
+      (setq ispell-local-dictionary-alist
+            '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                   ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+                   nil iso-8859-1)
+              (#("american" 0 1
+                 (idx 0))
+               "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+               ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+               nil iso-8859-1)
+              (#("fr-moderne" 0 1
+                 (idx 2))
+               "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
+               ("-d" "fr-moderne" "-p" "C:\\users\\najib\\hunspell\\personal.fr")
+               nil utf-8)))))
 
 ;; AUCTeX
 (use-package reftex
@@ -308,8 +333,9 @@
                "dvips and gv")
               (output-dvi "xdvi")
               (output-html "xdg-open"))
-          '((output-pdf "xdg-open")
-            ((output-dvi style-pstricks) "xdg-open")
+          '((output-pdf "Okular")
+            ((output-dvi style-pstricks) "dvips and gv")
+            (output-dvi "xdvi")
             (output-html "xdg-open")))))
 
 ;;; Fonts (used for folding)
