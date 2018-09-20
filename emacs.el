@@ -241,7 +241,12 @@
   :ensure t
   :defer t
   :config
-  (add-to-list 'reftex-bibliography-commands "addbibresource"))
+  (add-to-list 'reftex-bibliography-commands "addbibresource")
+  (setq reftex-default-bibliography
+        (if (eq system-type 'windows-nt)
+            '("c:/Users/Najib/Work/math/texmf/bibtex/bib/mainbib_bib/mainbib.bib")
+          '("~/math/texmf/bibtex/bib/mainbib_bib/mainbib.bib"))))
+
 
 (use-package latex
   :ensure auctex
