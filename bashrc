@@ -1,3 +1,5 @@
+export TERM=xterm
+
 if [ "$(uname -o)" = "Cygwin" ]; then
     return
 fi
