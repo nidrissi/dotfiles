@@ -40,7 +40,7 @@
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
  '(blink-cursor-mode nil)
- '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-browser-function (quote browse-url-firefox))
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(company-tooltip-align-annotations t)
