@@ -20,7 +20,7 @@
  '(LaTeX-equation-label "eq.")
  '(LaTeX-figure-label "fig.")
  '(LaTeX-fill-break-at-separators (quote (\\\[ \\\])))
- '(LaTeX-math-abbrev-prefix "œ")
+ '(LaTeX-math-abbrev-prefix "²")
  '(LaTeX-math-list
    (quote
     ((111 "circ" "Ring operator" 8728)
