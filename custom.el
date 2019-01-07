@@ -67,6 +67,13 @@
  '(ebib-bibtex-dialect (quote biblatex))
  '(ebib-file-associations (quote (("pdf" . "xdg-open") ("ps" . "xdg-open"))))
  '(ebib-file-search-dirs (quote ("~/ownCloud/papers/")))
+ '(ebib-index-columns
+   (quote
+    (("Entry Key" 20 t)
+     ("Year" 6 nil)
+     ("Author/Editor" 40 t)
+     ("Title" 60 t)
+     ("journaltitle" 50 nil))))
  '(ebib-keywords-field-keep-sorted t)
  '(ebib-keywords-file "ebib-keywords.txt")
  '(ebib-preload-bib-files (quote ("mainbib.bib")))
