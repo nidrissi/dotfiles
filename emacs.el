@@ -351,4 +351,9 @@
        (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
        "STIX")))
 
+;; ebib
+(use-package ebib
+  :ensure t
+  :bind ("C-c b" . ebib))
+
 ;;; emacs.el ends here
