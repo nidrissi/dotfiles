@@ -39,6 +39,9 @@
  '(auctex-latexmk-inherit-TeX-PDF-mode t)
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
+ '(bibtex-autokey-name-case-convert-function (quote identity))
+ '(bibtex-autokey-titleword-length 0)
+ '(bibtex-autokey-year-length 4)
  '(blink-cursor-mode nil)
  '(browse-url-browser-function (quote browse-url-firefox))
  '(calendar-week-start-day 1)
@@ -65,7 +68,11 @@
  '(ebib-allow-identical-fields t)
  '(ebib-bib-search-dirs (quote ("~/math/texmf/bibtex/bib/")))
  '(ebib-bibtex-dialect (quote biblatex))
- '(ebib-file-associations (quote (("pdf" . "xdg-open") ("ps" . "xdg-open"))))
+ '(ebib-file-associations
+   (quote
+    (("pdf" . "xdg-open")
+     ("ps" . "xdg-open")
+     ("djvu" . "xdg-open"))))
  '(ebib-file-search-dirs (quote ("~/ownCloud/papers/")))
  '(ebib-index-columns
    (quote
