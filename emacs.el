@@ -14,7 +14,7 @@
 ;; Init
 (fset 'yes-or-no-p 'y-or-n-p)
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (cd (getenv "HOME"))
@@ -354,6 +354,8 @@
 ;; ebib
 (use-package ebib
   :ensure t
-  :bind ("C-c b" . ebib))
+  :bind ("C-c b" . ebib)
+  :config
+  (setq ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))))
 
 ;;; emacs.el ends here

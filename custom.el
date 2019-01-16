@@ -66,7 +66,6 @@
  '(display-time-mode t)
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(ebib-allow-identical-fields t)
- '(ebib-bib-search-dirs (quote ("~/math/texmf/bibtex/bib/")))
  '(ebib-bibtex-dialect (quote biblatex))
  '(ebib-file-associations
    (quote
