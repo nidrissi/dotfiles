@@ -71,11 +71,6 @@
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(ebib-allow-identical-fields t)
  '(ebib-bibtex-dialect (quote biblatex))
- '(ebib-file-associations
-   (quote
-    (("pdf" . "xdg-open")
-     ("ps" . "xdg-open")
-     ("djvu" . "xdg-open"))))
  '(ebib-file-search-dirs (quote ("~/ownCloud/papers/")))
  '(ebib-index-columns
    (quote

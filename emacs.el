@@ -356,6 +356,11 @@
   :ensure t
   :bind ("C-c b" . ebib)
   :config
-  (setq ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))))
+  (setq ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME"))))
+  (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "xdg-open")))
+    (setq ebib-file-associations
+          `(("pdf" . ,command)
+            ("ps" . ,command)
+            ("djvu" . ,command)))))
 
 ;;; emacs.el ends here
