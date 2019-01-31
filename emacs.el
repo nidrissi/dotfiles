@@ -51,6 +51,8 @@
   (load-theme 'zenburn t))
 (use-package smart-mode-line
   :ensure t
+  :init
+  (use-package smart-mode-line-powerline-theme :ensure t)
   :config
   (setq sml/theme 'powerline)
   (sml/setup))
