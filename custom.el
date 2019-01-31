@@ -83,6 +83,7 @@
  '(ebib-keywords-file "ebib-keywords.txt")
  '(ebib-preload-bib-files (quote ("mainbib.bib")))
  '(ebib-timestamp-format "%Y.%m.%d")
+ '(ebib-uniquify-keys t)
  '(ebib-use-timestamp t)
  '(echo-keystrokes 0.1)
  '(flyspell-tex-command-regexp
@@ -104,8 +105,13 @@
  '(js-indent-level 2)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk (quote all))
+ '(magit-wip-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
+ '(org-format-latex-options
+   (quote
+    (:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+                 ("begin" "$1" "$" "$$" "\\(" "\\["))))
  '(org-latex-classes
    (quote
     (("beamer" "\\documentclass[presentation]{beamer}"
