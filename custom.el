@@ -26,7 +26,6 @@
     ((111 "circ" "Ring operator" 8728)
      (75 "Bbbk" "Blackboard bold k" 120156)
      (224 "otimes" "Circled times" 8855))))
- '(LaTeX-table-label "tab.")
  '(TeX-PDF-mode t)
  '(TeX-auto-save t)
  '(TeX-complete-expert-commands t)
