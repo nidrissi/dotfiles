@@ -1,4 +1,10 @@
 # -*- mode: sh; -*-
+if [ "$TERM" = 'dumb' ]; then
+    export PS1='$ '
+    unsetopt zle
+    return 0
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 
