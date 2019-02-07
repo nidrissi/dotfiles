@@ -34,7 +34,7 @@ for my $entry (@entry) {
     } $entry->children('author');
     my $author_list = join ' and ', @author;
 
-    printf '@misc{tmpkey, author = {%s}, title = {%s}, year = {%s}, eprint = {%s}, eprinttype = {arXiv}, note = {Preprint}}',
+    printf '@misc{tmpkey, author = {%s}, title = {%s}, year = {%s}, eprint = {%s}, eprinttype = {arXiv}, pubstate = {prepublished}}',
       $author_list, $title, $date, $id;
     print "\n";
 }
