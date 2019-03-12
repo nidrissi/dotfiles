@@ -6,10 +6,8 @@ use feature qw/say/;
 
 use LWP::Simple;
 use XML::Twig;
-#use Date::Parse;
 
-use File::Spec::Functions;
-my $pdf_dir = catfile $ENV{HOME}, 'ownCloud', 'papers';
+use File::Fetch;
 
 my $twig=XML::Twig->new();
 
@@ -40,6 +38,11 @@ for my $entry (@entry) {
     }
     my $author_list = join ' and ', @processed_authors;
     $key .= $year;
+
+    my $pdf_url = $entry->first_child('link[@title="pdf"]')->{att}{href};
+    my $ff = File::Fetch->new(uri => $pdf_url);
+    my $file = $ff->fetch() or die $ff->error();
+    rename $file, "$key.pdf";
 
     printf '@misc{%s, author = {%s}, title = {%s}, year = {%s}, eprint = {%s}, eprinttype = {arXiv}, pubstate = {prepublished}}' . "\n",
       $key, $author_list, $title, $year, $id;
