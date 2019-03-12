@@ -6,11 +6,11 @@ use feature qw/say/;
 
 use LWP::Simple;
 use XML::Twig;
-use Date::Parse;
+#use Date::Parse;
 
 my $twig=XML::Twig->new();
 
-die 'Usage: arxiv.pl arxiv_id' unless $#ARGV == 0;
+die 'Usage: arxiv <id>' unless $#ARGV == 0;
 $twig->parse(get("http://export.arxiv.org/api/query?search_query=id:$ARGV[0]"));
 
 my $root = $twig->root;
@@ -23,8 +23,8 @@ for my $entry (@entry) {
     $id =~ s{http://arxiv.org/abs/(.+)v(?:\d)+}{$1};
 
     # Year
-    my $date = $entry->first_child('published')->text;
-    $date =~ s/^(....).*/$1/;
+    my $year = $entry->first_child('published')->text;
+    $year =~ s/^(....).*/$1/;
 
     # Author list
     my @author = map {
@@ -34,7 +34,6 @@ for my $entry (@entry) {
     } $entry->children('author');
     my $author_list = join ' and ', @author;
 
-    printf '@misc{tmpkey, author = {%s}, title = {%s}, year = {%s}, eprint = {%s}, eprinttype = {arXiv}, pubstate = {prepublished}}',
-      $author_list, $title, $date, $id;
-    print "\n";
+    printf '@misc{tmpkey, author = {%s}, title = {%s}, year = {%s}, eprint = {%s}, eprinttype = {arXiv}, pubstate = {prepublished}}' . "\n",
+      $author_list, $title, $year, $id;
 }
