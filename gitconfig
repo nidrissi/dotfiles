@@ -5,9 +5,9 @@
 	name = Najib Idrissi
 	signingkey = 38147FA2
 [color]
-        diff = auto
-        status = auto
-        branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [push]
 	default = simple
 	followTags = true
