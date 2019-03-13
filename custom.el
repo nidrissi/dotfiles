@@ -104,6 +104,7 @@
  '(js-indent-level 2)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk (quote all))
+ '(magit-section-initial-visibility-alist nil)
  '(magit-wip-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
