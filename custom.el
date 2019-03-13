@@ -66,6 +66,7 @@
      ((font . "DejaVu Sans Mono-11")
       (vertical-scroll-bars . right))))
  '(delete-old-versions t)
+ '(desktop-save-mode t)
  '(display-time-mode t)
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(ebib-allow-identical-fields t)
