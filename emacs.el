@@ -290,11 +290,11 @@
   (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
   (add-to-list 'LaTeX-fold-math-spec-list '("\u00ab" ("og")))
   (add-to-list 'LaTeX-fold-math-spec-list '("\u00bb" ("fg")))
-  (add-to-list 'tex--prettify-symbols-alist '("\\varphi" . 966))
-  (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
-  (add-to-list 'tex--prettify-symbols-alist '("\\vartheta" . 977))
-  (add-to-list 'tex--prettify-symbols-alist '("\\varnothing" . 8709))
-  (add-to-list 'tex--prettify-symbols-alist '("\\varpi" . 982))
+  (with-eval-after-load 'tex
+    (add-to-list 'tex--prettify-symbols-alist '("\\coloneqq" . 8788))
+    (add-to-list 'tex--prettify-symbols-alist '("\\vartheta" . 977))
+    (add-to-list 'tex--prettify-symbols-alist '("\\varnothing" . 8709))
+    (add-to-list 'tex--prettify-symbols-alist '("\\varpi" . 982)))
 
   ;; reftex
   (TeX-add-style-hook
@@ -364,5 +364,15 @@
           `(("pdf" . ,command)
             ("ps" . ,command)
             ("djvu" . ,command)))))
+
+
+;; julia
+(use-package julia-mode
+  :ensure t
+  :mode "\\.jl\\'")
+(use-package julia-repl
+  :ensure t
+  :defer t
+  :init (add-hook 'julia-mode-hook 'julia-repl-mode))
 
 ;;; emacs.el ends here
