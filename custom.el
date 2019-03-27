@@ -110,6 +110,18 @@
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
  '(org-agenda-files (quote ("~/org")))
+ '(org-capture-templates
+   (quote
+    (("t" "Tâches" entry
+      (file+headline "refile.org" "Tâches")
+      "* TODO %?
+  %t
+  %i
+  %a")
+     ("i" "Idées" entry
+      (file "idees.org")
+      "* %?
+  %t"))))
  '(org-default-notes-file "~/org/refile.org")
  '(org-format-latex-options
    (quote
@@ -148,10 +160,17 @@
  '(org-latex-pdf-process
    (quote
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
+ '(org-refile-targets
+   (quote
+    (("AAP.org" :maxlevel . 1)
+     ("general.org" :maxlevel . 1)
+     ("seminaire.org" :maxlevel . 1)
+     ("rapports.org" :maxlevel . 1)
+     ("mission.org" :maxlevel . 1))))
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters org openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
