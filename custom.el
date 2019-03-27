@@ -109,6 +109,8 @@
  '(magit-wip-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
+ '(org-agenda-files (quote ("~/org")))
+ '(org-default-notes-file "~/org/refile.org")
  '(org-format-latex-options
    (quote
     (:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
@@ -185,7 +187,13 @@
  '(reftex-plug-into-AUCTeX t)
  '(safe-local-variable-values
    (quote
-    ((TeX-command-extra-options . "-shell-escape")
+    ((org-todo-keyword-faces
+      ("UNPUB" . org-todo)
+      ("PRE" . org-todo)
+      ("REV" . org-todo)
+      ("SUB" . "cyan")
+      ("PUB" . org-done))
+     (TeX-command-extra-options . "-shell-escape")
      (eval add-to-list
            (quote TeX-fold-macro-spec-list)
            (quote

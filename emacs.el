@@ -77,7 +77,6 @@
   :diminish volatile-highlights-mode
   :init
   (volatile-highlights-mode t)
-  :config
   (vhl/define-extension 'undo-tree 'undo-tree-yank 'undo-tree-move)
   (vhl/install-extension 'undo-tree))
 
@@ -374,5 +373,12 @@
   :ensure t
   :defer t
   :init (add-hook 'julia-mode-hook 'julia-repl-mode))
+
+;; org-mode
+(use-package org
+  :ensure t
+  :bind (("C-c a" . org-agenda)
+         ("C-c l" . org-store-link)
+         ("C-c o" . org-capture)))
 
 ;;; emacs.el ends here
