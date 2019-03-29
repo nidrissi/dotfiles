@@ -160,13 +160,8 @@
  '(org-latex-pdf-process
    (quote
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
- '(org-refile-targets
-   (quote
-    (("AAP.org" :maxlevel . 1)
-     ("general.org" :maxlevel . 1)
-     ("seminaire.org" :maxlevel . 1)
-     ("rapports.org" :maxlevel . 1)
-     ("mission.org" :maxlevel . 1))))
+ '(org-log-done (quote time))
+ '(org-refile-targets (quote ((org-agenda-files :maxlevel . 1))))
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
