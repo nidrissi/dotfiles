@@ -32,3 +32,6 @@ export TEXMFHOME="$HOME/math/texmf"
 
 # ocaml
 . /home/najib/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# editor
+export EDITOR='emacsclient'

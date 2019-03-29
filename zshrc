@@ -38,7 +38,6 @@ eval $(dircolors $HOME/.dir_colors)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export EDITOR='emacs'
 zstyle ':completion:*' verbose yes
 
 alias ll='ls -Ahl'
