@@ -51,14 +51,14 @@
    #+END_SRC
 ** Thèmes
 *** zenburn
-   #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
      (use-package zenburn-theme
        :ensure t
        :config
        (load-theme 'zenburn t))
-   #+END_SRC
+    #+END_SRC
 *** smart-mode-line
-   #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
      (use-package smart-mode-line
        :ensure t
        :init
@@ -66,7 +66,7 @@
        :config
        (setq sml/theme 'powerline)
        (sml/setup))
-   #+END_SRC
+    #+END_SRC
 ** company
    #+BEGIN_SRC emacs-lisp
      (use-package company
@@ -218,8 +218,8 @@
    #+END_SRC
 ** LaTeX
 *** reftex
-   must come before latex
-   #+BEGIN_SRC emacs-lisp
+    must come before latex
+    #+BEGIN_SRC emacs-lisp
      (use-package reftex
        :ensure t
        :defer t
@@ -229,7 +229,7 @@
              (if (eq system-type 'windows-nt)
                  '("c:/Users/Najib/Work/math/texmf/bibtex/bib/mainbib.bib")
                '("~/math/texmf/bibtex/bib/mainbib.bib"))))
-   #+END_SRC
+    #+END_SRC
 *** latex
     #+BEGIN_SRC emacs-lisp
       (use-package latex
