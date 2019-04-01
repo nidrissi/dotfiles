@@ -262,6 +262,7 @@
      (eval make-local-variable
            (quote LaTeX-fold-math-spec-list)))))
  '(set-mark-command-repeat-pop t)
+ '(show-trailing-whitespace t)
  '(sml/replacer-regexp-list
    (quote
     (("^~/\\.emacs\\.d/elpa/" ":ELPA:")
