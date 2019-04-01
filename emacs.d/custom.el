@@ -168,12 +168,13 @@
  '(org-startup-truncated nil)
  '(org-todo-keyword-faces
    (quote
-    (("Cath" . "gray")
-     ("UNPUB" . org-todo)
+    (("UNPUB" . org-todo)
      ("PRE" . org-todo)
      ("REV" . org-todo)
      ("SUB" . "cyan")
-     ("PUB" . org-done))))
+     ("PUB" . org-done)
+     ("IDEE" . "yellow")
+     ("CONTACT" . "orange"))))
  '(package-selected-packages
    (quote
     (glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
