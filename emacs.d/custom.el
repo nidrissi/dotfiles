@@ -126,7 +126,7 @@
   %t")
      ("o" "Orateur" entry
       (file "~/org/seminaire.org")
-      "* PREVU %?
+      "* PREVU %? %^g
   %^{Date prévue ?}t
 ** TODO Annonce
 ** TODO Demander la carte
@@ -180,7 +180,7 @@
      ("REV" . org-todo)
      ("SUB" . "cyan")
      ("PUB" . org-done)
-     ("IDEE" . "yellow")
+     ("IDÉE" . "yellow")
      ("CONTACT" . "orange"))))
  '(package-selected-packages
    (quote
