@@ -123,7 +123,14 @@
      ("i" "Idées" entry
       (file "idees.org")
       "* %?
-  %t"))))
+  %t")
+     ("o" "Orateur" entry
+      (file "~/org/seminaire.org")
+      "* PREVU %?
+  %^{Date prévue ?}t
+** TODO Annonce
+** TODO Demander la carte
+** TODO État de frais" :time-prompt t))))
  '(org-default-notes-file "~/org/refile.org")
  '(org-enforce-todo-dependencies t)
  '(org-format-latex-options
@@ -264,7 +271,6 @@
      (eval make-local-variable
            (quote LaTeX-fold-math-spec-list)))))
  '(set-mark-command-repeat-pop t)
- '(show-trailing-whitespace t)
  '(sml/replacer-regexp-list
    (quote
     (("^~/\\.emacs\\.d/elpa/" ":ELPA:")
