@@ -110,6 +110,7 @@
  '(magit-wip-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
+ '(midnight-mode t)
  '(org-agenda-files (quote ("~/org")))
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
