@@ -1,9 +1,5 @@
-;;; custom --- My custom options
+;;; custom.el
 
-;;; Commentary:
-;;; Options for customize.
-
-;;; Code:
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -107,7 +103,6 @@
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk (quote all))
  '(magit-section-initial-visibility-alist nil)
- '(magit-wip-mode t)
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
  '(midnight-mode t)
