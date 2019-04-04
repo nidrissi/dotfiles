@@ -79,6 +79,7 @@
  '(ebib-keywords-field-keep-sorted t)
  '(ebib-keywords-file "ebib-keywords.txt")
  '(ebib-preload-bib-files (quote ("mainbib.bib")))
+ '(ebib-reading-list-file "~/org/ebib-list.org")
  '(ebib-timestamp-format "%Y.%m.%d")
  '(ebib-uniquify-keys t)
  '(ebib-use-timestamp t)
@@ -106,7 +107,9 @@
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
  '(midnight-mode t)
- '(org-agenda-files (quote ("~/org")))
+ '(org-agenda-files
+   (quote
+    ("/home/najib/org/AAP.org" "/home/najib/org/articles.org" "/home/najib/org/cours.org" "/home/najib/org/general.org" "/home/najib/org/idees.org" "/home/najib/org/mission.org" "/home/najib/org/refile.org" "/home/najib/org/seminaire.org")))
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
    (quote
