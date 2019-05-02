@@ -44,6 +44,17 @@ for my $entry (@entry) {
     my $file = $ff->fetch() or die $ff->error();
     rename $file, "$key.pdf";
 
-    printf '@misc{%s, author = {%s}, title = {%s}, year = {%s}, eprint = {%s}, eprinttype = {arXiv}, pubstate = {prepublished}}' . "\n",
-      $key, $author_list, $title, $year, $id;
+    printf <<'EOS'
+@misc{%s,
+  author = {%s}, 
+  title = {%s}, 
+  year = {%s}, 
+  eprint = {%s},
+  eprinttype = {arXiv},
+  file = {%s},
+  pubstate = {prepublished}
+}
+EOS
+,
+      $key, $author_list, $title, $year, $id, "$key.pdf";
 }
