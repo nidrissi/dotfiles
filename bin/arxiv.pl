@@ -3,11 +3,11 @@
 use strict;
 use warnings;
 use feature qw/say/;
+use utf8::all;
 
 use LWP::Simple;
-use XML::Twig;
-
 use File::Fetch;
+use XML::Twig;
 
 my $twig=XML::Twig->new();
 
