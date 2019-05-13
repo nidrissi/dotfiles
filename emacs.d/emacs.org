@@ -419,8 +419,3 @@
                    ("-d" "fr-moderne" "-p" "C:\\users\\najib\\hunspell\\personal.fr")
                    nil utf-8)))))
   #+END_SRC
-* Desktop
-  Must be at the very end!
-  #+BEGIN_SRC emacs-lisp
-  (desktop-save-mode t)
-  #+END_SRC

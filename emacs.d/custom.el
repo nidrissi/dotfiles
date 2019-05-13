@@ -86,8 +86,6 @@
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(flyspell-use-meta-tab nil)
- '(gc-cons-threshold 20000000)
- '(git-gutter:modified-sign "#")
  '(helm-ag-base-command "c:/cygwin64/bin/ag --vimgrep --nocolor --nogroup")
  '(helm-ff-skip-boring-files t)
  '(helm-mode-fuzzy-match t)
