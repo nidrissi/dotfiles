@@ -1,3 +1,5 @@
+# i3status config -*- conf -*-
+
 general {
     colors = true
     interval = 1
@@ -9,7 +11,7 @@ order += "load"
 order += "tztime local"
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "%d/%m/%Y %H:%M:%S"
 }
 
 load {

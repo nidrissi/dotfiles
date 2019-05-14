@@ -67,7 +67,7 @@
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(ebib-allow-identical-fields t)
  '(ebib-bibtex-dialect (quote biblatex))
- '(ebib-file-search-dirs (quote ("~/ownCloud/papers/")))
+ '(ebib-file-search-dirs (quote ("~/nextcloud/papers/")))
  '(ebib-index-columns
    (quote
     (("Entry Key" 20 t)
