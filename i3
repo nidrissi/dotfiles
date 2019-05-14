@@ -75,10 +75,10 @@ bindsym $mod+q focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:web"
-set $ws2 "2:mail"
-set $ws3 "3:emacs"
-set $ws4 "4:pdf"
+set $ws1 "1:🌍"
+set $ws2 "2:📬"
+set $ws3 "3:✍️"
+set $ws4 "4:📚"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -157,7 +157,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Start i3bar to display a workspace bar
 bar {
-    font pango:DejaVu Sans Mono 13
+    font pango:DejaVu Sans Mono 16
     tray_output primary
     status_command i3status
     strip_workspace_numbers yes
