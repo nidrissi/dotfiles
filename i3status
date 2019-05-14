@@ -7,7 +7,7 @@ general {
 
 order += "volume master"
 order += "ethernet _first_"
-order += "load"
+#order += "load"
 order += "tztime local"
 
 tztime local {
@@ -25,6 +25,6 @@ ethernet _first_ {
 
 volume master {
     format = "♪ %volume"
-    format_muted = "♪ muted"
+    format_muted = "♪-"
     device = "pulse:0"
 }
