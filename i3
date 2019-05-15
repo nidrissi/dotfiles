@@ -16,18 +16,14 @@ bindsym $mod+Return exec konsole
 # kill focused window
 bindsym $mod+Shift+a kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
+# start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -36,10 +32,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -48,7 +44,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -85,12 +81,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-# assign windows to workspaces
-assign [class="^Firefox$"] $ws1
-assign [class="^Thunderbird$"] $ws2
-assign [class="^Emacs$"] $ws3
-assign [class="^okular$"] $ws4
 
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
@@ -131,10 +121,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym m resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -154,6 +144,12 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# assign windows to workspaces
+assign [class="^Firefox$"] $ws1
+assign [class="^Thunderbird$"] $ws2
+assign [class="^Emacs$"] $ws3
+assign [class="^okular$"] $ws4
 
 # Start i3bar to display a workspace bar
 bar {
