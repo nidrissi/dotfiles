@@ -10,6 +10,9 @@ font pango:DejaVu Sans Mono 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# default layout
+workspace_layout tabbed
+
 # start a terminal
 bindsym $mod+Return exec konsole
 
@@ -155,6 +158,7 @@ assign [class="^okular$"] $ws4
 bar {
     font pango:DejaVu Sans Mono 16
     tray_output primary
+    tray_padding 0
     status_command i3status
     strip_workspace_numbers yes
 }
