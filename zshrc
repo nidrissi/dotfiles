@@ -6,9 +6,7 @@ if [ "$TERM" = 'dumb' ]; then
 fi
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="agnoster"
-
-DEFAULT_USER="najib"
+ZSH_THEME="gentoo"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"

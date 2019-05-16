@@ -14,7 +14,7 @@ floating_modifier $mod
 workspace_layout tabbed
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+a kill
