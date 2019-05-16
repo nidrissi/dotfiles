@@ -79,6 +79,12 @@
  '(ebib-keywords-file "ebib-keywords.txt")
  '(ebib-preload-bib-files (quote ("mainbib.bib")))
  '(ebib-reading-list-file "~/org/ebib-list.org")
+ '(ebib-reading-list-template "** %M %T
+:PROPERTIES:
+%K
+:END:
+%F
+")
  '(ebib-timestamp-format "%Y.%m.%d")
  '(ebib-uniquify-keys t)
  '(ebib-use-timestamp t)
