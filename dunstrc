@@ -4,7 +4,7 @@
 ### Display ###
 monitor = 0
 follow = mouse
-geometry = "400x5-40-40"
+geometry = "450x5-40-40"
 indicate_hidden = yes
 shrink = no
 transparency = 0
@@ -17,6 +17,10 @@ frame_color = "#aaaaaa"
 separator_color = frame
 sort = yes
 idle_threshold = 120
+
+## icons
+icon_position = left
+max_icon_size = 32
 
 ### Text ###
 font = DejaVu Sans Mono 12

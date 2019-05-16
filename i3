@@ -20,7 +20,7 @@ bindsym $mod+Return exec konsole
 bindsym $mod+Shift+a kill
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -width 40 -lines 8 -font "DejaVu Sans Mono 18"'
 
 # change focus
 bindsym $mod+h focus left
@@ -161,6 +161,7 @@ bar {
     tray_padding 0
     status_command i3status
     strip_workspace_numbers yes
+    separator_symbol "|"
 }
 
 # Starting things with i3
