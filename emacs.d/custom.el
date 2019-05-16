@@ -61,7 +61,8 @@
  '(default-frame-alist
     (quote
      ((font . "DejaVu Sans Mono-11")
-      (vertical-scroll-bars . right))))
+      (vertical-scroll-bars . right)
+      (alpha 92 . 85))))
  '(delete-old-versions t)
  '(display-time-mode t)
  '(display-time-string-forms (quote (24-hours ":" minutes)))

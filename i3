@@ -186,4 +186,4 @@ for_window [class="Plasmoidviewer"] floating enable, border none
 # urxvt
 exec --no-startup-id urxvtd -q -o -f
 for_window [instance="scratchpad_urxvt"] move to scratchpad
-bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt -depth 32 -bg '[85]#3f3f3f'"; [instance="scratchpad_urxvt"] scratchpad show
+bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt -depth 32 -bg '[90]#3f3f3f'"; [instance="scratchpad_urxvt"] scratchpad show
