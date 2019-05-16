@@ -165,15 +165,13 @@ bar {
 }
 
 # Starting things with i3
-# exec --no-startup-id compton -C &
-for_window [class="yakuake"] floating enable
+exec --no-startup-id compton -C &
 exec --no-startup-id feh --bg-scale ~/nextcloud/wallpaper.jpg
 
 ## Plasma Integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everything)
 exec "sh -c 'sleep 2; exec wmctrl -c Plasma'"
 for_window [title="Desktop - Plasma"] kill; floating enable; border none
-
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
 for_window [class="plasmashell"] floating enable
@@ -184,3 +182,8 @@ for_window [class="krunner"] floating enable, border none
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
+
+# urxvt
+exec --no-startup-id urxvtd -q -o -f
+for_window [instance="scratchpad_urxvt"] move to scratchpad
+bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt -depth 32 -bg '[85]#3f3f3f'"; [instance="scratchpad_urxvt"] scratchpad show
