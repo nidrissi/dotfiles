@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:DejaVu Sans Mono 11
+font pango:DejaVu Sans 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -20,7 +20,7 @@ bindsym $mod+Return exec konsole
 bindsym $mod+Shift+a kill
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -width 40 -lines 8 -font "DejaVu Sans Mono 18"'
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -width 40 -lines 8 -font "DejaVu Sans 18"'
 
 # change focus
 bindsym $mod+h focus left
@@ -156,7 +156,7 @@ assign [class="^okular$"] $ws4
 
 # Start i3bar to display a workspace bar
 bar {
-    font pango:DejaVu Sans Mono 16
+    font pango:DejaVu Sans 16
     tray_output primary
     tray_padding 0
     status_command i3status
