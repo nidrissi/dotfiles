@@ -41,7 +41,7 @@ sticky_history = yes
 history_length = 20
 
 ### Misc/Advanced ###
-dmenu = /usr/bin/dmenu -p dunst:
+dmenu = /usr/bin/rofi -i -dmenu -p dunst:
 browser = /usr/bin/firefox -new-tab
 always_run_script = true
 title = Dunst
@@ -59,20 +59,17 @@ context = ctrl+semicolon
 background = "#222222"
 foreground = "#888888"
 timeout = 10
-#icon = /path/to/icon
 
 [urgency_normal]
 background = "#ffd9b3"
 foreground = "#000000"
 timeout = 10
-#icon = /path/to/icon
 
 [urgency_critical]
 background = "#900000"
 foreground = "#ffffff"
 frame_color = "#ff0000"
 timeout = 0
-#icon = /path/to/icon
 
 [email]
 appname = Thunderbird

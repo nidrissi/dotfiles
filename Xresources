@@ -1,3 +1,4 @@
+! urxvt
 URxvt*scrollBar: False
 
 URxvt*font: xft:DejaVu Sans Mono:antialias=true:hinting=true:size=11
@@ -9,7 +10,7 @@ URxvt*foreground: #dcdccc
 URxvt*fading: 10
 URxvt*fadeColor: [0]#3f3f3f
 
-! Zenburn
+!! Zenburn
 URxvt*color0: #3f3f3f
 URxvt*color1: #705050
 URxvt*color2: #60b48a
@@ -27,7 +28,14 @@ URxvt*color13: #ec93d3
 URxvt*color14: #93e1e3
 URxvt*color15: #ffffff
 
-! click links
+!! click links
 URxvt*perl-ext-common:  default,matcher
 URxvt*urlLauncher:      firefox
 URxvt*matcher.button:   3
+
+! rofi
+rofi.width: 40
+rofi.lines: 8
+rofi.font: DejaVu Sans 16
+rofi.show-icons: true
+rofi.terminal: urxvtc

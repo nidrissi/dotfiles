@@ -20,7 +20,7 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+a kill
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -width 40 -lines 8 -font "DejaVu Sans 18"'
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu'
 
 # change focus
 bindsym $mod+h focus left
@@ -185,5 +185,5 @@ for_window [class="Plasmoidviewer"] floating enable, border none
 
 # urxvt
 exec --no-startup-id urxvtd -q -o -f
-for_window [instance="scratchpad_urxvt"] move to scratchpad
-bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt -depth 32 -bg '[90]#3f3f3f'"; [instance="scratchpad_urxvt"] scratchpad show
+for_window [instance="scratchpad_urxvt"] move to scratchpad, border none
+bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt"; [instance="scratchpad_urxvt"] scratchpad show
