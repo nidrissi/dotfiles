@@ -5,6 +5,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit aw-mode-line-face :height 3.0))))
  '(highlight ((t (:background "#0a4b5b"))))
  '(org-archived ((t (:foreground "dim gray" :weight normal)))))
 (custom-set-variables
@@ -33,6 +34,7 @@
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
  '(auctex-latexmk-inherit-TeX-PDF-mode t)
+ '(aw-keys (quote (38 233 34 39 40 45 232 95 231 224)))
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/saves"))))
  '(bibtex-autokey-name-case-convert-function (quote identity))

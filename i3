@@ -185,5 +185,5 @@ for_window [class="Plasmoidviewer"] floating enable, border none
 
 # urxvt
 exec --no-startup-id urxvtd -q -o -f
-for_window [instance="scratchpad_urxvt"] move to scratchpad, border none
+for_window [instance="scratchpad_urxvt"] move to scratchpad, border pixel 2
 bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt"; [instance="scratchpad_urxvt"] scratchpad show

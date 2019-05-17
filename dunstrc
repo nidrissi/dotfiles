@@ -4,7 +4,7 @@
 ### Display ###
 monitor = 0
 follow = mouse
-geometry = "450x5-40-40"
+geometry = "450x10-40-40"
 indicate_hidden = yes
 shrink = no
 transparency = 0
@@ -44,8 +44,6 @@ history_length = 20
 dmenu = /usr/bin/rofi -i -dmenu -p dunst:
 browser = /usr/bin/firefox -new-tab
 always_run_script = true
-title = Dunst
-class = Dunst
 startup_notification = false
 
 [shortcuts]

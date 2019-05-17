@@ -220,15 +220,15 @@
 *** reftex
     must come before latex
     #+BEGIN_SRC emacs-lisp
-     (use-package reftex
-       :ensure t
-       :defer t
-       :config
-       (add-to-list 'reftex-bibliography-commands "addbibresource")
-       (setq reftex-default-bibliography
-             (if (eq system-type 'windows-nt)
-                 '("c:/Users/Najib/Work/math/texmf/bibtex/bib/mainbib.bib")
-               '("~/math/texmf/bibtex/bib/mainbib.bib"))))
+      (use-package reftex
+        :ensure t
+        :defer t
+        :config
+        (add-to-list 'reftex-bibliography-commands "addbibresource")
+        (setq reftex-default-bibliography
+              (if (eq system-type 'windows-nt)
+                  '("c:/Users/Najib/Work/math/texmf/bibtex/bib/mainbib.bib")
+                '("~/math/texmf/bibtex/bib/mainbib.bib"))))
     #+END_SRC
 *** latex
     #+BEGIN_SRC emacs-lisp
