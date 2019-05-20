@@ -39,3 +39,4 @@ rofi.lines: 8
 rofi.font: DejaVu Sans 16
 rofi.show-icons: true
 rofi.terminal: urxvtc
+rofi.theme: Arc-Dark

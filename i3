@@ -19,8 +19,11 @@ bindsym $mod+Return exec urxvtc
 # kill focused window
 bindsym $mod+Shift+a kill
 
-# start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu'
+# menus
+## launch application
+bindsym $mod+d exec --no-startup-id rofi -show drun
+## switch to window
+bindsym $mod+o exec --no-startup-id rofi -show window
 
 # change focus
 bindsym $mod+h focus left
@@ -185,5 +188,5 @@ for_window [class="Plasmoidviewer"] floating enable, border none
 
 # urxvt
 exec --no-startup-id urxvtd -q -o -f
-for_window [instance="scratchpad_urxvt"] move to scratchpad, border pixel 2
-bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt"; [instance="scratchpad_urxvt"] scratchpad show
+# for_window [instance="scratchpad_urxvt"] move to scratchpad, border pixel 2, resize set 900 800
+# bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt"; [instance="scratchpad_urxvt"] scratchpad show
