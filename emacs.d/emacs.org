@@ -419,3 +419,8 @@
                    ("-d" "fr-moderne" "-p" "C:\\users\\najib\\hunspell\\personal.fr")
                    nil utf-8)))))
   #+END_SRC
+* Divers
+  #+BEGIN_SRC emacs-lisp
+    (use-package woman
+      :bind ("C-c w" . woman))
+  #+END_SRC
