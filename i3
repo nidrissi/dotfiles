@@ -143,13 +143,15 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# lock screen
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock
 
 # assign windows to workspaces
 assign [class="^Firefox$"] $ws1
@@ -170,23 +172,3 @@ bar {
 # Starting things with i3
 exec --no-startup-id compton -C &
 exec --no-startup-id feh --bg-scale ~/nextcloud/wallpaper.jpg
-
-## Plasma Integration
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everything)
-exec "sh -c 'sleep 2; exec wmctrl -c Plasma'"
-for_window [title="Desktop - Plasma"] kill; floating enable; border none
-## Avoid tiling popups, dropdown windows from plasma
-# for the first time, manually resize them, i3 will remember the setting for floating windows
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable, border none
-for_window [title="plasma-desktop"] floating enable, border none
-for_window [title="win7"] floating enable, border none
-for_window [class="krunner"] floating enable, border none
-for_window [class="Kmix"] floating enable, border none
-for_window [class="Klipper"] floating enable, border none
-for_window [class="Plasmoidviewer"] floating enable, border none
-
-# urxvt
-exec --no-startup-id urxvtd -q -o -f
-# for_window [instance="scratchpad_urxvt"] move to scratchpad, border pixel 2, resize set 900 800
-# bindsym $mod+Shift+Return exec "xdotool search --classname scratchpad_urxvt || urxvtc -name scratchpad_urxvt"; [instance="scratchpad_urxvt"] scratchpad show
