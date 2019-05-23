@@ -21,9 +21,9 @@ bindsym $mod+Shift+a kill
 
 # menus
 ## launch application
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec rofi -show drun
 ## switch to window
-bindsym $mod+o exec --no-startup-id rofi -show window
+bindsym $mod+o exec rofi -show window
 
 # change focus
 bindsym $mod+h focus left
@@ -69,18 +69,16 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+# focus the parent/child container
 bindsym $mod+q focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+w focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:🌍"
-set $ws2 "2:📬"
-set $ws3 "3:✍️"
-set $ws4 "4:📚"
+set $ws1 "1:🌍" # web
+set $ws2 "2:📬" # mail
+set $ws3 "3:✍️" # emacs
+set $ws4 "4:📚" # pdf
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
