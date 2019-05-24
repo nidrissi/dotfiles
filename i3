@@ -75,10 +75,10 @@ bindsym $mod+w focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:🌍" # web
-set $ws2 "2:📬" # mail
-set $ws3 "3:✍️" # emacs
-set $ws4 "4:📚" # pdf
+set $ws1 "1:🌍"
+set $ws2 "2:📬"
+set $ws3 "3:✍️"
+set $ws4 "4:📚"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -149,9 +149,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # lock screen
-bindsym $mod+Ctrl+l exec --no-startup-id i3lock -e -c b22222
-bindsym XF86Sleep exec --no-startup-id i3lock -e -c b22222
-exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -e -c b22222' &
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock -f -e -i ~/nextcloud/hal.png
+bindsym XF86Sleep exec --no-startup-id i3lock -f -e -i ~/nextcloud/hal.png
+exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -f -e -i ~/nextcloud/hal.png' &
 
 # assign windows to workspaces
 assign [class="^Firefox$"] $ws1
