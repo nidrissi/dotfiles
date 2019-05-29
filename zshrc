@@ -10,6 +10,7 @@ fi
 ## colors
 eval $(dircolors -b ~/.dir_colors)
 autoload -U colors; colors
+
 ## completers list
 zstyle ':completion:*' completer _expand _complete _ignored
 
@@ -83,6 +84,7 @@ bindkey -e
 bindkey ' ' magic-space       # also do history expansion on space
 
 ## aliases
+alias ls='ls --color'
 alias ll='ls -Ahl'
 alias sctl=systemctl
 alias jctl=journalctl
