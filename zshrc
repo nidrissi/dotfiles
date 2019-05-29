@@ -1,51 +1,94 @@
-# -*- mode: sh; -*-
+#!/bin/zsh -*- mode: sh; -*-
+
 if [ "$TERM" = 'dumb' ]; then
     export PS1='$ '
     unsetopt zle
     return 0
 fi
 
-export ZSH="$HOME/.oh-my-zsh"
-#ZSH_THEME="gentoo"
+# completion
+## colors
+eval $(dircolors -b ~/.dir_colors)
+autoload -U colors; colors
+## completers list
+zstyle ':completion:*' completer _expand _complete _ignored
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-HIST_STAMPS="%d/%m/%Y"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(cpanm)
-
-# Must be before
-eval $(dircolors $HOME/.dir_colors)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
+## formatting & messages
 zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
 
+## insert all possibilites for _expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+## processes
+[ "$USER" = "root" ] && SWITCH='-A' || SWITCH="-u ${USER}"
+zstyle ':completion:*:processes*' menu yes select
+zstyle ':completion:*:processes-names' command \
+    "ps c $SWITCH -o command | uniq"
+zstyle ':completion:*:processes' command \
+    "ps c $SWITCH -o pid -o command | uniq"
+unset SWITCH
+
+## color in ls completion
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+## ignore *~ files and _* functions
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?~'
+zstyle ':completion:*:rm:*' ignore-line yes
+
+## ignore some files for editors
+binary=(.o .zo .zi .zix '.sw?' .jpg .gif .dvi .dvi.gz)
+edit_ignore=(.aux .old .log '#' '~' $binary)
+editors=(pico vim '*emacs' nedit nano joe mcedit cooledit)
+
+zstyle ":completion:*:*:(${(j:*|:)editors}*):*" ignored-patterns \*${^edit_ignore}
+zstyle ":completion:*:*:cat:*" ignored-patterns \*${^binary} '*.gz'
+
+unset binary editors edit_ignore
+
+## Install it, load it
+zstyle :compinstall filename '~/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Options
+## History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=${HISTSIZE}
+setopt \
+    share_history \
+    hist_ignore_dups \
+    hist_verify \
+    hist_no_store \
+    hist_ignore_space \
+    extended_history
+
+## Others
+DIRSTACKSIZE=20
+setopt \
+    NO_auto_menu \
+    extended_glob \
+    auto_pushd \
+    interactive_comments \
+    print_exit_value \
+    auto_cd
+
+## Some nice key bindings
+bindkey -e
+bindkey ' ' magic-space       # also do history expansion on space
+
+## aliases
 alias ll='ls -Ahl'
 alias sctl=systemctl
 alias jctl=journalctl
 
-
-# change prompt color based on host
-# __my_hash=0x$(hostname | md5sum | head -c 10)
-# __my_color=$(($__my_hash % 6 + 2))    # from 2 to 7
+# prompt
+## change prompt color based on host
 case $HOST in
     'alpha.idrissi.eu')
         __my_color='yellow'
@@ -55,12 +98,8 @@ case $HOST in
         ;;
 esac
 
-# vcs info
+## vcs info
 autoload -Uz vcs_info
-function precmd() {
-    rehash
-    vcs_info
-}
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '+'
@@ -68,11 +107,30 @@ zstyle ':vcs_info:*' unstagedstr '*'
 zstyle ':vcs_info:git:*' formats '(%b%u%c) '
 zstyle ':vcs_info:git:*' actionformats '(%b%u%c|%a) '
 
+setopt prompt_subst
 export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %F{cyan}${vcs_info_msg_0_}%F{red}%#%f%b '
 export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
 
 export RPROMPT='[%T]'
 
+# title & vcs info
+function __my_title {
+    case $TERM in
+        xterm*|*rxvt*|screen)
+            print -Pn "\e]2; $* \a"
+            ;;
+    esac
+}
+function precmd {
+    __my_title "%~ %#"
+    rehash
+    vcs_info
+}
+function preexec {
+    __my_title "%~ %# $2"
+}
+
+# compilation
 autoload -U zrecompile
 zrecompile -p \
     -R ~/.zshrc -- \
