@@ -42,32 +42,36 @@ alias ll='ls -Ahl'
 alias sctl=systemctl
 alias jctl=journalctl
 
+
+# change prompt color based on host
+# __my_hash=0x$(hostname | md5sum | head -c 10)
+# __my_color=$(($__my_hash % 6 + 2))    # from 2 to 7
+case $HOST in
+    'alpha.idrissi.eu')
+        __my_color='yellow'
+        ;;
+    *)
+        __my_color='blue'
+        ;;
+esac
+
+# vcs info
 autoload -Uz vcs_info
 function precmd() {
     rehash
     vcs_info
 }
-
-# change prompt color based on host
-__hash=0x$(hostname | md5sum | head -c 10)
-__color=$(($__hash % 6 + 2))    # from 2 to 7
-export PROMPT="%F{${__color}}%B%(!..%n@)%m%F{1} %~ %#%f%b "
-export PROMPT2="%F{${__color}}%B%(!..%n@)%m%F{1} %_>%f%b "
-unset __hash __color
-
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '(%b)%u%c'
-zstyle ':vcs_info:git:*' actionformats '(%b|%a)%u%c'
-export RPROMPT='${vcs_info_msg_0_} [%T]'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' formats '(%b%u%c) '
+zstyle ':vcs_info:git:*' actionformats '(%b%u%c|%a) '
 
-# change prompt color based on host
-__hash=0x$(hostname | md5sum | head -c 10)
-__color=$(($__hash % 6 + 2))    # from 2 to 7
-export PROMPT="%F{$__color}%B%(!..%n@)%m%F{1} %~ %#%f%b "
-export PROMPT2="%F{$__color}%B%(!..%n@)%m%F{1} %_>%f%b "
-unset __hash __color
-export RPROMPT="%T"
+export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %F{cyan}${vcs_info_msg_0_}%F{red}%#%f%b '
+export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
+
+export RPROMPT='[%T]'
 
 autoload -U zrecompile
 zrecompile -p \
