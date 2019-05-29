@@ -6,7 +6,7 @@ if [ "$TERM" = 'dumb' ]; then
 fi
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="gentoo"
+#ZSH_THEME="gentoo"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -44,6 +44,14 @@ alias jctl=journalctl
 
 # rehash every time
 function precmd() { rehash }
+
+# change prompt color based on host
+__hash=0x$(hostname | md5sum | head -c 10)
+__color=$(($__hash % 6 + 2))    # from 2 to 7
+export PROMPT="%F{$__color}%B%(!..%n@)%m%F{1} %~ %#%f%b "
+export PROMPT2="%F{$__color}%B%(!..%n@)%m%F{1} %_>%f%b "
+unset __hash __color
+export RPROMPT="%T"
 
 autoload -U zrecompile
 zrecompile -p \

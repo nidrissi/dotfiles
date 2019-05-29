@@ -115,7 +115,7 @@
  '(midnight-mode t)
  '(org-agenda-files
    (quote
-    ("~/org/enseignement.org" "/home/najib/org/AAP.org" "/home/najib/org/articles.org" "/home/najib/org/general.org" "/home/najib/org/idees.org" "/home/najib/org/mission.org" "/home/najib/org/refile.org" "/home/najib/org/seminaire.org")))
+    ("/home/najib/org/general.org" "~/org/enseignement.org" "/home/najib/org/AAP.org" "/home/najib/org/articles.org" "/home/najib/org/idees.org" "/home/najib/org/mission.org" "/home/najib/org/refile.org" "/home/najib/org/seminaire.org")))
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
    (quote
