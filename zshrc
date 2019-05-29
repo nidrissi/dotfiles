@@ -28,7 +28,7 @@ HIST_STAMPS="%d/%m/%Y"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(cpanm git)
+plugins=(cpanm)
 
 # Must be before
 eval $(dircolors $HOME/.dir_colors)
@@ -42,8 +42,24 @@ alias ll='ls -Ahl'
 alias sctl=systemctl
 alias jctl=journalctl
 
-# rehash every time
-function precmd() { rehash }
+autoload -Uz vcs_info
+function precmd() {
+    rehash
+    vcs_info
+}
+
+# change prompt color based on host
+__hash=0x$(hostname | md5sum | head -c 10)
+__color=$(($__hash % 6 + 2))    # from 2 to 7
+export PROMPT="%F{${__color}}%B%(!..%n@)%m%F{1} %~ %#%f%b "
+export PROMPT2="%F{${__color}}%B%(!..%n@)%m%F{1} %_>%f%b "
+unset __hash __color
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '(%b)%u%c'
+zstyle ':vcs_info:git:*' actionformats '(%b|%a)%u%c'
+export RPROMPT='${vcs_info_msg_0_} [%T]'
 
 # change prompt color based on host
 __hash=0x$(hostname | md5sum | head -c 10)
