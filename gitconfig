@@ -13,6 +13,7 @@
 	followTags = true
 [core]
 	editor = emacsclient
+	autocrlf = input
 [pull]
 	rebase = preserve
 [magit]
