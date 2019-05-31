@@ -95,6 +95,9 @@ case $HOST in
     'alpha.idrissi.eu')
         __my_color='yellow'
         ;;
+    'knot')
+        __my_color='magenta'
+        ;;
     *)
         __my_color='blue'
         ;;
@@ -137,3 +140,49 @@ autoload -U zrecompile
 zrecompile -p \
     -R ~/.zshrc -- \
     -M ~/.zcompdump
+
+# Windows shenanigans
+if [[ $OS -eq "Windows_NT" ]]; then
+    # Note: ~/.ssh/environment should not be used
+    _env=~/.ssh/agent.env
+
+    agent_is_running() {
+        if [ "$SSH_AUTH_SOCK" ]; then
+            # ssh-add returns:
+            #   0 = agent running, has keys
+            #   1 = agent running, no keys
+            #   2 = agent not running
+            ssh-add -l >/dev/null 2>&1 || [ $? -eq 1 ]
+        else
+            false
+        fi
+    }
+
+    agent_has_keys() {
+        ssh-add -l >/dev/null 2>&1
+    }
+
+    agent_load_env() {
+        . "$_env" >/dev/null
+    }
+
+    agent_start() {
+        (umask 077; ssh-agent >"$_env")
+        . "$_env" >/dev/null
+    }
+
+    if ! agent_is_running; then
+        agent_load_env
+    fi
+
+    # if your keys are not stored in ~/.ssh/id_rsa or ~/.ssh/id_dsa, you'll need
+    # to paste the proper path after ssh-add
+    if ! agent_is_running; then
+        agent_start
+        ssh-add
+    elif ! agent_has_keys; then
+        ssh-add
+    fi
+
+    unset _env
+fi
