@@ -149,9 +149,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # lock screen
-bindsym $mod+Ctrl+l exec --no-startup-id i3lock -f -e -i ~/nextcloud/hal.png
-bindsym XF86Sleep exec --no-startup-id i3lock -f -e -i ~/nextcloud/hal.png
-exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -f -e -i ~/nextcloud/hal.png' &
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock -f -e -i ~/nextcloud/img/hal.png
+bindsym XF86Sleep exec --no-startup-id i3lock -f -e -i ~/nextcloud/img/hal.png
+exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -f -e -i ~/nextcloud/img/hal.png' &
 
 # assign windows to workspaces
 assign [class="^Firefox$"] $ws1
@@ -171,5 +171,5 @@ bar {
 
 # Starting things with i3
 exec --no-startup-id compton -C &
-exec --no-startup-id feh --bg-scale ~/nextcloud/wallpaper.jpg &
+exec --no-startup-id feh --bg-scale ~/nextcloud/img/wallpaper.jpg &
 exec --no-startup-id urxvtd -q -o -f &
