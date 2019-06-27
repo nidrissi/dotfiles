@@ -17,7 +17,7 @@
 	preloadindex = true
 	fscache = true
 [pull]
-	rebase = preserve
+	rebase = merges
 [magit]
 	hideCampaign = true
 [winUpdater]
