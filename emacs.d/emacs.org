@@ -399,10 +399,6 @@
     (use-package ispell
       :defer t
       :config
-      (setq ispell-program-name
-            (if (eq system-type 'windows-nt)
-                "c:/msys64/mingw64/bin/hunspell.exe"
-              "hunspell"))
       (if (eq system-type 'windows-nt)
           (setq ispell-local-dictionary-alist
                 '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
