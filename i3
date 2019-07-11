@@ -149,8 +149,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # lock screen
-bindsym $mod+Ctrl+l exec --no-startup-id i3lock -f -e -i ~/nextcloud/img/hal.png
-bindsym XF86Sleep exec --no-startup-id i3lock -f -e -i ~/nextcloud/img/hal.png
+bindsym $mod+Ctrl+l exec --no-startup-id xautolock -locknow
+bindsym XF86Sleep exec --no-startup-id xautolock -locknow
 exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -f -e -i ~/nextcloud/img/hal.png' &
 
 # assign windows to workspaces
