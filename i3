@@ -151,7 +151,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # lock screen
 bindsym $mod+Ctrl+l exec --no-startup-id xautolock -locknow
 bindsym XF86Sleep exec --no-startup-id xautolock -locknow
-exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -f -e -i ~/nextcloud/img/hal.png' &
+exec --no-startup-id exec xautolock -time 5 -locker 'i3lock -f -e -i ~/nextcloud/img/hal.png' -notify 15 -notifier 'notify-send -u low "Locking..."' &
 
 # assign windows to workspaces
 assign [class="^Firefox$"] $ws1
