@@ -367,6 +367,11 @@
        :ensure t
        :init
        (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+     (use-package elpy
+       :ensure t
+       :defer t
+       :init
+       (advice-add 'python-mode :before 'elpy-enable))
    #+END_SRC
 * Git
 ** Magit
