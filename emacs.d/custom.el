@@ -288,6 +288,8 @@
      ("^~/Documents/" ":Doc:")
      ("^~/Google Drive/" ":GDrive:")
      ("^~/Work/" ":Work:"))))
+ '(ssh-agency-add-executable "c:/msys64/usr/bin/ssh-add.exe")
+ '(ssh-agency-agent-executable "c:/msys64/usr/bin/ssh-agent.exe")
  '(standard-indent 2)
  '(tab-width 4)
  '(tool-bar-mode nil)
