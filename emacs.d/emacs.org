@@ -404,21 +404,20 @@
     (use-package ispell
       :defer t
       :config
-      (if (eq system-type 'windows-nt)
-          (setq ispell-local-dictionary-alist
-                '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-                       ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
-                       nil iso-8859-1)
-                  (#("american" 0 1
-                     (idx 0))
-                   "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-                   ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+      (setq ispell-local-dictionary-alist
+            '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                   ("-d" "en_US")
                    nil iso-8859-1)
-                  (#("fr-moderne" 0 1
-                     (idx 2))
-                   "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
-                   ("-d" "fr-moderne" "-p" "C:\\users\\najib\\hunspell\\personal.fr")
-                   nil utf-8)))))
+              (#("en_US" 0 1
+                 (idx 0))
+               "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+               ("-d" "en_US")
+               nil iso-8859-1)
+              (#("fr_FR" 0 1
+                 (idx 2))
+               "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
+               ("-d" "fr")
+               nil utf-8))))
   #+END_SRC
 * Divers
   #+BEGIN_SRC emacs-lisp

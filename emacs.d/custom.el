@@ -106,7 +106,7 @@
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(ispell-dictionary "american")
+ '(ispell-dictionary "en_US")
  '(ivy-count-format "(%d/%d) ")
  '(ivy-mode t)
  '(ivy-use-virtual-buffers t)
@@ -117,9 +117,13 @@
  '(markdown-enable-math t)
  '(menu-bar-mode nil)
  '(midnight-mode t)
+ '(openwith-associations
+   (quote
+    (("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -f xdg-open"
+      (file)))))
  '(org-agenda-files
    (quote
-    ("~/org/general.org" "~/org/enseignement.org" "~/org/AAP.org" "~/org/articles.org" "~/org/idees.org" "~/org/mission.org" "~/org/refile.org" "~/org/seminaire.org")))
+    ("~/org/cours.org" "~/org/general.org" "~/org/AAP.org" "~/org/articles.org" "~/org/idees.org" "~/org/mission.org" "~/org/refile.org" "~/org/seminaire.org")))
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
    (quote
@@ -146,6 +150,7 @@
    (quote
     (:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
                  ("begin" "$1" "$" "$$" "\\(" "\\["))))
+ '(org-hide-leading-stars t)
  '(org-latex-classes
    (quote
     (("beamer" "\\documentclass[presentation]{beamer}"
@@ -205,6 +210,7 @@
     (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
  '(projectile-indexing-method (quote alien))
  '(python-shell-interpreter "python3")
+ '(pyvenv-virtualenvwrapper-python "/usr/bin/python3")
  '(reftex-insert-label-flags (quote ("s" "asft")))
  '(reftex-label-alist
    (quote
