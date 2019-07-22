@@ -3,9 +3,10 @@
 var library = require('@fortawesome/fontawesome-svg-core').library;
 var faicon = require('@fortawesome/fontawesome-svg-core').icon;
 var fas = require('@fortawesome/free-solid-svg-icons').fas;
+var far = require('@fortawesome/free-regular-svg-icons').far;
 var fab = require('@fortawesome/free-brands-svg-icons').fab
 
-library.add(fas,fab);
+library.add(fas,fab,far);
 
 var program = require('commander');
 program

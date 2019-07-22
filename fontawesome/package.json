@@ -9,9 +9,10 @@
   "author": "Najib Idrissi",
   "license": "UNLICENSED",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.15",
-    "@fortawesome/free-brands-svg-icons": "^5.7.2",
-    "@fortawesome/free-solid-svg-icons": "^5.7.2",
-    "commander": "^2.19.0"
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-regular-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "commander": "^2.20.0"
   }
 }
