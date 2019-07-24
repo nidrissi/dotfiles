@@ -162,7 +162,7 @@ assign [class="^okular$"] $ws4
 # Start i3bar to display a workspace bar
 bar {
     font pango:DejaVu Sans 16
-    tray_output primary
+#    tray_output HDMI-2
     tray_padding 0
     status_command i3status
     strip_workspace_numbers yes
