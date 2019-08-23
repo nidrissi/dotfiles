@@ -43,6 +43,7 @@ for my $entry (@entry) {
     my $ff = File::Fetch->new(uri => $pdf_url);
     my $file = $ff->fetch() or die $ff->error();
     rename $file, "$key.pdf";
+    my $first = substr $key, 0, 1;
 
     printf <<'EOS'
 @misc{%s,
@@ -56,5 +57,5 @@ for my $entry (@entry) {
 }
 EOS
 ,
-      $key, $author_list, $title, $year, $id, "$key.pdf";
+      $key, $author_list, $title, $year, $id, $first . "/$key.pdf";
 }
