@@ -66,6 +66,7 @@
       (vertical-scroll-bars . right)
       (alpha 92 . 85))))
  '(delete-old-versions t)
+ '(dired-async-mode t)
  '(display-time-mode t)
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(ebib-allow-identical-fields t)
