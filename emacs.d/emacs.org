@@ -404,9 +404,16 @@
     (use-package ispell
       :defer t
       :config
-      (setq ispell-local-dictionary-alist
-            '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-                   ("-d" "en_US")
+      (setq ispell-program-name "hunspell")
+      (if (eq system-type 'windows-nt)
+          (setq ispell-local-dictionary-alist
+                '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                       ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+                       nil iso-8859-1)
+                  (#("american" 0 1
+                     (idx 0))
+                   "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                   ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
                    nil iso-8859-1)
               (#("en_US" 0 1
                  (idx 0))
@@ -423,4 +430,6 @@
   #+BEGIN_SRC emacs-lisp
     (use-package woman
       :bind ("C-c w" . woman))
+    (if (eq system-type 'windows-nt)
+        (setq browse-url-browser-function 'browse-url-default-windows-browser))
   #+END_SRC
