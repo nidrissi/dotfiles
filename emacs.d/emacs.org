@@ -424,7 +424,7 @@
                  (idx 2))
                "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
                ("-d" "fr")
-               nil utf-8))))
+               nil utf-8)))))
   #+END_SRC
 * Divers
   #+BEGIN_SRC emacs-lisp
