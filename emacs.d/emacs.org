@@ -338,7 +338,7 @@
         :bind ("C-c b" . ebib)
         :config
         (setq ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME"))))
-        (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "xdg-open")))
+        (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "nohup xdg-open %s")))
           (setq ebib-file-associations
                 `(("pdf" . ,command)
                   ("ps" . ,command)

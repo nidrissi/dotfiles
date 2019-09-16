@@ -146,6 +146,7 @@
 ** TODO Demander la carte
 ** TODO État de frais" :time-prompt t))))
  '(org-default-notes-file "~/org/refile.org")
+ '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
  '(org-format-latex-options
    (quote
