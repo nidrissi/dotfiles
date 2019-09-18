@@ -404,27 +404,27 @@
     (use-package ispell
       :defer t
       :config
-      (setq ispell-program-name "hunspell")
-      (if (eq system-type 'windows-nt)
-          (setq ispell-local-dictionary-alist
-                '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-                       ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
-                       nil iso-8859-1)
-                  (#("american" 0 1
-                     (idx 0))
-                   "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-                   ("-d" "en_US" "-p" "C:\\users\\najib\\hunspell\\personal.en")
+      (setq ispell-program-name "hunspell"
+            my-hunspell-dir (if (eq system-type 'windows-nt) "C:\\users\\najib\\hunspell\\" "~/.hunspell")
+            ispell-local-dictionary-alist
+            `((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                   ("-d" "en_US" "-p" ,(expand-file-name "en_US" my-hunspell-dir))
                    nil iso-8859-1)
+              (#("american" 0 1
+                 (idx 0))
+               "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+               ("-d" "en_US" "-p" ,(expand-file-name "en_US" my-hunspell-dir))
+               nil iso-8859-1)
               (#("en_US" 0 1
                  (idx 0))
                "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-               ("-d" "en_US")
+               ("-d" "en_US" "-p" ,(expand-file-name "en_US" my-hunspell-dir))
                nil iso-8859-1)
               (#("fr_FR" 0 1
                  (idx 2))
                "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
-               ("-d" "fr")
-               nil utf-8)))))
+               ("-d" "fr" "-p" ,(expand-file-name "fr_FR" my-hunspell-dir))
+               nil utf-8))))
   #+END_SRC
 * Divers
   #+BEGIN_SRC emacs-lisp
