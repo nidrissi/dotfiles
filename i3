@@ -173,3 +173,4 @@ bar {
 exec --no-startup-id compton -C &
 exec --no-startup-id feh --bg-scale ~/nextcloud/img/wallpaper.jpg &
 exec --no-startup-id urxvtd -q -o -f &
+#exec --no-startup-id mpd &

@@ -187,7 +187,7 @@
    (quote
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(org-log-done (quote time))
- '(org-refile-targets (quote ((org-agenda-files :maxlevel . 1))))
+ '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
  '(org-startup-truncated nil)
  '(org-todo-keyword-faces
    (quote
@@ -214,6 +214,11 @@
  '(projectile-indexing-method (quote alien))
  '(python-shell-interpreter "python3")
  '(pyvenv-virtualenvwrapper-python "/usr/bin/python3")
+ '(reftex-derive-label-parameters
+   (quote
+    (3 20 t 1 "-"
+       ("the" "on" "in" "off" "a" "for" "by" "of" "and" "is" "to" "et" "le" "la" "les" "un" "une" "dessous")
+       t)))
  '(reftex-insert-label-flags (quote ("s" "asft")))
  '(reftex-label-alist
    (quote
