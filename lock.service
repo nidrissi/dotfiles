@@ -1,0 +1,13 @@
+# lock.service -*- conf -*-
+
+[Unit]
+Description=Lock on suspend
+
+[Service]
+User=najib
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3lock -f -e -i /home/najib/nextcloud/img/hal.png
+
+[Install]
+WantedBy=suspend.target
