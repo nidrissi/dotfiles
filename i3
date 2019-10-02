@@ -143,10 +143,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# volume
+# music
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioPrev exec --no-startup-id mpc prev
+bindsym XF86AudioNext exec --no-startup-id mpc next
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
 
 # lock screen
 exec --no-startup-id exec xautolock -time 5 -locker 'systemctl suspend' -notify 10 -notifier 'notify-send -u low -t 10000 "Locking..."' &
