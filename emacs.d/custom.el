@@ -187,6 +187,7 @@
    (quote
     ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(org-log-done (quote time))
+ '(org-preview-latex-default-process (quote imagemagick))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
  '(org-startup-truncated nil)
  '(org-todo-keyword-faces
