@@ -147,7 +147,7 @@
         :ensure t
         :diminish projectile-mode
         ;; https://github.com/dmacvicar/dotfiles/commit/e07170e4378d84bf17415d49c0e820f32de49503
-        :preface (setq projectile-keymap-prefix (kbd "C-c C-p"))
+        :preface (setq projectile-keymap-prefix (kbd "C-c p"))
         :init (counsel-projectile-mode))
     #+END_SRC
 ** smartparens
