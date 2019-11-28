@@ -33,3 +33,5 @@ export EDITOR='emacsclient'
 export ALTERNATE_EDITOR='emacs'
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
+export PATH="$HOME/.cargo/bin:$PATH"

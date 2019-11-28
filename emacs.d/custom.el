@@ -125,6 +125,10 @@
  '(org-agenda-files
    (quote
     ("~/org/cours.org" "~/org/general.org" "~/org/AAP.org" "~/org/articles.org" "~/org/idees.org" "~/org/mission.org" "~/org/refile.org" "~/org/seminaire.org")))
+ '(org-agenda-skip-deadline-if-done t)
+ '(org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today))
+ '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-todo-list-sublevels nil)
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
    (quote
@@ -192,7 +196,7 @@
  '(org-startup-truncated nil)
  '(org-todo-keyword-faces
    (quote
-    (("UNPUB" . org-todo)
+    (("WIP" . org-todo)
      ("PRE" . org-todo)
      ("REV" . org-todo)
      ("SUB" . "cyan")
@@ -200,9 +204,10 @@
      ("IDÉE" . "yellow")
      ("CONTACT" . "orange")
      ("PRÉVU" . "purple"))))
+ '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
