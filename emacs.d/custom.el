@@ -181,15 +181,15 @@
       ("\\section{%s}" . "\\section*{%s}")
       ("\\subsection{%s}" . "\\subsection*{%s}")
       ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
-     ("scrartcl" "\\documentclass{srcartcl}"
+     ("scrartcl" "\\documentclass{scrartcl}"
       ("\\section{%s}" . "\\section*{%s}")
-      ("\\subsection{%s}" . "\\subsection{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
       ("\\paragraph{%s}" . "\\paragraph*{%s}")
       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
  '(org-latex-pdf-process
    (quote
-    ("latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
+    ("latexmk -pdf -pdflatex=%latex --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(org-log-done (quote time))
  '(org-preview-latex-default-process (quote imagemagick))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
@@ -207,7 +207,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (org rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
