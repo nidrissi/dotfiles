@@ -179,7 +179,20 @@
       :ensure t
       :bind (("C-c a" . org-agenda)
              ("C-c l" . org-store-link)
-             ("C-c o" . org-capture)))
+             ("C-c o" . org-capture))
+      :config
+      (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+  #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+    (use-package cdlatex
+      :defer t
+      :bind
+      (:map
+       cdlatex-mode-map
+       ("²" . cdlatex-math-symbol)
+       :map
+       org-cdlatex-mode-map
+       ("²" . cdlatex-math-symbol)))
   #+END_SRC
 * Programmation
 ** Typescript
