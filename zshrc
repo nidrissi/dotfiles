@@ -186,3 +186,7 @@ if [[ $OS -eq "Windows_NT" ]]; then
 
     unset _env
 fi
+
+# syntax highlighting
+# must be last
+source $HOME/.zplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
