@@ -14,9 +14,6 @@
 ** Packages
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
-     (require 'package)
-     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-     (package-initialize)
      (require 'use-package)
    #+END_SRC
 ** Server
