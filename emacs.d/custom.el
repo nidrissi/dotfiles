@@ -129,6 +129,7 @@
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today))
  '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-todo-ignore-scheduled 7)
  '(org-agenda-todo-list-sublevels nil)
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
