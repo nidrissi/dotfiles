@@ -123,6 +123,12 @@
    (quote
     (("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -f xdg-open"
       (file)))))
+ '(org-agenda-custom-commands
+   (quote
+    (("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (todo "TODO" nil))
+      nil))))
  '(org-agenda-files
    (quote
     ("~/org/cours.org" "~/org/general.org" "~/org/AAP.org" "~/org/articles.org" "~/org/idees.org" "~/org/mission.org" "~/org/refile.org" "~/org/seminaire.org")))
