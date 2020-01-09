@@ -317,7 +317,7 @@
         (setq TeX-view-program-list
               '(("Sumatra PDF"
                  ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
-                  (mode-io-correlate " -forward-search %b %n")
+                  (mode-io-correlate " -forward-search \"%b\" %n")
                   " %o")))
               TeX-view-program-selection
               (if (eq system-type 'windows-nt)
