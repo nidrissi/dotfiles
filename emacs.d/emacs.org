@@ -182,6 +182,7 @@
   #+END_SRC
   #+BEGIN_SRC emacs-lisp
     (use-package cdlatex
+      :ensure t
       :defer t
       :bind
       (:map
