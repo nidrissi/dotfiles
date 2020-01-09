@@ -11,5 +11,6 @@
 (require 'org)
 
 (setq vc-follow-symlinks t)
-(delete-file (expand-file-name "emacs.el" user-emacs-directory))
+(if (eq system-type 'windows-nt)
+    (delete-file (expand-file-name "emacs.el" user-emacs-directory)))
 (org-babel-load-file (expand-file-name "emacs.org" user-emacs-directory))
