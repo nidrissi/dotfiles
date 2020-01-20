@@ -136,7 +136,7 @@
  '(org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today))
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-todo-ignore-scheduled 7)
- '(org-agenda-todo-list-sublevels nil)
+ '(org-agenda-todo-list-sublevels t)
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-capture-templates
    (quote
@@ -200,6 +200,11 @@
     ("latexmk -pdf -pdflatex=%latex --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(org-log-done (quote time))
  '(org-preview-latex-default-process (quote imagemagick))
+ '(org-priority-faces
+   (quote
+    ((65 :foreground "dark orange" :weight bold)
+     (66 :foreground "yellow" :weight normal)
+     (67 :foreground "dark cyan" :weigth normal))))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
  '(org-startup-truncated nil)
  '(org-todo-keyword-faces
