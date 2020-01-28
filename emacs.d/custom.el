@@ -138,6 +138,7 @@
  '(org-agenda-todo-ignore-scheduled 7)
  '(org-agenda-todo-list-sublevels t)
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
+ '(org-attach-use-inheritance t)
  '(org-capture-templates
    (quote
     (("t" "Tâches" entry
