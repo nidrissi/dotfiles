@@ -1,7 +1,7 @@
 ;; init.el
 
-;; I have a lot of RAM.
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 100000000
+      read-process-output-max (* 1024 1024))
 
 ;; Very annoying
 ;; https://stackoverflow.com/a/17422623

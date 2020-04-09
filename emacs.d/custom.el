@@ -64,8 +64,7 @@
  '(default-frame-alist
     (quote
      ((font . "DejaVu Sans Mono-11")
-      (vertical-scroll-bars . right)
-      (alpha 92 . 85))))
+      (vertical-scroll-bars . right))))
  '(delete-old-versions t)
  '(dired-async-mode t)
  '(display-time-mode t)
@@ -109,6 +108,18 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(ispell-dictionary "en_US")
+ '(ispell-local-dictionary-alist
+   (quote
+    ((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+          ("-d" "en_US")
+          nil utf-8)
+     ("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+      ("-d" "en_US")
+      nil utf-8)
+     ("fr_FR" "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
+      ("-d" "fr_FR")
+      nil utf-8))))
+ '(ispell-program-name "hunspell")
  '(ivy-count-format "(%d/%d) ")
  '(ivy-mode t)
  '(ivy-use-virtual-buffers t)
@@ -221,7 +232,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org cdlatex rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (company-lsp lsp-ivy lsp-ui lsp-mode org cdlatex rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
@@ -231,7 +242,6 @@
  '(projectile-globally-ignored-file-suffixes
    (quote
     (".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf")))
-; '(projectile-indexing-method (quote alien))
  '(python-shell-interpreter "python3")
  '(pyvenv-virtualenvwrapper-python "/usr/bin/python3")
  '(reftex-derive-label-parameters
