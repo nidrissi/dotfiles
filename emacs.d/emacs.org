@@ -229,7 +229,7 @@
    #+END_SRC
 ** LaTeX
 *** reftex
-    must come before latex
+    Must come before latex.
     #+BEGIN_SRC emacs-lisp
       (use-package reftex
         :ensure t
@@ -261,7 +261,6 @@
         (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
         (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
         (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-        (add-hook 'LaTeX-mode-hook 'TeX-fold-mode)
         (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
         (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
         (add-hook 'LaTeX-mode-hook
@@ -270,35 +269,15 @@
                           ;; I don't know why AUCTeX devs think they know better...
                           company-minimum-prefix-length 3)))
         :config
+        ;; mathfrak font
         (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
-        ;; Fold
-        (add-to-list 'LaTeX-fold-macro-spec-list '("[r]" ("cref" "Cref")))
-        (add-to-list 'LaTeX-fold-macro-spec-list '("[c]" ("textcite")))
-        (add-to-list 'LaTeX-fold-macro-spec-list '("[f]" ("tablefootnote")))
-        (add-to-list 'LaTeX-fold-macro-spec-list '("[n]" ("nomenclature")))
-        (add-to-list 'LaTeX-fold-math-spec-list '("[" ("lbrack")))
-        (add-to-list 'LaTeX-fold-math-spec-list '("]" ("rbrack")))
-        (add-to-list 'LaTeX-fold-math-spec-list '("\u00ab" ("og")))
-        (add-to-list 'LaTeX-fold-math-spec-list '("\u00bb" ("fg")))
+
+        ;; prettify!
         (with-eval-after-load 'tex
           (dolist
-              (elt '(("\\coloneqq" . ?≔) ("\\vartheta" . ?ϑ) ("\\varnothing" . ?∅) ("\\varpi" . ?ϖ) ("\\implies" . ?⟹) ("\\dots" . ?…) ("\\item" . ?*)))
+              (elt '(("\\coloneqq" . ?≔) ("\\vartheta" . ?ϑ) ("\\varnothing" . ?∅) ("\\varpi" . ?ϖ) ("\\implies" . ?⟹) ("\\dots" . ?…) ("\\item" . ?*) ("\\og" . ?«) ("\\fg" . ?»)))
             (add-to-list 'tex--prettify-symbols-alist elt)))
-        ;; reftex
-        (TeX-add-style-hook
-         "cleveref"
-         (lambda ()
-           (if (boundp 'reftex-ref-style-alist)
-               (add-to-list
-                'reftex-ref-style-alist
-                '("Cleveref" "cleveref"
-                  (("\\cref" ?c) ("\\Cref" ?C) ("\\cpageref" ?d) ("\\Cpageref" ?D)))))
-           (reftex-ref-style-activate "Cleveref")
-           (TeX-add-symbols
-            '("cref" TeX-arg-ref)
-            '("Cref" TeX-arg-ref)
-            '("cpageref" TeX-arg-ref)
-            '("Cpageref" TeX-arg-ref))))
+
         ;; LaTeXmk
         (use-package auctex-latexmk :ensure t)
         (auctex-latexmk-setup)
@@ -313,6 +292,7 @@
                   (error "Canceled kill."))
               ;; Should test for TeX background process here.
               (error "No TeX process to kill"))))
+  
         ;; viewers
         (setq TeX-view-program-list
               '(("Sumatra PDF"
@@ -332,7 +312,7 @@
                   (output-html "xdg-open")))))
     #+END_SRC
 *** Fonts
-    Used for folding
+    Used for folding.
     #+BEGIN_SRC emacs-lisp
       (if (display-graphic-p)
           (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ff) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
