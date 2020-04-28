@@ -231,13 +231,13 @@
 *** reftex
     Must come before latex.
     #+BEGIN_SRC emacs-lisp
-      (use-package reftex                     ;
+      (use-package reftex
         :ensure t
         :defer t
         :config
         (add-to-list 'reftex-bibliography-commands "addbibresource")
         (setq reftex-default-bibliography
-              (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME")))
+              (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
     #+END_SRC
 *** latex
     #+BEGIN_SRC emacs-lisp

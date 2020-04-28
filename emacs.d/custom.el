@@ -13,10 +13,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(LaTeX-amsmath-label "eq.")
  '(LaTeX-command "latex -file-line-error")
- '(LaTeX-equation-label "eq.")
- '(LaTeX-figure-label "fig.")
  '(LaTeX-fill-break-at-separators (quote (\\\[ \\\])))
  '(LaTeX-math-abbrev-prefix "²")
  '(LaTeX-math-list
@@ -330,7 +327,6 @@
     (("^~/\\.emacs\\.d/elpa/" ":ELPA:")
      ("^~/\\.emacs\\.d/" ":ED:")
      ("^~/Documents/" ":Doc:")
-     ("^~/Google Drive/" ":GDrive:")
      ("^~/Work/" ":Work:"))))
  '(ssh-agency-add-executable "c:/msys64/usr/bin/ssh-add.exe")
  '(ssh-agency-agent-executable "c:/msys64/usr/bin/ssh-agent.exe")
