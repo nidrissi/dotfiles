@@ -129,7 +129,11 @@
  '(midnight-mode t)
  '(openwith-associations
    (quote
-    (("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -f xdg-open"
+    (("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
+      (file))
+     ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
+      (file))
+     ("\\.svgz?" "start"
       (file)))))
  '(org-agenda-custom-commands
    (quote
@@ -137,14 +141,15 @@
       ((agenda "" nil)
        (todo "TODO" nil))
       nil))))
+ '(org-agenda-dim-blocked-tasks nil)
  '(org-agenda-files
    (quote
-    ("~/org/cours.org" "~/org/general.org" "~/org/AAP.org" "~/org/articles.org" "~/org/idees.org" "~/org/mission.org" "~/org/refile.org" "~/org/seminaire.org")))
+    ("~/org/rapports.org" "~/org/cours.org" "~/org/general.org" "~/org/AAP.org" "~/org/articles.org" "~/org/idees.org" "~/org/mission.org" "~/org/refile.org" "~/org/seminaire.org")))
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today))
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-todo-ignore-scheduled 7)
- '(org-agenda-todo-list-sublevels t)
+ '(org-agenda-todo-list-sublevels nil)
  '(org-archive-default-command (quote org-archive-to-archive-sibling))
  '(org-attach-use-inheritance t)
  '(org-capture-templates
@@ -215,6 +220,7 @@
      (66 :foreground "yellow" :weight normal)
      (67 :foreground "dark cyan" :weigth normal))))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
+ '(org-special-ctrl-a/e t)
  '(org-startup-truncated nil)
  '(org-todo-keyword-faces
    (quote
@@ -229,7 +235,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (company-lsp lsp-ivy lsp-ui lsp-mode org cdlatex rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
+    (yasnippet-snippets uniquify dired-x smartparens-mode company-lsp lsp-ivy lsp-ui lsp-mode org cdlatex rust-mode elpy lua-mode pov-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode ace-jump-mode esup use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme browse-kill-ring auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options

@@ -33,18 +33,19 @@
    #+BEGIN_SRC emacs-lisp
      (use-package openwith
        :ensure t
+       :custom
+       (openwith-associations
+        (if (eq system-type 'windows-nt)
+            '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
+               (file))
+              ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
+               (file))
+              ("\\.svgz?" "start"
+               (file)))
+          '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
+             (file)))))
        :init
-       (openwith-mode)
-       (setq openwith-associations
-             (if (eq system-type 'windows-nt)
-                 '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
-                    (file))
-                   ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
-                    (file))
-                   ("\\.svgz?" "start"
-                    (file)))
-               '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
-                  (file))))))
+       (openwith-mode))
    #+END_SRC
 ** Thèmes
 *** zenburn
