@@ -2,35 +2,35 @@
 
 * Initialisation
 ** Unicode
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (set-language-environment "UTF-8")
      (prefer-coding-system 'utf-8)
    #+END_SRC
 ** Custom file
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (setq custom-file "~/.emacs.d/custom.el")
      (load custom-file)
    #+END_SRC
 ** Packages
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (fset 'yes-or-no-p 'y-or-n-p)
      (require 'use-package)
    #+END_SRC
 ** Server
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (cd (getenv "HOME"))
      (server-start)
    #+END_SRC
 ** Windows
    Doit être proche du début
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (if (eq system-type 'windows-nt)
          (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
                find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
    #+END_SRC
 * Interface
 ** openwith
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package openwith
        :ensure t
        :custom
@@ -49,14 +49,14 @@
    #+END_SRC
 ** Thèmes
 *** zenburn
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package zenburn-theme
        :ensure t
        :config
        (load-theme 'zenburn t))
     #+END_SRC
 *** smart-mode-line
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (use-package smart-mode-line
        :ensure t
        :init
@@ -66,7 +66,7 @@
        (sml/setup))
     #+END_SRC
 ** company
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package company
        :ensure t
        :diminish company-mode
@@ -74,7 +74,7 @@
        (add-hook 'after-init-hook 'global-company-mode))
    #+END_SRC
 ** undo-tree
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package undo-tree
        :ensure t
        :diminish undo-tree-mode
@@ -82,7 +82,7 @@
        (add-hook 'after-init-hook 'global-undo-tree-mode))
    #+END_SRC
 ** volatile-highlight
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package volatile-highlights
        :ensure t
        :diminish volatile-highlights-mode
@@ -92,20 +92,20 @@
        (vhl/install-extension 'undo-tree))
    #+END_SRC
 ** dired
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package dired-x
        :commands dired-omit-mode
        :init
        (add-hook 'dired-mode-hook 'dired-omit-mode))
    #+END_SRC
 ** multiple-cursors
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package multiple-cursors
        :ensure t
        :bind ("C-c c" . mc/mark-all-dwim))
    #+END_SRC
 ** ace
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package ace-window
        :ensure t
        :bind ("C-$" . ace-window))
@@ -114,7 +114,7 @@
        :bind ("C-c SPC" . ace-jump-mode))
    #+END_SRC
 ** ivy
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package ivy
        :ensure t
        :diminish ivy-mode
@@ -140,7 +140,7 @@
      (use-package ivy-hydra :ensure t)
    #+END_SRC
 *** projectile
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle yes
       (use-package counsel-projectile
         :ensure t
         :diminish projectile-mode
@@ -149,7 +149,7 @@
         :init (counsel-projectile-mode))
     #+END_SRC
 ** smartparens
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package smartparens-config
        :ensure smartparens
        :diminish smartparens-mode
@@ -157,7 +157,7 @@
        (smartparens-global-mode))
    #+END_SRC
 ** Divers
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (setq ring-bell-function 'ignore)
      (use-package uniquify)
      (use-package diminish :ensure t)
@@ -166,13 +166,13 @@
      (use-package recentf :config (recentf-mode 1))
    #+END_SRC
 *** Disable stupid stuff
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle yes
       (global-unset-key (kbd "C-z"))
       (global-unset-key (kbd "<f9>"))
       (setq disabled-command-function nil)
     #+END_SRC
 * org
-  #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+  #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
     (use-package org
       :ensure t
       :bind (("C-c a" . org-agenda)
@@ -181,7 +181,7 @@
       :config
       (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
   #+END_SRC
-  #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+  #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
     (use-package cdlatex
       :ensure t
       :defer t
@@ -195,7 +195,7 @@
   #+END_SRC
 * Programmation
 ** Typescript
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (defun setup-tide-mode ()
        "Setup tide-mode."
        (interactive)
@@ -219,7 +219,7 @@
        (add-hook 'typescript-mode-hook 'setup-tide-mode))
    #+END_SRC
 ** julia
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (use-package julia-mode
        :ensure t
        :mode "\\.jl\\'")
@@ -231,7 +231,7 @@
 ** LaTeX
 *** reftex
     Must come before latex.
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package reftex
         :ensure t
         :defer t
@@ -241,7 +241,7 @@
               (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
     #+END_SRC
 *** latex
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package latex
         :ensure auctex
         :mode ("\\.tex'" . latex-mode)
@@ -312,7 +312,7 @@
     #+END_SRC
 *** Fonts
     Used for folding.
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (if (display-graphic-p)
           (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ff) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
             (set-fontset-font
@@ -321,7 +321,7 @@
              "STIX")))
     #+END_SRC
 *** ebib
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package ebib
         :ensure t
         :bind ("C-c b" . ebib)
@@ -334,7 +334,7 @@
                   ("djvu" . ,command)))))
     #+END_SRC
 ** Divers
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package cperl-mode
        :mode "\\.\\([pP][Llm]\\|al\\)\\'"
        :interpreter ("perl" "perl5" "miniperl"))
@@ -364,7 +364,7 @@
    #+END_SRC
 * Git
 ** Magit
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package magit
        :ensure t
        :bind ("C-c m" . magit-status)
@@ -375,7 +375,7 @@
            (setenv "SSH_ASKPASS" "git-gui--askpass")))
    #+END_SRC
 ** diff-hl
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package diff-hl
        :ensure t
        :init
@@ -385,12 +385,12 @@
        (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
    #+END_SRC
 ** misc
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package gitconfig-mode :ensure t)
      (use-package gitignore-mode :ensure t)
    #+END_SRC
 * Divers
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp :tangle yes
     (use-package woman
       :bind ("C-c w" . woman))
     (if (eq system-type 'windows-nt)
