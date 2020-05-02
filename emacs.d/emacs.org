@@ -17,13 +17,13 @@
      (require 'use-package)
    #+END_SRC
 ** Server
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
      (cd (getenv "HOME"))
      (server-start)
    #+END_SRC
 ** Windows
    Doit être proche du début
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
      (if (eq system-type 'windows-nt)
          (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
                find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
@@ -56,7 +56,7 @@
        (load-theme 'zenburn t))
     #+END_SRC
 *** smart-mode-line
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
      (use-package smart-mode-line
        :ensure t
        :init
@@ -172,7 +172,7 @@
       (setq disabled-command-function nil)
     #+END_SRC
 * org
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
     (use-package org
       :ensure t
       :bind (("C-c a" . org-agenda)
@@ -181,7 +181,7 @@
       :config
       (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
   #+END_SRC
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
     (use-package cdlatex
       :ensure t
       :defer t
@@ -195,7 +195,7 @@
   #+END_SRC
 * Programmation
 ** Typescript
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
      (defun setup-tide-mode ()
        "Setup tide-mode."
        (interactive)
@@ -219,7 +219,7 @@
        (add-hook 'typescript-mode-hook 'setup-tide-mode))
    #+END_SRC
 ** julia
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
      (use-package julia-mode
        :ensure t
        :mode "\\.jl\\'")
@@ -231,7 +231,7 @@
 ** LaTeX
 *** reftex
     Must come before latex.
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
       (use-package reftex
         :ensure t
         :defer t
@@ -241,7 +241,7 @@
               (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
     #+END_SRC
 *** latex
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
       (use-package latex
         :ensure auctex
         :mode ("\\.tex'" . latex-mode)
@@ -312,7 +312,7 @@
     #+END_SRC
 *** Fonts
     Used for folding.
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
       (if (display-graphic-p)
           (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ff) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
             (set-fontset-font
@@ -321,7 +321,7 @@
              "STIX")))
     #+END_SRC
 *** ebib
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle?)
       (use-package ebib
         :ensure t
         :bind ("C-c b" . ebib)
