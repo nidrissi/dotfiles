@@ -1,4 +1,4 @@
-# emacs.org
+emacs.org
 
 * Initialisation
 ** Unicode
@@ -22,31 +22,13 @@
      (server-start)
    #+END_SRC
 ** Windows
-   Doit être proche du début
+   Doit être proche du début !
    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (if (eq system-type 'windows-nt)
          (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
                find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
    #+END_SRC
 * Interface
-** openwith
-   #+BEGIN_SRC emacs-lisp :tangle yes
-     (use-package openwith
-       :ensure t
-       :custom
-       (openwith-associations
-        (if (eq system-type 'windows-nt)
-            '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
-               (file))
-              ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
-               (file))
-              ("\\.svgz?" "start"
-               (file)))
-          '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
-             (file)))))
-       :init
-       (openwith-mode))
-   #+END_SRC
 ** Thèmes
 *** zenburn
     #+BEGIN_SRC emacs-lisp :tangle yes
@@ -65,8 +47,26 @@
        (setq sml/theme 'powerline)
        (sml/setup))
     #+END_SRC
-** company
+** openwith
    #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package openwith
+       :ensure t
+       :custom
+       (openwith-associations
+        (if (eq system-type 'windows-nt)
+            '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
+               (file))
+              ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
+               (file))
+              ("\\.svgz?" "start"
+               (file)))
+          '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
+             (file)))))
+       :init
+       (openwith-mode))
+   #+END_SRC
+** company
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (use-package company
        :ensure t
        :diminish company-mode
@@ -97,7 +97,19 @@
        :commands dired-omit-mode
        :init
        (add-hook 'dired-mode-hook 'dired-omit-mode))
+     (use-package diredfl
+       :ensure t
+       :init
+       (diredfl-global-mode))
    #+END_SRC
+*** icons
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+      (use-package all-the-icons-dired
+        :ensure t
+        :defer t
+        :init
+        (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+    #+END_SRC
 ** multiple-cursors
    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package multiple-cursors
@@ -109,9 +121,6 @@
      (use-package ace-window
        :ensure t
        :bind ("C-$" . ace-window))
-     (use-package ace-jump-mode
-       :ensure t
-       :bind ("C-c SPC" . ace-jump-mode))
    #+END_SRC
 ** ivy
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -139,6 +148,12 @@
         ("C-c C-r" . ivy-resume)))
      (use-package ivy-hydra :ensure t)
    #+END_SRC
+*** icons
+    #+BEGIN_SRC emacs-lisp (my/tangle-p)
+      (use-package all-the-icons-ivy
+        :ensure t
+        :init (add-hook 'after-init-hook 'all-the-icons-ivy-setup))
+    #+END_SRC
 *** projectile
     #+BEGIN_SRC emacs-lisp :tangle yes
       (use-package counsel-projectile
@@ -154,7 +169,8 @@
        :ensure smartparens
        :diminish smartparens-mode
        :init
-       (smartparens-global-mode))
+       (smartparens-global-mode)
+       (sp-use-smartparens-bindings))
    #+END_SRC
 ** Divers
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -165,69 +181,21 @@
      (use-package eshell :bind ("C-c e" . eshell))
      (use-package recentf :config (recentf-mode 1))
    #+END_SRC
-*** Disable stupid stuff
-    #+BEGIN_SRC emacs-lisp :tangle yes
+   Disable stupid stuff...
+   #+BEGIN_SRC emacs-lisp :tangle yes
       (global-unset-key (kbd "C-z"))
       (global-unset-key (kbd "<f9>"))
       (setq disabled-command-function nil)
-    #+END_SRC
+   #+END_SRC
 * org
   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
     (use-package org
       :ensure t
       :bind (("C-c a" . org-agenda)
              ("C-c l" . org-store-link)
-             ("C-c o" . org-capture))
-      :config
-      (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
-  #+END_SRC
-  #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-    (use-package cdlatex
-      :ensure t
-      :defer t
-      :bind
-      (:map
-       cdlatex-mode-map
-       ("²" . cdlatex-math-symbol)
-       :map
-       org-cdlatex-mode-map
-       ("²" . cdlatex-math-symbol)))
+             ("C-c o" . org-capture)))
   #+END_SRC
 * Programmation
-** Typescript
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-     (defun setup-tide-mode ()
-       "Setup tide-mode."
-       (interactive)
-       (tide-setup)
-       (flycheck-mode +1)
-       (setq flycheck-check-syntax-automatically '(save mode-enabled))
-       (eldoc-mode +1)
-       (tide-hl-identifier-mode +1))
-     (use-package tide
-       :ensure t
-       :commands tide-setup
-       :config
-       (setq tide-format-options
-             '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
-               :placeOpenBraceOnNewLineForFunctions nil)))
-     (use-package typescript-mode
-       :ensure t
-       :mode "\\.ts'"
-       :init
-       (add-hook 'before-save-hook 'tide-format-before-save)
-       (add-hook 'typescript-mode-hook 'setup-tide-mode))
-   #+END_SRC
-** julia
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-     (use-package julia-mode
-       :ensure t
-       :mode "\\.jl\\'")
-     (use-package julia-repl
-       :ensure t
-       :defer t
-       :init (add-hook 'julia-mode-hook 'julia-repl-mode))
-   #+END_SRC
 ** LaTeX
 *** reftex
     Must come before latex.
@@ -333,6 +301,40 @@
                   ("ps" . ,command)
                   ("djvu" . ,command)))))
     #+END_SRC
+** julia
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+     (use-package julia-mode
+       :ensure t
+       :mode "\\.jl\\'")
+     (use-package julia-repl
+       :ensure t
+       :defer t
+       :init (add-hook 'julia-mode-hook 'julia-repl-mode))
+   #+END_SRC
+** Typescript
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+     (defun setup-tide-mode ()
+       "Setup tide-mode."
+       (interactive)
+       (tide-setup)
+       (flycheck-mode +1)
+       (setq flycheck-check-syntax-automatically '(save mode-enabled))
+       (eldoc-mode +1)
+       (tide-hl-identifier-mode +1))
+     (use-package tide
+       :ensure t
+       :commands tide-setup
+       :config
+       (setq tide-format-options
+             '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
+               :placeOpenBraceOnNewLineForFunctions nil)))
+     (use-package typescript-mode
+       :ensure t
+       :mode "\\.ts'"
+       :init
+       (add-hook 'before-save-hook 'tide-format-before-save)
+       (add-hook 'typescript-mode-hook 'setup-tide-mode))
+   #+END_SRC
 ** Divers
    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package cperl-mode
