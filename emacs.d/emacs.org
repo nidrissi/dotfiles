@@ -149,10 +149,10 @@ emacs.org
      (use-package ivy-hydra :ensure t)
    #+END_SRC
 *** icons
-    #+BEGIN_SRC emacs-lisp (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package all-the-icons-ivy
         :ensure t
-        :init (add-hook 'after-init-hook 'all-the-icons-ivy-setup))
+        :init (all-the-icons-ivy-setup))
     #+END_SRC
 *** projectile
     #+BEGIN_SRC emacs-lisp :tangle yes
