@@ -312,7 +312,7 @@ emacs.org
        :init (add-hook 'julia-mode-hook 'julia-repl-mode))
    #+END_SRC
 ** Typescript
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+   #+BEGIN_SRC emacs-lisp :tangle no
      (defun setup-tide-mode ()
        "Setup tide-mode."
        (interactive)

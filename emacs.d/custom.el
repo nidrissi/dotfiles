@@ -170,6 +170,7 @@
 ** TODO Annonce
 ** TODO Demander la carte
 ** TODO État de frais" :time-prompt t))))
+ '(org-clock-idle-time 10)
  '(org-default-notes-file "~/org/refile.org")
  '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
@@ -212,12 +213,14 @@
    (quote
     ("latexmk -pdf -pdflatex=%latex --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(org-log-done (quote time))
+ '(org-lowest-priority 68)
  '(org-preview-latex-default-process (quote imagemagick))
  '(org-priority-faces
    (quote
     ((65 :foreground "dark orange" :weight bold)
      (66 :foreground "yellow" :weight normal)
-     (67 :foreground "dark cyan" :weigth normal))))
+     (67 :foreground "dark cyan" :weigth normal)
+     (68 . "(:foreground \"grey\" :weigth normal)"))))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
  '(org-special-ctrl-a/e t)
  '(org-startup-truncated nil)
@@ -234,7 +237,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org rust-mode elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window)))
+    (esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org rust-mode elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
