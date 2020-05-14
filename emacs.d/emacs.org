@@ -294,7 +294,12 @@ emacs.org
         :ensure t
         :bind ("C-c b" . ebib)
         :config
-        (setq ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME"))))
+        (setq ebib-bib-search-dirs
+              (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))
+              ebib-file-search-dirs
+              (if (eq system-type 'windows-nt)
+                  (list (expand-file-name "papers" (getenv "NC")))
+                "~/nextcloud/papers/"))
         (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "nohup xdg-open %s")))
           (setq ebib-file-associations
                 `(("pdf" . ,command)
@@ -358,11 +363,11 @@ emacs.org
        :ensure t
        :init
        (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-     (use-package elpy
-       :ensure t
-       :defer t
-       :init
-       (advice-add 'python-mode :before 'elpy-enable))
+     ;; (use-package elpy
+     ;;   :ensure t
+     ;;   :defer t
+     ;;   :init
+     ;;   (advice-add 'python-mode :before 'elpy-enable))
    #+END_SRC
 * Git
 ** Magit

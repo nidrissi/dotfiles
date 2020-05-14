@@ -68,7 +68,6 @@
  '(display-time-string-forms (quote (24-hours ":" minutes)))
  '(ebib-allow-identical-fields t)
  '(ebib-bibtex-dialect (quote biblatex))
- '(ebib-file-search-dirs (quote ("~/nextcloud/papers/")))
  '(ebib-index-columns
    (quote
     (("Entry Key" 20 t)
@@ -81,10 +80,9 @@
  '(ebib-preload-bib-files (quote ("mainbib.bib")))
  '(ebib-reading-list-file "~/org/ebib-list.org")
  '(ebib-reading-list-template "** %M %T
-:PROPERTIES:
-%K
-:END:
-%F
+   :PROPERTIES:
+   %K
+   :END:
 ")
  '(ebib-timestamp-format "%Y.%m.%d")
  '(ebib-uniquify-keys t)
@@ -172,6 +170,7 @@
 ** TODO État de frais" :time-prompt t))))
  '(org-clock-idle-time 10)
  '(org-default-notes-file "~/org/refile.org")
+ '(org-display-custom-times t)
  '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
  '(org-format-latex-options
@@ -214,6 +213,7 @@
     ("latexmk -pdf -pdflatex=%latex --synctex=1 -interaction=nonstopmode  -file-line-error -shell-escape %f")))
  '(org-log-done (quote time))
  '(org-lowest-priority 68)
+ '(org-modules (quote (ol-bibtex ol-docview ol-eww ol-info)))
  '(org-preview-latex-default-process (quote imagemagick))
  '(org-priority-faces
    (quote
@@ -224,6 +224,7 @@
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
  '(org-special-ctrl-a/e t)
  '(org-startup-truncated nil)
+ '(org-time-stamp-custom-formats (quote ("<%a %d/%m/%y>" . "<%a %d/%m/%y %H:%M>")))
  '(org-todo-keyword-faces
    (quote
     (("WIP" . org-todo)
@@ -237,7 +238,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org rust-mode elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window)))
+    (lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org rust-mode elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line json-mode go-mode ssh-agency tup-mode openwith-mode jade-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window)))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options
