@@ -6,6 +6,13 @@ emacs.org
      (set-language-environment "UTF-8")
      (prefer-coding-system 'utf-8)
    #+END_SRC
+** Windows
+   Doit être proche du début !
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+     (if (eq system-type 'windows-nt)
+         (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
+               find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
+   #+END_SRC
 ** Custom file
    #+BEGIN_SRC emacs-lisp :tangle yes
      (setq custom-file "~/.emacs.d/custom.el")
@@ -20,13 +27,6 @@ emacs.org
    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (cd (getenv "HOME"))
      (server-start)
-   #+END_SRC
-** Windows
-   Doit être proche du début !
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-     (if (eq system-type 'windows-nt)
-         (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
-               find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
    #+END_SRC
 * Interface
 ** Thèmes
@@ -296,7 +296,7 @@ emacs.org
         :config
         (setq ebib-bib-search-dirs
               (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))
-              ebib-file-search-dirs (expand-file-name "papers" nextcloud-dir))
+              ebib-file-search-dirs (list (expand-file-name "papers" nextcloud-dir)))
         (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "nohup xdg-open %s")))
           (setq ebib-file-associations
                 `(("pdf" . ,command)
