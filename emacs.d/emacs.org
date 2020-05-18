@@ -296,10 +296,7 @@ emacs.org
         :config
         (setq ebib-bib-search-dirs
               (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))
-              ebib-file-search-dirs
-              (if (eq system-type 'windows-nt)
-                  (list (expand-file-name "papers" (getenv "NC")))
-                "~/nextcloud/papers/"))
+              ebib-file-search-dirs (expand-file-name "papers" nextcloud-dir))
         (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "nohup xdg-open %s")))
           (setq ebib-file-associations
                 `(("pdf" . ,command)
@@ -352,7 +349,7 @@ emacs.org
        :ensure t
        :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
               "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
-              "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'"))
+              "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
      (use-package sass-mode
        :ensure t
        :mode "\\.scss?\\'")
