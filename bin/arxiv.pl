@@ -18,6 +18,8 @@ my $root = $twig->root;
 my @entry = $root->children('entry');
 for my $entry (@entry) {
     my $title = $entry->first_child_text('title');
+    $title =~ y/\n/ /;
+    $title =~ s/ +/ /g;
 
     # arXiv id
     my $id = $entry->first_child_text('id');
@@ -47,15 +49,15 @@ for my $entry (@entry) {
 
     printf <<'EOS'
 @misc{%s,
-  author = {%s}, 
-  title = {%s}, 
-  year = {%s}, 
+  author = {%s},
+  title = {%s},
+  year = {%s},
   eprint = {%s},
   eprinttype = {arXiv},
   file = {%s},
   pubstate = {prepublished}
 }
 EOS
-,
+      ,
       $key, $author_list, $title, $year, $id, $first . "/$key.pdf";
 }
