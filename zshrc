@@ -187,6 +187,11 @@ if [[ $OS -eq "Windows_NT" ]]; then
     unset _env
 fi
 
+# local configuration
+if [[ -e "$HOME/.zshrc.local" ]]; then
+    . $HOME/.zshrc.local
+fi
+
 # syntax highlighting
 # must be last
 source $HOME/.zplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
