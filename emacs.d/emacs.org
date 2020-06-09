@@ -297,7 +297,7 @@ emacs.org
         :config
         (setq ebib-bib-search-dirs
               (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))
-              ebib-file-search-dirs (list (expand-file-name "papers" nextcloud-dir)))
+              ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir)))
         (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "nohup xdg-open %s")))
           (setq ebib-file-associations
                 `(("pdf" . ,command)

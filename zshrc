@@ -92,7 +92,7 @@ alias jctl=journalctl
 # prompt
 ## change prompt color based on host
 case $HOST in
-    'alpha.idrissi.eu')
+    'xyz.idrissi.eu')
         __my_color='yellow'
         ;;
     'knot')
