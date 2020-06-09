@@ -6,6 +6,7 @@ export LIBGL_ALWAYS_INDIRECT=1
 setxkbmap 'fr(oss)' &!
 
 # env
+export PATH=$HOME/.local/bin:$PATH
 export TEXMFHOME=$HOME/math/texmf
 export EDITOR='emacsclient'
 export ALTERNATE_EDITOR='emacs'
