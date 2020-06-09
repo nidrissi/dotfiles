@@ -172,6 +172,12 @@ emacs.org
        (smartparens-global-mode)
        (sp-use-smartparens-bindings))
    #+END_SRC
+** which-key
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package which-key
+       :diminish which-key-mode
+       :config (which-key-mode))
+   #+END_SRC
 ** Divers
    #+BEGIN_SRC emacs-lisp :tangle yes
      (setq ring-bell-function 'ignore)
@@ -198,6 +204,18 @@ emacs.org
              ("C-c o" . org-capture)))
   #+END_SRC
 * Programmation
+** LSP
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package lsp-mode
+       :ensure t
+       :hook ((python-mode . lsp-deferred)
+              (js-mode . lsp-deferred)
+              (lsp-mode . lsp-enable-which-key-integration))
+       :commands (lsp lsp-deferred))
+
+     (use-package lsp-ui :commands lsp-ui-mode)
+     (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+   #+END_SRC
 ** LaTeX
 *** reftex
     Must come before latex.
@@ -347,11 +365,11 @@ emacs.org
      (use-package markdown-mode
        :ensure t
        :mode ("\\.markdown?\\'" "\\.md?\\'"))
-     (use-package web-mode
-       :ensure t
-       :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
-              "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
-              "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
+     ;; (use-package web-mode
+     ;;   :ensure t
+     ;;   :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
+     ;;          "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
+     ;;          "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
      (use-package sass-mode
        :ensure t
        :mode "\\.scss?\\'")
