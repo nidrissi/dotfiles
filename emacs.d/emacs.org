@@ -232,8 +232,15 @@ emacs.org
     #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package latex
         :ensure auctex
+        :defer t
         :mode ("\\.tex'" . latex-mode)
-        :bind (:map LaTeX-mode-map ("C-c C-k" . my-TeX-kill-job))
+        :bind (:map LaTeX-mode-map ("C-c C-k" . my/TeX-kill-job))
+        :hook
+        ((LaTeX-mode . turn-on-reftex)
+         (LaTeX-mode . turn-on-flyspell)
+         (LaTeX-mode . LaTeX-math-mode)
+         (LaTeX-mode . TeX-source-correlate-mode)
+         (LaTeX-mode . prettify-symbols-mode))
         :init
         (setq ispell-tex-skip-alists
               (list
@@ -244,17 +251,6 @@ emacs.org
                   ("\\\\import" ispell-tex-arg-end 2)
                   ("\\\\textcite" ispell-tex-arg-end)))
                (cadr ispell-tex-skip-alists)))
-        ;; hooks
-        (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-        (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
-        (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-        (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-        (add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
-        (add-hook 'LaTeX-mode-hook
-                  (lambda ()
-                    (setq TeX-command-default "LatexMk"
-                          ;; I don't know why AUCTeX devs think they know better...
-                          company-minimum-prefix-length 3)))
         :config
         ;; mathfrak font
         (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
@@ -265,21 +261,6 @@ emacs.org
               (elt '(("\\coloneqq" . ?≔) ("\\vartheta" . ?ϑ) ("\\varnothing" . ?∅) ("\\varpi" . ?ϖ) ("\\implies" . ?⟹) ("\\dots" . ?…) ("\\item" . ?*) ("\\og" . ?«) ("\\fg" . ?»)))
             (add-to-list 'tex--prettify-symbols-alist elt)))
 
-        ;; LaTeXmk
-        (use-package auctex-latexmk :ensure t)
-        (auctex-latexmk-setup)
-        ;; Custom kill function
-        (defun my-TeX-kill-job ()
-          "Kill the currently running TeX job but ask for confirmation before."
-          (interactive)
-          (let ((process (TeX-active-process)))
-            (if process
-                (if (y-or-n-p "Kill current TeX process?")
-                    (kill-process process)
-                  (error "Canceled kill."))
-              ;; Should test for TeX background process here.
-              (error "No TeX process to kill"))))
-  
         ;; viewers
         (setq TeX-view-program-list
               '(("Sumatra PDF"
@@ -297,6 +278,32 @@ emacs.org
                   ((output-dvi style-pstricks) "dvips and gv")
                   (output-dvi "xdvi")
                   (output-html "xdg-open")))))
+
+      (defun my/TeX-kill-job ()
+          "Kill the currently running TeX job but ask for confirmation before."
+          (interactive)
+          (let ((process (TeX-active-process)))
+            (if process
+                (if (y-or-n-p "Kill current TeX process?")
+                    (kill-process process)
+                  (error "Canceled kill."))
+              ;; Should test for TeX background process here.
+              (error "No TeX process to kill"))))
+
+    #+END_SRC
+*** latexmk
+    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+      (use-package auctex-latexmk
+        :ensure t
+        :commands auctex-latexmk-setup
+        :hook (LaTeX-mode . my/make-latexmk-default)
+        :init
+        (with-eval-after-load 'latex
+          (auctex-latexmk-setup)))
+
+      (defun my/make-latexmk-default ()
+        "Sets TeX-command-default to LatexMk, to be used in a hook."
+        (setq TeX-command-default "LatexMk"))
     #+END_SRC
 *** Fonts
     Used for folding.
