@@ -296,11 +296,10 @@ emacs.org
     #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package auctex-latexmk
         :ensure t
+        :after latex
         :commands auctex-latexmk-setup
         :hook (LaTeX-mode . my/make-latexmk-default)
-        :init
-        (with-eval-after-load 'latex
-          (auctex-latexmk-setup)))
+        :init (auctex-latexmk-setup))
 
       (defun my/make-latexmk-default ()
         "Sets TeX-command-default to LatexMk, to be used in a hook."
