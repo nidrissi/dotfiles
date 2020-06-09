@@ -15,7 +15,7 @@ emacs.org
    #+END_SRC
 ** Custom file
    #+BEGIN_SRC emacs-lisp :tangle yes
-     (setq custom-file "~/.emacs.d/custom.el")
+     (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
      (load custom-file)
    #+END_SRC
 ** Packages
@@ -180,6 +180,7 @@ emacs.org
      (use-package hippie-exp :bind ("M-/" . hippie-expand))
      (use-package eshell :bind ("C-c e" . eshell))
      (use-package recentf :config (recentf-mode 1))
+     (setq backup-directory-alist `(("." . ,(expand-file-name "saves" user-emacs-directory))))
    #+END_SRC
    Disable stupid stuff...
    #+BEGIN_SRC emacs-lisp :tangle yes
