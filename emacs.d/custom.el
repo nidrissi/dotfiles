@@ -329,6 +329,7 @@
      ("^~/\\.emacs\\.d/" ":ED:")
      ("^~/Documents/" ":Doc:")
      ("^~/Work/" ":Work:")))
+ '(sml/theme 'powerline)
  '(ssh-agency-add-executable "c:/msys64/usr/bin/ssh-add.exe")
  '(ssh-agency-agent-executable "c:/msys64/usr/bin/ssh-agent.exe")
  '(standard-indent 2)

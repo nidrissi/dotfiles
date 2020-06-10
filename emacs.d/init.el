@@ -16,16 +16,10 @@
                      gcs-done)))
 
 ;; to tangle or not tangle, that is the question
+;; only tangle if in a GUI
 (defun my/tangle-p () (if window-system "yes" "no"))
 
-
 (setq vc-follow-symlinks t)
-(if (eq system-type 'windows-nt)
-    (delete-file (expand-file-name "emacs.el" user-emacs-directory)))
-
-(let ((local (expand-file-name "local.el" user-emacs-directory)))
-  (if (file-exists-p local)
-      (load-file local)))
 
 (require 'org)                  ; https://stackoverflow.com/a/17422623
 (org-babel-load-file (expand-file-name "emacs.org" user-emacs-directory))

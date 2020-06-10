@@ -6,6 +6,13 @@ emacs.org
      (set-language-environment "UTF-8")
      (prefer-coding-system 'utf-8)
    #+END_SRC
+** local
+   If there is a local file, load it
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (let ((local (expand-file-name "local.el" user-emacs-directory)))
+       (if (file-exists-p local)
+           (load-file local)))
+   #+END_SRC
 ** Custom file
    #+BEGIN_SRC emacs-lisp :tangle yes
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -27,25 +34,21 @@ emacs.org
     #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package zenburn-theme
        :ensure t
-       :config
+       :init
        (load-theme 'zenburn t))
     #+END_SRC
 *** smart-mode-line
     #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-     (use-package smart-mode-line
-       :ensure t
-       :init
-       (use-package smart-mode-line-powerline-theme :ensure t)
-       :config
-       (setq sml/theme 'powerline)
-       (sml/setup))
+      (use-package smart-mode-line-powerline-theme :ensure t)
+      (use-package smart-mode-line
+        :ensure t
+        :hook (after-init . sml/setup))
     #+END_SRC
 ** openwith
    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package openwith
        :ensure t
-       :init
-       (openwith-mode))
+       :hook (after-init . openwith-mode))
    #+END_SRC
 ** company
    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
@@ -136,25 +139,26 @@ emacs.org
     #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
       (use-package all-the-icons-ivy
         :ensure t
-        :init (all-the-icons-ivy-setup))
+        :hook (after-init . all-the-icons-ivy-setup))
     #+END_SRC
 *** projectile
     #+BEGIN_SRC emacs-lisp :tangle yes
       (use-package counsel-projectile
         :ensure t
         :diminish projectile-mode
-        ;; https://github.com/dmacvicar/dotfiles/commit/e07170e4378d84bf17415d49c0e820f32de49503
-        :preface (setq projectile-keymap-prefix (kbd "C-c p"))
-        :init (counsel-projectile-mode))
+        :bind
+        (:map projectile-mode-map
+         ("C-c p" . projectile-command-map))
+        :hook (after-init . counsel-projectile-mode))
     #+END_SRC
 ** smartparens
    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package smartparens-config
        :ensure smartparens
        :diminish smartparens-mode
-       :init
-       (smartparens-global-mode)
-       (sp-use-smartparens-bindings))
+       :hook
+       ((after-init . smartparens-global-mode)
+        (after-init . sp-use-smartparens-bindings)))
    #+END_SRC
 ** which-key
    #+BEGIN_SRC emacs-lisp :tangle yes
