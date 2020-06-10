@@ -1,4 +1,5 @@
-emacs.org
+#+TITLE: emacs.org
+#+AUTHOR: Najib
 
 * Initialisation
 ** Unicode
@@ -202,7 +203,7 @@ emacs.org
              ("C-c l" . org-store-link)
              ("C-c o" . org-capture)))
   #+END_SRC
-* Programmation
+* Programming
 ** woman
    #+BEGIN_SRC emacs-lisp
      (use-package woman
@@ -351,12 +352,8 @@ emacs.org
      ;;   ((before-save . tide-format-before-save)
      ;;    (typescript-mode . setup-tide-mode)))
    #+END_SRC
-** Divers
+** Web
    #+BEGIN_SRC emacs-lisp
-     (use-package cperl-mode
-       :if window-system
-       :mode "\\.\\([pP][Llm]\\|al\\)\\'"
-       :interpreter ("perl" "perl5" "miniperl"))
      (use-package markdown-mode
        :if window-system
        :ensure t
@@ -374,15 +371,17 @@ emacs.org
        :if window-system
        :ensure t
        :mode "\\.jade\\'")
+   #+END_SRC
+** Misc
+   #+BEGIN_SRC emacs-lisp
+     (use-package cperl-mode
+       :if window-system
+       :mode "\\.\\([pP][Llm]\\|al\\)\\'"
+       :interpreter ("perl" "perl5" "miniperl"))
      (use-package rainbow-delimiters
        :ensure t
        :commands rainbow-delimiters-mode
        :hook (prog-mode . rainbow-delimiters-mode))
-     ;; (use-package elpy
-     ;;   :ensure t
-     ;;   :defer t
-     ;;   :init
-     ;;   (advice-add 'python-mode :before 'elpy-enable))
    #+END_SRC
 * Git
 ** Magit
