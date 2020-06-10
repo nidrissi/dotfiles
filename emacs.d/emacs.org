@@ -367,10 +367,6 @@
        :if window-system
        :ensure t
        :mode "\\.scss?\\'")
-     (use-package jade-mode
-       :if window-system
-       :ensure t
-       :mode "\\.jade\\'")
    #+END_SRC
 ** Misc
    #+BEGIN_SRC emacs-lisp
