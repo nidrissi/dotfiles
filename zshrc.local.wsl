@@ -6,14 +6,17 @@ export LIBGL_ALWAYS_INDIRECT=1
 setxkbmap 'fr(oss)' &!
 
 # env
-export PATH=$HOME/.local/bin:$PATH
-export TEXMFHOME=$HOME/math/texmf
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR='emacsclient'
 export ALTERNATE_EDITOR='emacs'
-
-# nvm
+## tex
+export PATH="$HOME/.texlive/2020/bin/x86_64-linux:$PATH"
+export MANPATH="$HOME/.texlive/2020/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="$HOME/.texlive/2020/texmf-dist/doc/info:$INFOPATH"
+export TEXMFHOME="$HOME/math/texmf"
+## nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 cd
