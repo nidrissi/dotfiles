@@ -6,13 +6,6 @@ emacs.org
      (set-language-environment "UTF-8")
      (prefer-coding-system 'utf-8)
    #+END_SRC
-** Windows
-   Doit être proche du début !
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-     (if (eq system-type 'windows-nt)
-         (setq grep-program "\"c:/Program Files/Git/usr/bin/grep.exe\""
-               find-program "\"c:/Program Files/Git/usr/bin/find.exe\""))
-   #+END_SRC
 ** Custom file
    #+BEGIN_SRC emacs-lisp :tangle yes
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -51,17 +44,6 @@ emacs.org
    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package openwith
        :ensure t
-       :custom
-       (openwith-associations
-        (if (eq system-type 'windows-nt)
-            '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
-               (file))
-              ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
-               (file))
-              ("\\.svgz?" "start"
-               (file)))
-          '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
-             (file)))))
        :init
        (openwith-mode))
    #+END_SRC
@@ -253,32 +235,11 @@ emacs.org
                   ("\\\\textcite" ispell-tex-arg-end)))
                (cadr ispell-tex-skip-alists)))
         :config
-        ;; mathfrak font
-        (add-to-list 'LaTeX-font-list '(11 "" "" "\\mathfrak{" "}"))
-
         ;; prettify!
         (with-eval-after-load 'tex
           (dolist
               (elt '(("\\coloneqq" . ?≔) ("\\vartheta" . ?ϑ) ("\\varnothing" . ?∅) ("\\varpi" . ?ϖ) ("\\implies" . ?⟹) ("\\dots" . ?…) ("\\item" . ?*) ("\\og" . ?«) ("\\fg" . ?»)))
-            (add-to-list 'tex--prettify-symbols-alist elt)))
-
-        ;; viewers
-        (setq TeX-view-program-list
-              '(("Sumatra PDF"
-                 ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
-                  (mode-io-correlate " -forward-search \"%b\" %n")
-                  " %o")))
-              TeX-view-program-selection
-              (if (eq system-type 'windows-nt)
-                  '((output-pdf "Sumatra PDF")
-                    ((output-dvi style-pstricks)
-                     "dvips and gv")
-                    (output-dvi "xdvi")
-                    (output-html "xdg-open"))
-                '((output-pdf "Okular")
-                  ((output-dvi style-pstricks) "dvips and gv")
-                  (output-dvi "xdvi")
-                  (output-html "xdg-open")))))
+            (add-to-list 'tex--prettify-symbols-alist elt))))
 
       (defun my/TeX-kill-job ()
           "Kill the currently running TeX job but ask for confirmation before."
@@ -323,12 +284,7 @@ emacs.org
         :config
         (setq ebib-bib-search-dirs
               (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))
-              ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir)))
-        (let ((command (if (eq system-type 'windows-nt) "c:/Program Files/SumatraPDF/SumatraPDF.exe" "nohup xdg-open %s")))
-          (setq ebib-file-associations
-                `(("pdf" . ,command)
-                  ("ps" . ,command)
-                  ("djvu" . ,command)))))
+              ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir))))
     #+END_SRC
 ** julia
    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
@@ -400,19 +356,16 @@ emacs.org
        :bind ("C-c m" . magit-status)
        :config
        (global-magit-file-mode)
-       (setq magit-last-seen-setup-instructions "1.4.0")
-       (if (eq system-type 'windows-nt)
-           (setenv "SSH_ASKPASS" "git-gui--askpass")))
+       (setq magit-last-seen-setup-instructions "1.4.0"))
    #+END_SRC
 ** diff-hl
    #+BEGIN_SRC emacs-lisp :tangle yes
      (use-package diff-hl
        :ensure t
-       :hook (magit-post-refresh . diff-hl-magit-post-refresh)
+       :hook ((magit-post-refresh . diff-hl-magit-post-refresh)
+              (dired-mode . diff-hl-dired-mode-unless-remote))
        :init
-       (global-diff-hl-mode)
-       (if (not (eq system-type 'windows-nt))
-           (add-hook 'dired-mode-hook 'diff-hl-dired-mode-unless-remote)))
+       (global-diff-hl-mode))
    #+END_SRC
 ** misc
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -422,7 +375,6 @@ emacs.org
 * Divers
   #+BEGIN_SRC emacs-lisp :tangle yes
     (use-package woman
+      :defer t
       :bind ("C-c w" . woman))
-    (if (eq system-type 'windows-nt)
-        (setq browse-url-browser-function 'browse-url-default-windows-browser))
   #+END_SRC

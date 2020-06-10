@@ -15,6 +15,23 @@
  ;; If there is more than one, they won't work right.
  '(LaTeX-command "latex -file-line-error")
  '(LaTeX-fill-break-at-separators '(\\\[ \\\]))
+ '(LaTeX-font-list
+   '((11 "" "" "\\mathfrak{" "}")
+     (1 "" "" "\\mathcal{" "}")
+     (2 "\\textbf{" "}" "\\mathbf{" "}")
+     (3 "\\textsc{" "}")
+     (5 "\\emph{" "}")
+     (6 "\\textsf{" "}" "\\mathsf{" "}")
+     (9 "\\textit{" "}" "\\mathit{" "}")
+     (12 "\\textulc{" "}")
+     (13 "\\textmd{" "}")
+     (14 "\\textnormal{" "}" "\\mathnormal{" "}")
+     (18 "\\textrm{" "}" "\\mathrm{" "}")
+     (19 "\\textsl{" "}" "\\mathbb{" "}")
+     (20 "\\texttt{" "}" "\\mathtt{" "}")
+     (21 "\\textup{" "}")
+     (23 "\\textsw{" "}")
+     (4 "" "" t)))
  '(LaTeX-math-abbrev-prefix "²")
  '(LaTeX-math-list
    '((111 "circ" "Ring operator" 8728)
@@ -29,6 +46,17 @@
  '(TeX-source-correlate-method 'synctex)
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
+ '(TeX-view-program-list
+   '(("Sumatra PDF"
+      ("\"C:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance"
+       (mode-io-correlate " -forward-search \"%b\" %n")
+       " %o"))))
+ '(TeX-view-program-selection
+   '((output-pdf "Okular")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-html "xdg-open")))
  '(auctex-latexmk-inherit-TeX-PDF-mode t)
  '(aw-keys '(38 233 34 39 40 45 232 95 231 224))
  '(backup-by-copying t)
@@ -65,6 +93,10 @@
  '(display-time-string-forms '(24-hours ":" minutes))
  '(ebib-allow-identical-fields t)
  '(ebib-bibtex-dialect 'biblatex)
+ '(ebib-file-associations
+   '(("pdf" . "setsid xdg-open %s")
+     ("ps" . "setsid xdg-open %s")
+     ("djvu" . "setsid xdg-open %s")))
  '(ebib-index-columns
    '(("Entry Key" 20 t)
      ("Year" 6 nil)
@@ -122,12 +154,8 @@
  '(menu-bar-mode nil)
  '(midnight-mode t)
  '(openwith-associations
-   '(("\\.\\(?:pdf\\|ps\\)\\'" "c:/Program Files/SumatraPDF/SumatraPDF"
-      (file))
-     ("\\.\\(?:png\\|jpg\\|jpeg\\)\\'" "start"
-      (file))
-     ("\\.svgz?" "start"
-      (file))))
+   '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
+      (file))) nil nil "Customized with use-package openwith")
  '(org-agenda-custom-commands
    '(("n" "Agenda and all TODOs"
       ((agenda "" nil)
