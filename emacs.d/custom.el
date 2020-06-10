@@ -78,7 +78,6 @@
  '(completion-ignored-extensions
    '(".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".ico" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf" ".ilg" ".ind" ".tdo"))
  '(confirm-kill-emacs 'yes-or-no-p)
- '(counsel-ag-base-command "C:/msys64/mingw64/bin/ag --vimgrep --nocolor --nogroup %s")
  '(cperl-close-paren-offset -4)
  '(cperl-indent-level 4)
  '(cperl-indent-parens-as-block t)
@@ -116,16 +115,12 @@
  '(ebib-uniquify-keys t)
  '(ebib-use-timestamp t)
  '(echo-keystrokes 0.1)
- '(elpy-rpc-python-command "python3")
  '(flycheck-python-flake8-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(flyspell-use-meta-tab nil)
- '(helm-ag-base-command "c:/cygwin64/bin/ag --vimgrep --nocolor --nogroup")
- '(helm-ff-skip-boring-files t)
- '(helm-mode-fuzzy-match t)
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
@@ -289,50 +284,8 @@
       ("conjecture"))))
  '(reftex-label-ignored-macros-and-environments '("tikzpicture" "tikzcd"))
  '(reftex-plug-into-AUCTeX t)
- '(safe-local-variable-values
-   '((org-todo-keyword-faces
-      ("UNPUB" . org-todo)
-      ("PRE" . org-todo)
-      ("REV" . org-todo)
-      ("SUB" . "cyan")
-      ("PUB" . org-done))
-     (TeX-command-extra-options . "-shell-escape")
-     (eval add-to-list 'TeX-fold-macro-spec-list
-           '("[n{1}]"
-             ("nomnom")))
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("¡"
-             ("ashk")))
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("d"
-             ("dd")))
-     (eval web-mode-set-engine "django")
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("▿"
-             ("ez")))
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("𝕜"
-             ("K")))
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("ш"
-             ("shuffle")))
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("∂_μ"
-             ("dm")))
-     (eval add-to-list 'LaTeX-fold-math-spec-list
-           '("∂_λ"
-             ("dl")))
-     (eval make-local-variable 'LaTeX-fold-math-spec-list)))
  '(set-mark-command-repeat-pop t)
- '(sml/replacer-regexp-list
-   '(("^~/\\.emacs\\.d/elpa/" ":ELPA:")
-     ("^~/\\.emacs\\.d/" ":ED:")
-     ("^~/Documents/" ":Doc:")
-     ("^~/Work/" ":Work:")))
  '(sml/theme 'powerline)
- '(ssh-agency-add-executable "c:/msys64/usr/bin/ssh-add.exe")
- '(ssh-agency-agent-executable "c:/msys64/usr/bin/ssh-agent.exe")
- '(standard-indent 2)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
