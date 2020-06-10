@@ -161,7 +161,7 @@ emacs.org
         (after-init . sp-use-smartparens-bindings)))
    #+END_SRC
 ** which-key
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (use-package which-key
        :diminish which-key-mode
        :config (which-key-mode))
@@ -193,7 +193,7 @@ emacs.org
   #+END_SRC
 * Programmation
 ** LSP
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
      (use-package lsp-mode
        :ensure t
        :hook ((python-mode . lsp-deferred)
