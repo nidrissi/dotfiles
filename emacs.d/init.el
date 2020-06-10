@@ -15,11 +15,6 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
-;; to tangle or not tangle, that is the question
-;; only tangle if in a GUI
-(defun my/tangle-p () (if window-system "yes" "no"))
-
-(setq vc-follow-symlinks t)
-
 (require 'org)                  ; https://stackoverflow.com/a/17422623
+(setq vc-follow-symlinks t)
 (org-babel-load-file (expand-file-name "emacs.org" user-emacs-directory))

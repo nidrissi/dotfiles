@@ -2,64 +2,70 @@ emacs.org
 
 * Initialisation
 ** Unicode
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (set-language-environment "UTF-8")
      (prefer-coding-system 'utf-8)
    #+END_SRC
 ** local
    If there is a local file, load it
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (let ((local (expand-file-name "local.el" user-emacs-directory)))
        (if (file-exists-p local)
            (load-file local)))
    #+END_SRC
 ** Custom file
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
      (load custom-file)
    #+END_SRC
 ** Packages
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
      (require 'use-package)
    #+END_SRC
 ** Server
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-     (cd (getenv "HOME"))
-     (server-start)
+   #+BEGIN_SRC emacs-lisp
+     (if (window-system)
+         (progn
+           (cd (getenv "HOME"))
+           (server-start)))
    #+END_SRC
 * Interface
 ** Thèmes
 *** zenburn
-    #+BEGIN_SRC emacs-lisp :tangle yes
+    #+BEGIN_SRC emacs-lisp
      (use-package zenburn-theme
        :ensure t
        :init
        (load-theme 'zenburn t))
     #+END_SRC
 *** smart-mode-line
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
-      (use-package smart-mode-line-powerline-theme :ensure t)
+    #+BEGIN_SRC emacs-lisp
+      (use-package smart-mode-line-powerline-theme
+        :if window-system
+        :ensure t)
       (use-package smart-mode-line
+        :if window-system
         :ensure t
         :hook (after-init . sml/setup))
     #+END_SRC
 ** openwith
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package openwith
        :ensure t
        :hook (after-init . openwith-mode))
    #+END_SRC
 ** company
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+   #+BEGIN_SRC emacs-lisp
      (use-package company
+       :if window-system
        :ensure t
        :diminish company-mode
        :defer t
        :hook (after-init . global-company-mode))
    #+END_SRC
 ** undo-tree
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
        :ensure t
        :diminish undo-tree-mode
@@ -67,7 +73,7 @@ emacs.org
        :hook (after-init . global-undo-tree-mode))
    #+END_SRC
 ** volatile-highlight
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package volatile-highlights
        :ensure t
        :diminish volatile-highlights-mode
@@ -78,39 +84,40 @@ emacs.org
    #+END_SRC
 ** dired
 *** dired-x
-    #+BEGIN_SRC emacs-lisp :tangle yes
+    #+BEGIN_SRC emacs-lisp
       (use-package dired-x
         :commands dired-omit-mode
         :hook (dired-mode . dired-omit-mode))
     #+END_SRC
 *** dired font lock
-    #+BEGIN_SRC emacs-lisp :tangle yes
+    #+BEGIN_SRC emacs-lisp
       (use-package diredfl
         :ensure t
         :hook (after-init . diredfl-global-mode))
     #+END_SRC
 *** icons
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons-dired
+        :if window-system
         :ensure t
         :defer t
         :diminish all-the-icons-dired-mode
         :hook (dired-mode . all-the-icons-dired-mode))
     #+END_SRC
 ** multiple-cursors
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package multiple-cursors
        :ensure t
        :bind ("C-c c" . mc/mark-all-dwim))
    #+END_SRC
 ** ace
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package ace-window
        :ensure t
        :bind ("C-$" . ace-window))
    #+END_SRC
 ** ivy
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package ivy
        :ensure t
        :diminish ivy-mode
@@ -136,13 +143,14 @@ emacs.org
      (use-package ivy-hydra :ensure t)
    #+END_SRC
 *** icons
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons-ivy
+        :if window-system
         :ensure t
         :hook (after-init . all-the-icons-ivy-setup))
     #+END_SRC
 *** projectile
-    #+BEGIN_SRC emacs-lisp :tangle yes
+    #+BEGIN_SRC emacs-lisp
       (use-package counsel-projectile
         :ensure t
         :diminish projectile-mode
@@ -152,7 +160,7 @@ emacs.org
         :hook (after-init . counsel-projectile-mode))
     #+END_SRC
 ** smartparens
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package smartparens-config
        :ensure smartparens
        :diminish smartparens-mode
@@ -161,13 +169,15 @@ emacs.org
         (after-init . sp-use-smartparens-bindings)))
    #+END_SRC
 ** which-key
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+   #+BEGIN_SRC emacs-lisp
      (use-package which-key
+       :if window-system
+       :ensure t
        :diminish which-key-mode
        :config (which-key-mode))
    #+END_SRC
 ** Divers
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (setq ring-bell-function 'ignore)
      (use-package uniquify)
      (use-package diminish :ensure t)
@@ -177,38 +187,49 @@ emacs.org
      (setq backup-directory-alist `(("." . ,(expand-file-name "saves" user-emacs-directory))))
    #+END_SRC
    Disable stupid stuff...
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (global-unset-key (kbd "C-z"))
      (global-unset-key (kbd "<f9>"))
      (global-unset-key (kbd "<insert>"))
      (setq disabled-command-function nil)
    #+END_SRC
 * org
-  #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+  #+BEGIN_SRC emacs-lisp
     (use-package org
+      :if window-system
       :ensure t
       :bind (("C-c a" . org-agenda)
              ("C-c l" . org-store-link)
              ("C-c o" . org-capture)))
   #+END_SRC
 * Programmation
+** woman
+   #+BEGIN_SRC emacs-lisp
+     (use-package woman
+       :bind ("C-c w" . woman))
+   #+END_SRC
 ** LSP
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+   #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
+       :if window-system
        :ensure t
        :hook ((python-mode . lsp-deferred)
               (js-mode . lsp-deferred)
               (lsp-mode . lsp-enable-which-key-integration))
        :commands (lsp lsp-deferred))
-
-     (use-package lsp-ui :commands lsp-ui-mode)
-     (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+     (use-package lsp-ui
+       :if window-system
+       :commands lsp-ui-mode)
+     (use-package lsp-ivy
+       :if window-system
+       :commands lsp-ivy-workspace-symbol)
    #+END_SRC
 ** LaTeX
 *** reftex
     Must come before latex.
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (use-package reftex
+        :if window-system
         :ensure t
         :defer t
         :config
@@ -217,8 +238,9 @@ emacs.org
               (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
     #+END_SRC
 *** latex
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (use-package latex
+        :if window-system
         :ensure auctex
         :defer t
         :mode ("\\.tex'" . latex-mode)
@@ -259,8 +281,9 @@ emacs.org
 
     #+END_SRC
 *** latexmk
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (use-package auctex-latexmk
+        :if window-system
         :ensure t
         :after latex
         :commands auctex-latexmk-setup
@@ -273,7 +296,7 @@ emacs.org
     #+END_SRC
 *** Fonts
     Used for folding.
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (if (display-graphic-p)
           (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ff) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
             (set-fontset-font
@@ -282,8 +305,9 @@ emacs.org
              "STIX")))
     #+END_SRC
 *** ebib
-    #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+    #+BEGIN_SRC emacs-lisp
       (use-package ebib
+        :if window-system
         :ensure t
         :bind ("C-c b" . ebib)
         :config
@@ -292,45 +316,49 @@ emacs.org
               ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir))))
     #+END_SRC
 ** julia
-   #+BEGIN_SRC emacs-lisp :tangle (my/tangle-p)
+   #+BEGIN_SRC emacs-lisp
      (use-package julia-mode
+       :if window-system
        :ensure t
        :mode "\\.jl\\'")
      (use-package julia-repl
+       :if window-system
        :ensure t
        :defer t
        :hook (julia-mode . julia-repl-mode))
    #+END_SRC
 ** Typescript
-   #+BEGIN_SRC emacs-lisp :tangle no
-     (defun setup-tide-mode ()
-       "Setup tide-mode."
-       (interactive)
-       (tide-setup)
-       (flycheck-mode +1)
-       (setq flycheck-check-syntax-automatically '(save mode-enabled))
-       (eldoc-mode +1)
-       (tide-hl-identifier-mode +1))
-     (use-package tide
-       :ensure t
-       :commands tide-setup
-       :config
-       (setq tide-format-options
-             '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
-               :placeOpenBraceOnNewLineForFunctions nil)))
-     (use-package typescript-mode
-       :ensure t
-       :mode "\\.ts'"
-       :hook
-       ((before-save . tide-format-before-save)
-        (typescript-mode . setup-tide-mode)))
+   #+BEGIN_SRC emacs-lisp
+     ;; (defun setup-tide-mode ()
+     ;;   "Setup tide-mode."
+     ;;   (interactive)
+     ;;   (tide-setup)
+     ;;   (flycheck-mode +1)
+     ;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+     ;;   (eldoc-mode +1)
+     ;;   (tide-hl-identifier-mode +1))
+     ;; (use-package tide
+     ;;   :ensure t
+     ;;   :commands tide-setup
+     ;;   :config
+     ;;   (setq tide-format-options
+     ;;         '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
+     ;;           :placeOpenBraceOnNewLineForFunctions nil)))
+     ;; (use-package typescript-mode
+     ;;   :ensure t
+     ;;   :mode "\\.ts'"
+     ;;   :hook
+     ;;   ((before-save . tide-format-before-save)
+     ;;    (typescript-mode . setup-tide-mode)))
    #+END_SRC
 ** Divers
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package cperl-mode
+       :if window-system
        :mode "\\.\\([pP][Llm]\\|al\\)\\'"
        :interpreter ("perl" "perl5" "miniperl"))
      (use-package markdown-mode
+       :if window-system
        :ensure t
        :mode ("\\.markdown?\\'" "\\.md?\\'"))
      ;; (use-package web-mode
@@ -339,13 +367,16 @@ emacs.org
      ;;          "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
      ;;          "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
      (use-package sass-mode
+       :if window-system
        :ensure t
        :mode "\\.scss?\\'")
      (use-package jade-mode
+       :if window-system
        :ensure t
        :mode "\\.jade\\'")
      (use-package rainbow-delimiters
        :ensure t
+       :commands rainbow-delimiters-mode
        :hook (prog-mode . rainbow-delimiters-mode))
      ;; (use-package elpy
      ;;   :ensure t
@@ -355,7 +386,7 @@ emacs.org
    #+END_SRC
 * Git
 ** Magit
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package magit
        :ensure t
        :bind ("C-c m" . magit-status)
@@ -364,7 +395,7 @@ emacs.org
        (setq magit-last-seen-setup-instructions "1.4.0"))
    #+END_SRC
 ** diff-hl
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package diff-hl
        :ensure t
        :hook ((magit-post-refresh . diff-hl-magit-post-refresh)
@@ -373,13 +404,7 @@ emacs.org
        (global-diff-hl-mode))
    #+END_SRC
 ** misc
-   #+BEGIN_SRC emacs-lisp :tangle yes
+   #+BEGIN_SRC emacs-lisp
      (use-package gitconfig-mode :ensure t)
      (use-package gitignore-mode :ensure t)
    #+END_SRC
-* Divers
-  #+BEGIN_SRC emacs-lisp :tangle yes
-    (use-package woman
-      :defer t
-      :bind ("C-c w" . woman))
-  #+END_SRC
