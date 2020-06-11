@@ -90,7 +90,7 @@
       (use-package diredfl
         :hook (after-init . diredfl-global-mode))
     #+END_SRC
-*** icons
+*** dired icons
     #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons-dired
         :if window-system
@@ -133,7 +133,7 @@
         ("C-c C-r" . ivy-resume)))
      (use-package ivy-hydra)
    #+END_SRC
-*** icons
+*** ivy icons
     #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons-ivy
         :if window-system
@@ -143,10 +143,15 @@
     #+BEGIN_SRC emacs-lisp
       (use-package counsel-projectile
         :diminish projectile-mode
+        :custom
+        (projectile-globally-ignored-file-suffixes completion-ignored-extensions)
         :bind
         (:map projectile-mode-map
-         ("C-c p" . projectile-command-map))
-        :hook (after-init . counsel-projectile-mode))
+              ("C-c p" . projectile-command-map))
+        :hook
+        (after-init . counsel-projectile-mode)
+        :config
+        (add-to-list 'projectile-globally-ignored-directories "node_modules"))
     #+END_SRC
 ** smartparens
    #+BEGIN_SRC emacs-lisp
@@ -177,7 +182,6 @@
    #+END_SRC
 ** Divers
    #+BEGIN_SRC emacs-lisp
-     (setq ring-bell-function 'ignore)
      (use-package uniquify :ensure nil)
      (use-package diminish)
      (use-package hippie-exp
@@ -214,13 +218,16 @@
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :if window-system
-       :hook ((python-mode . lsp-deferred)
-              (js-mode . lsp-deferred)
+       :hook (((python-mode js-mode) . lsp-deferred)
               (lsp-mode . lsp-enable-which-key-integration))
        :commands (lsp lsp-deferred))
      (use-package lsp-ui
        :if window-system
-       :commands lsp-ui-mode)
+       :commands lsp-ui-mode
+       :bind
+       (:map lsp-ui-mode-map
+             ("M-." . lsp-ui-peek-find-definitions)
+             ("M-?" . lsp-ui-peek-find-references)))
      (use-package lsp-ivy
        :if window-system
        :commands lsp-ivy-workspace-symbol)

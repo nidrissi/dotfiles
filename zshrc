@@ -44,7 +44,7 @@ zstyle ':completion:*:rm:*' ignore-line yes
 ## ignore some files for editors
 binary=(.o .zo .zi .zix '.sw?' .jpg .gif .dvi .dvi.gz)
 edit_ignore=(.aux .old .log '#' '~' $binary)
-editors=(pico vim '*emacs' nedit nano joe mcedit cooledit)
+editors=(pico vim '*emacs*' nedit nano joe mcedit cooledit)
 
 zstyle ":completion:*:*:(${(j:*|:)editors}*):*" ignored-patterns \*${^edit_ignore}
 zstyle ":completion:*:*:cat:*" ignored-patterns \*${^binary} '*.gz'
@@ -138,8 +138,9 @@ function preexec {
 # compilation
 autoload -U zrecompile
 zrecompile -p \
-    -R ~/.zshrc -- \
-    -M ~/.zcompdump
+           -R ~/.zshrc -- \
+           -R ~/.zprofile -- \
+           -M ~/.zcompdump
 
 # syntax highlighting
 # must be last
