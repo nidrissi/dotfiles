@@ -1,0 +1,4 @@
+#+TITLE: dotfiles
+#+AUTHOR: Najib Idrissi
+
+This repository the various configuration files that I use for several pieces of software, notably [[https://www.gnu.org/software/emacs/][Emacs]], [[https://www.zsh.org/][zsh]], [[https://i3wm.org/][i3]], etc.
