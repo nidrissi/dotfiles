@@ -123,7 +123,6 @@
         ("<f2> u" . counsel-unicode-char)
         ("C-c g" . counsel-git)
         ("C-c j" . counsel-git-grep)
-        ("C-c k" . counsel-ag)
         ("C-c r" . counsel-mark-ring)
         ("C-c C-r" . ivy-resume)))
      (use-package ivy-hydra)
@@ -369,6 +368,8 @@
    #+END_SRC
 ** misc
    #+BEGIN_SRC emacs-lisp
-     (use-package gitconfig-mode)
-     (use-package gitignore-mode)
+     (use-package gitconfig-mode
+       :mode "\\'\\.gitconfig\\'")
+     (use-package gitignore-mode
+       :mode "\\'\\.gitignore\\'")
    #+END_SRC
