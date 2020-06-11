@@ -1,5 +1,7 @@
 #!perl
 
+die 'Usage: arxiv <id>' unless $#ARGV == 0;
+
 use strict;
 use warnings;
 use feature qw/say/;
@@ -11,7 +13,6 @@ use XML::Twig;
 
 my $twig=XML::Twig->new();
 
-die 'Usage: arxiv <id>' unless $#ARGV == 0;
 $twig->parse(get("http://export.arxiv.org/api/query?search_query=id:$ARGV[0]"));
 
 my $root = $twig->root;
@@ -45,7 +46,7 @@ for my $entry (@entry) {
     my $ff = File::Fetch->new(uri => $pdf_url);
     my $file = $ff->fetch() or die $ff->error();
     rename $file, "$key.pdf";
-    my $first = substr $key, 0, 1;
+    my $first = substr $key, 0, 1; # first letter of the key
 
     printf <<'EOS'
 @misc{%s,
