@@ -138,7 +138,6 @@
       nil utf-8)))
  '(ispell-program-name "hunspell")
  '(ivy-count-format "(%d/%d) ")
- '(ivy-mode t)
  '(ivy-use-virtual-buffers t)
  '(js-indent-level 2)
  '(load-prefer-newer t)
