@@ -141,11 +141,6 @@ zrecompile -p \
     -R ~/.zshrc -- \
     -M ~/.zcompdump
 
-# local configuration
-if [[ -e "$HOME/.zshrc.local" ]]; then
-    . $HOME/.zshrc.local
-fi
-
 # syntax highlighting
 # must be last
 source $HOME/.zplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
