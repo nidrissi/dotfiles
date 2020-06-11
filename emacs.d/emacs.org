@@ -23,6 +23,7 @@
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
      (require 'use-package)
+     (setq use-package-always-ensure t)
    #+END_SRC
 ** Server
    #+BEGIN_SRC emacs-lisp
@@ -36,31 +37,26 @@
 *** zenburn
     #+BEGIN_SRC emacs-lisp
      (use-package zenburn-theme
-       :ensure t
        :init
        (load-theme 'zenburn t))
     #+END_SRC
 *** smart-mode-line
     #+BEGIN_SRC emacs-lisp
       (use-package smart-mode-line-powerline-theme
-        :if window-system
-        :ensure t)
+        :if window-system)
       (use-package smart-mode-line
         :if window-system
-        :ensure t
         :hook (after-init . sml/setup))
     #+END_SRC
 ** openwith
    #+BEGIN_SRC emacs-lisp
      (use-package openwith
-       :ensure t
        :hook (after-init . openwith-mode))
    #+END_SRC
 ** company
    #+BEGIN_SRC emacs-lisp
      (use-package company
        :if window-system
-       :ensure t
        :diminish company-mode
        :defer t
        :hook (after-init . global-company-mode))
@@ -68,7 +64,6 @@
 ** undo-tree
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
-       :ensure t
        :diminish undo-tree-mode
        :defer t
        :hook (after-init . global-undo-tree-mode))
@@ -76,7 +71,6 @@
 ** volatile-highlight
    #+BEGIN_SRC emacs-lisp
      (use-package volatile-highlights
-       :ensure t
        :diminish volatile-highlights-mode
        :init
        (volatile-highlights-mode t)
@@ -87,20 +81,19 @@
 *** dired-x
     #+BEGIN_SRC emacs-lisp
       (use-package dired-x
+        :ensure nil
         :commands dired-omit-mode
         :hook (dired-mode . dired-omit-mode))
     #+END_SRC
 *** dired font lock
     #+BEGIN_SRC emacs-lisp
       (use-package diredfl
-        :ensure t
         :hook (after-init . diredfl-global-mode))
     #+END_SRC
 *** icons
     #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons-dired
         :if window-system
-        :ensure t
         :defer t
         :diminish all-the-icons-dired-mode
         :hook (dired-mode . all-the-icons-dired-mode))
@@ -108,19 +101,16 @@
 ** multiple-cursors
    #+BEGIN_SRC emacs-lisp
      (use-package multiple-cursors
-       :ensure t
        :bind ("C-c c" . mc/mark-all-dwim))
    #+END_SRC
 ** ace
    #+BEGIN_SRC emacs-lisp
      (use-package ace-window
-       :ensure t
        :bind ("C-$" . ace-window))
    #+END_SRC
 ** ivy
    #+BEGIN_SRC emacs-lisp
      (use-package ivy
-       :ensure t
        :diminish ivy-mode
        :init
        (ivy-mode 1)
@@ -141,19 +131,17 @@
         ("C-c k" . counsel-ag)
         ("C-c r" . counsel-mark-ring)
         ("C-c C-r" . ivy-resume)))
-     (use-package ivy-hydra :ensure t)
+     (use-package ivy-hydra)
    #+END_SRC
 *** icons
     #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons-ivy
         :if window-system
-        :ensure t
         :hook (after-init . all-the-icons-ivy-setup))
     #+END_SRC
 *** projectile
     #+BEGIN_SRC emacs-lisp
       (use-package counsel-projectile
-        :ensure t
         :diminish projectile-mode
         :bind
         (:map projectile-mode-map
@@ -173,18 +161,23 @@
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
        :if window-system
-       :ensure t
        :diminish which-key-mode
        :config (which-key-mode))
    #+END_SRC
 ** Divers
    #+BEGIN_SRC emacs-lisp
      (setq ring-bell-function 'ignore)
-     (use-package uniquify)
-     (use-package diminish :ensure t)
-     (use-package hippie-exp :bind ("M-/" . hippie-expand))
-     (use-package eshell :bind ("C-c e" . eshell))
-     (use-package recentf :config (recentf-mode 1))
+     (use-package uniquify :ensure nil)
+     (use-package diminish)
+     (use-package hippie-exp
+       :ensure nil
+       :bind ("M-/" . hippie-expand))
+     (use-package eshell
+       :ensure nil
+       :bind ("C-c e" . eshell))
+     (use-package recentf
+       :ensure nil
+       :config (recentf-mode 1))
      (setq backup-directory-alist `(("." . ,(expand-file-name "saves" user-emacs-directory))))
    #+END_SRC
    Disable stupid stuff...
@@ -198,7 +191,6 @@
   #+BEGIN_SRC emacs-lisp
     (use-package org
       :if window-system
-      :ensure t
       :bind (("C-c a" . org-agenda)
              ("C-c l" . org-store-link)
              ("C-c o" . org-capture)))
@@ -207,13 +199,13 @@
 ** woman
    #+BEGIN_SRC emacs-lisp
      (use-package woman
+       :ensure nil
        :bind ("C-c w" . woman))
    #+END_SRC
 ** LSP
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :if window-system
-       :ensure t
        :hook ((python-mode . lsp-deferred)
               (js-mode . lsp-deferred)
               (lsp-mode . lsp-enable-which-key-integration))
@@ -231,7 +223,6 @@
     #+BEGIN_SRC emacs-lisp
       (use-package reftex
         :if window-system
-        :ensure t
         :defer t
         :config
         (add-to-list 'reftex-bibliography-commands "addbibresource")
@@ -285,7 +276,6 @@
     #+BEGIN_SRC emacs-lisp
       (use-package auctex-latexmk
         :if window-system
-        :ensure t
         :after latex
         :commands auctex-latexmk-setup
         :hook (LaTeX-mode . my/make-latexmk-default)
@@ -309,7 +299,6 @@
     #+BEGIN_SRC emacs-lisp
       (use-package ebib
         :if window-system
-        :ensure t
         :bind ("C-c b" . ebib)
         :config
         (setq ebib-bib-search-dirs
@@ -320,11 +309,9 @@
    #+BEGIN_SRC emacs-lisp
      (use-package julia-mode
        :if window-system
-       :ensure t
        :mode "\\.jl\\'")
      (use-package julia-repl
        :if window-system
-       :ensure t
        :defer t
        :hook (julia-mode . julia-repl-mode))
    #+END_SRC
@@ -339,14 +326,12 @@
      ;;   (eldoc-mode +1)
      ;;   (tide-hl-identifier-mode +1))
      ;; (use-package tide
-     ;;   :ensure t
      ;;   :commands tide-setup
      ;;   :config
      ;;   (setq tide-format-options
      ;;         '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
      ;;           :placeOpenBraceOnNewLineForFunctions nil)))
      ;; (use-package typescript-mode
-     ;;   :ensure t
      ;;   :mode "\\.ts'"
      ;;   :hook
      ;;   ((before-save . tide-format-before-save)
@@ -356,21 +341,19 @@
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
        :if window-system
-       :ensure t
        :mode ("\\.markdown?\\'" "\\.md?\\'"))
      ;; (use-package web-mode
-     ;;   :ensure t
      ;;   :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
      ;;          "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
      ;;          "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
      (use-package sass-mode
        :if window-system
-       :ensure t
        :mode "\\.scss?\\'")
    #+END_SRC
 ** Misc
    #+BEGIN_SRC emacs-lisp
      (use-package cperl-mode
+       :disabled
        :if window-system
        :mode "\\.\\([pP][Llm]\\|al\\)\\'"
        :interpreter ("perl" "perl5" "miniperl"))
@@ -383,7 +366,6 @@
 ** Magit
    #+BEGIN_SRC emacs-lisp
      (use-package magit
-       :ensure t
        :bind ("C-c m" . magit-status)
        :config
        (global-magit-file-mode)
@@ -392,7 +374,6 @@
 ** diff-hl
    #+BEGIN_SRC emacs-lisp
      (use-package diff-hl
-       :ensure t
        :hook ((magit-post-refresh . diff-hl-magit-post-refresh)
               (dired-mode . diff-hl-dired-mode-unless-remote))
        :init
@@ -400,6 +381,6 @@
    #+END_SRC
 ** misc
    #+BEGIN_SRC emacs-lisp
-     (use-package gitconfig-mode :ensure t)
-     (use-package gitignore-mode :ensure t)
+     (use-package gitconfig-mode)
+     (use-package gitignore-mode)
    #+END_SRC
