@@ -2,38 +2,31 @@
 #+AUTHOR: Najib
 
 * Initialisation
-** Unicode
-   #+BEGIN_SRC emacs-lisp
-     (set-language-environment "UTF-8")
-     (prefer-coding-system 'utf-8)
-   #+END_SRC
-** local
+** local.el
    If there is a local file, load it
    #+BEGIN_SRC emacs-lisp
      (let ((local (expand-file-name "local.el" user-emacs-directory)))
        (if (file-exists-p local)
            (load-file local)))
    #+END_SRC
-** Custom file
+** custom.el
    #+BEGIN_SRC emacs-lisp
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
      (load custom-file)
    #+END_SRC
-** Packages
+** use-package
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
      (require 'use-package)
      (setq use-package-always-ensure t)
    #+END_SRC
-** Server
+** server
    #+BEGIN_SRC emacs-lisp
      (if (window-system)
-         (progn
-           (cd (getenv "HOME"))
-           (server-start)))
+         (add-hook 'after-init-hook #'server-start))
    #+END_SRC
 * Interface
-** Thèmes
+** themes
 *** zenburn
     #+BEGIN_SRC emacs-lisp
      (use-package zenburn-theme
@@ -88,7 +81,8 @@
 *** dired font lock
     #+BEGIN_SRC emacs-lisp
       (use-package diredfl
-        :hook (after-init . diredfl-global-mode))
+        :commands diredfl-mode
+        :hook (dired-mode . diredfl-mode))
     #+END_SRC
 *** dired icons
     #+BEGIN_SRC emacs-lisp
@@ -112,9 +106,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package ivy
        :diminish ivy-mode
-       :init
-       (ivy-mode 1)
-       (setq counsel-find-file-ignore-regexp (concat (regexp-opt completion-ignored-extensions) "\\'"))
+       :hook
+       (after-init . ivy-mode)
+       :custom
+       (counsel-find-file-ignore-regexp (concat (regexp-opt completion-ignored-extensions) "\\'"))
        :bind
        (("C-s" . swiper)
         ("M-x" . counsel-M-x)
@@ -167,7 +162,7 @@
      (use-package which-key
        :if window-system
        :diminish which-key-mode
-       :config (which-key-mode))
+       :hook (after-init . which-key-mode))
    #+END_SRC
 ** recentf
    #+BEGIN_SRC emacs-lisp
@@ -315,10 +310,9 @@
       (use-package ebib
         :if window-system
         :bind ("C-c b" . ebib)
-        :config
-        (setq ebib-bib-search-dirs
-              (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME")))
-              ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir))))
+        :custom
+        (ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME"))))
+        (ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir))))
     #+END_SRC
 ** julia
    #+BEGIN_SRC emacs-lisp
@@ -327,7 +321,7 @@
        :mode "\\.jl\\'")
      (use-package julia-repl
        :if window-system
-       :defer t
+       :commands julia-repl-mode
        :hook (julia-mode . julia-repl-mode))
    #+END_SRC
 ** Web
@@ -335,13 +329,14 @@
      (use-package markdown-mode
        :if window-system
        :mode ("\\.markdown?\\'" "\\.md?\\'"))
-     ;; (use-package web-mode
-     ;;   :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
-     ;;          "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
-     ;;          "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
      (use-package sass-mode
        :if window-system
        :mode "\\.scss?\\'")
+     (use-package web-mode
+       :disabled
+       :mode ("\\.\\([tT][tT]\\)\\'" ; template toolkit
+              "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'"
+              "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.html?\\'" "\\.jsx?\\'" "\\.s?css\\'"))
    #+END_SRC
 ** Misc
    #+BEGIN_SRC emacs-lisp

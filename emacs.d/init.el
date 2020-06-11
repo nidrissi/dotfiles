@@ -2,6 +2,8 @@
 
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024))
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
