@@ -1,9 +1,4 @@
 # .ssh/config
-Host alpha
-    HostName alpha.idrissi.eu
-    Port 22
-    User najib
-
 Host framboise
      HostName framboise.local
      Port 22
