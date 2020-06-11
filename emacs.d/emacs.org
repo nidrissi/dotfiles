@@ -164,6 +164,17 @@
        :diminish which-key-mode
        :config (which-key-mode))
    #+END_SRC
+** recentf
+   #+BEGIN_SRC emacs-lisp
+     (use-package recentf
+       :ensure nil
+       :custom
+       (recentf-exclude
+        `(,(expand-file-name package-user-dir)
+          "/\\(\\(\\(COMMIT\\|NOTES\\|PULLREQ\\|MERGEREQ\\|TAG\\)_EDIT\\|MERGE_\\|\\)MSG\\|\\(BRANCH\\|EDIT\\)_DESCRIPTION\\)\\'"))
+       :hook
+       (after-init . recentf-mode))
+   #+END_SRC
 ** Divers
    #+BEGIN_SRC emacs-lisp
      (setq ring-bell-function 'ignore)
@@ -175,9 +186,6 @@
      (use-package eshell
        :ensure nil
        :bind ("C-c e" . eshell))
-     (use-package recentf
-       :ensure nil
-       :config (recentf-mode 1))
      (setq backup-directory-alist `(("." . ,(expand-file-name "saves" user-emacs-directory))))
    #+END_SRC
    Disable stupid stuff...
