@@ -1,6 +1,4 @@
-# i3 config file (v4) -*- conf -*-
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# ~/.config/i3/config -*- conf -*-
 
 set $mod Mod4
 

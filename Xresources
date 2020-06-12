@@ -1,3 +1,5 @@
+! .Xresources
+
 ! urxvt
 URxvt*scrollBar: False
 

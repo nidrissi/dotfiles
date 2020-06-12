@@ -1,4 +1,4 @@
-# -*- mode: gitconfig -*-
+# ~/.config/git/config -*- mode: gitconfig -*-
 
 [user]
 	email = najib.idrissi.kaitouni@gmail.com

@@ -1,4 +1,4 @@
-# i3status config -*- conf -*-
+# ~/.config/i3status/config -*- conf -*-
 
 general {
     colors = true

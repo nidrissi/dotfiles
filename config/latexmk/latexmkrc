@@ -1,3 +1,5 @@
+# ~/.config/latexmk/latexmkrc -*- perl -*-
+
 # for nomenclature
 add_cus_dep("nlo", "nls", 0, "nlo2nls");
 sub nlo2nls {

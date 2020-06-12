@@ -1,4 +1,4 @@
-#!/bin/zsh -*- mode: sh; -*-
+#!/bin/zsh -*- sh -*-
 
 if [ "$TERM" = 'dumb' ]; then
     export PS1='$ '
