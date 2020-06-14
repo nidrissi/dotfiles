@@ -19,4 +19,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 ## perl
-eval "$(perl -I$HOME/.local/perl/lib/perl5 -Mlocal::lib=$HOME/.local/perl)"
+[ -d $HOME/.local/perl ] && eval "$(perl -I$HOME/.local/perl/lib/perl5 -Mlocal::lib=$HOME/.local/perl)"
