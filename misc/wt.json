@@ -37,6 +37,7 @@
         "name": "Windows PowerShell",
         "commandline": "powershell.exe",
         "colorScheme" : "Campbell Powershell",
+	"fontFace": "Cascadia Code PL",
         "hidden": false
       },
       {
@@ -53,6 +54,7 @@
         "name": "Ubuntu",
         "colorScheme" : "Zenburn",
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\najib",
+	"fontFace": "Cascadia Code",
         "source": "Windows.Terminal.Wsl"
       },
       {
