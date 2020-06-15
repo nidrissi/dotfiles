@@ -120,6 +120,12 @@
        (vhl/install-extension 'undo-tree))
    #+END_SRC
 ** dired
+   #+BEGIN_SRC emacs-lisp
+     (use-package dired
+       :ensure nil
+       :defer t
+       :config (dired-async-mode))
+   #+END_SRC
 *** dired-x
     #+BEGIN_SRC emacs-lisp
       (use-package dired-x
