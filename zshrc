@@ -96,7 +96,13 @@ case $HOST in
         __my_color='yellow'
         ;;
     'knot')
-        __my_color='magenta'
+        __my_color='#FFA500'
+        ;;
+    'tqft')
+        __my_color='green'
+        ;;
+    'framboise')
+        __my_color='#C41949';
         ;;
     *)
         __my_color='blue'
