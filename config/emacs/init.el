@@ -19,4 +19,5 @@
 
 (require 'org)                  ; https://stackoverflow.com/a/17422623
 (setq vc-follow-symlinks t)
-(org-babel-load-file (expand-file-name "emacs.org" user-emacs-directory))
+;; use file-truename to avoid symlink being "younger" than the tangled file
+(org-babel-load-file (file-truename (expand-file-name "emacs.org" user-emacs-directory)))
