@@ -7,7 +7,8 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit aw-mode-line-face :height 3.0))))
  '(highlight ((t (:background "#0a4b5b"))))
- '(org-archived ((t (:foreground "dim gray" :weight normal)))))
+ '(org-archived ((t (:foreground "dim gray" :weight normal))))
+ '(org-todo ((t (:foreground "firebrick" :weight bold)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,13 +95,13 @@
  '(display-time-mode t)
  '(display-time-string-forms '(24-hours ":" minutes))
  '(ebib-allow-identical-fields t)
- '(ebib-bib-search-dirs '("/home/najib/math/texmf/bibtex/bib"))
+ '(ebib-bib-search-dirs '("/home/najib/math/texmf/bibtex/bib") t)
  '(ebib-bibtex-dialect 'biblatex)
  '(ebib-file-associations
    '(("pdf" . "setsid xdg-open %s")
      ("ps" . "setsid xdg-open %s")
      ("djvu" . "setsid xdg-open %s")))
- '(ebib-file-search-dirs '("/mnt/e/nextcloud/papers"))
+ '(ebib-file-search-dirs '("/mnt/e/nextcloud/papers") t)
  '(ebib-index-columns
    '(("Entry Key" 20 t)
      ("Year" 6 nil)
@@ -251,7 +252,7 @@
      ("PRÉVU" . "purple")))
  '(org-use-speed-commands t)
  '(package-selected-packages
-   '(composite json-mode reftex htmlize typescript-mode which-key lsp-ivy lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line go-mode ssh-agency tup-mode openwith-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package zenburn-theme yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window))
+   '(doom-themes composite json-mode reftex htmlize typescript-mode which-key lsp-ivy lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line go-mode ssh-agency tup-mode openwith-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window))
  '(prettify-symbols-unprettify-at-point t)
  '(preview-gs-command "gswin64c.exe")
  '(preview-gs-options

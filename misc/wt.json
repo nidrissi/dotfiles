@@ -37,7 +37,7 @@
         "name": "Windows PowerShell",
         "commandline": "powershell.exe",
         "colorScheme" : "Campbell Powershell",
-	"fontFace": "Cascadia Code PL",
+	    "fontFace": "Cascadia Code PL",
         "hidden": false
       },
       {
@@ -52,9 +52,9 @@
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "hidden": false,
         "name": "Ubuntu",
-        "colorScheme" : "Zenburn",
+        "colorScheme" : "doom-vibrant",
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\najib",
-	"fontFace": "Cascadia Code",
+	    "fontFace": "Cascadia Code",
         "source": "Windows.Terminal.Wsl"
       },
       {
@@ -89,6 +89,30 @@
       "red" : "#D78787",
       "white" : "#DCDCCC",
       "yellow" : "#DFAF8F"
+    },
+    {
+      "name": "doom-vibrant",
+      
+      "background" : "#242730",
+      "foreground" : "#bbc2cf",
+
+      "black" : "#1C1F24",
+      "blue" : "#51AFEF",
+      "cyan" : "#5CEFFF",
+      "green" : "#7BC275",
+      "purple" : "#C57BDB",
+      "red" : "#FF665C",
+      "white" : "#DFDFDF",
+      "yellow" : "#FCCE7B",
+      // obtained using doom-lighten
+      "brightBlack" : "#54575a",
+      "brightBlue" : "#7CC3F3",
+      "brightCyan" : "#84F3FF",
+      "brightGreen" : "#9CD197",
+      "brightPurple" : "#D39CE3",
+      "brightRed" : "#FF8C84",
+      "brightWhite" : "#E7E7E7",
+      "brightYellow" : "#fcda9c"
     }
   ],
 

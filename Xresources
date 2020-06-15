@@ -3,32 +3,32 @@
 ! urxvt
 URxvt*scrollBar: False
 
-URxvt*font: xft:DejaVu Sans Mono:antialias=true:hinting=true:size=11
+URxvt*font: xft:Cascadia Code:antialias=true:hinting=true:size=11
 
 URxvt*depth: 32
-URxvt*background: [92]#3f3f3f
-URxvt*foreground: #dcdccc
+URxvt*background: [92]#242730
+URxvt*foreground: #bbc2cf
 
 URxvt*fading: 10
 URxvt*fadeColor: [0]#3f3f3f
 
-!! Zenburn
-URxvt*color0: #3f3f3f
-URxvt*color1: #705050
-URxvt*color2: #60b48a
-URxvt*color3: #dfaf8f
-URxvt*color4: #5c7ca0
-URxvt*color5: #dc8cc3
-URxvt*color6: #8cd1d3
-URxvt*color7: #dcdccc
-URxvt*color8: #709080
-URxvt*color9: #dca3a3
-URxvt*color10: #c3bf9f
-URxvt*color11: #f0dfaf
-URxvt*color12: #94c0f3
-URxvt*color13: #ec93d3
-URxvt*color14: #93e1e3
-URxvt*color15: #ffffff
+!! doom-vibrant
+URxvt*color0: #1C1F24
+URxvt*color1: #FF665C
+URxvt*color2: #7BC275
+URxvt*color3: #FCCE7B
+URxvt*color4: #51AFEF
+URxvt*color5: #C57BDB
+URxvt*color6: #5CEFFF
+URxvt*color7: #DFDFDF
+URxvt*color8: #54575a
+URxvt*color9: #FF8C84
+URxvt*color10: #9CD197
+URxvt*color11: #D39CE3
+URxvt*color12: #7CC3F3
+URxvt*color13: #D39CE3
+URxvt*color14: #84F3FF
+URxvt*color15: #E7E7E7
 
 !! click links
 URxvt*perl-ext-common:  default,matcher

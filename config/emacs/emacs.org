@@ -1,4 +1,4 @@
-*#+TITLE: emacs.org
+#+TITLE: emacs.org
 #+AUTHOR: Najib
 
 * Initialisation
@@ -75,11 +75,12 @@
          (set-char-table-parent composition-ligature-table composition-function-table)))
    #+END_SRC
 ** themes
-*** zenburn
+*** theme
     #+BEGIN_SRC emacs-lisp
-     (use-package zenburn-theme
-       :init
-       (load-theme 'zenburn t))
+      (use-package doom-themes
+        :config
+        (load-theme 'doom-vibrant t)
+        (doom-themes-org-config))
     #+END_SRC
 *** smart-mode-line
     #+BEGIN_SRC emacs-lisp
@@ -153,25 +154,20 @@
 ** ivy
    #+BEGIN_SRC emacs-lisp
      (use-package ivy
-       :diminish ivy-mode
+       :diminish (ivy-mode counsel-mode)
        :hook
        (after-init . ivy-mode)
        :custom
        (counsel-find-file-ignore-regexp (concat (regexp-opt completion-ignored-extensions) "\\'"))
        :bind
        (("C-s" . swiper)
-        ("M-x" . counsel-M-x)
-        ("M-y" . counsel-yank-pop)
-        ("C-x C-f" . counsel-find-file)
         ("C-!" . ivy-switch-buffer)
-        ("<f1> f" . counsel-describe-function)
-        ("<f1> v" . counsel-describe-variable)
-        ("<f1> l" . counsel-find-library)
         ("<f2> i" . counsel-info-lookup-symbol)
         ("<f2> u" . counsel-unicode-char)
         ("C-c j" . counsel-rg)
-        ("C-c r" . counsel-mark-ring)
-        ("C-c C-r" . ivy-resume)))
+        ("C-c C-r" . ivy-resume))
+       :config
+       (counsel-mode))
      (use-package ivy-hydra)
    #+END_SRC
 *** ivy icons
@@ -394,7 +390,7 @@
      (use-package rainbow-delimiters
        :ensure t
        :commands rainbow-delimiters-mode
-       :hook (prog-mode . rainbow-delimiters-mode))
+       :hook ((prog-mode LaTeX-mode) . rainbow-delimiters-mode))
    #+END_SRC
 * Git
 ** Magit
