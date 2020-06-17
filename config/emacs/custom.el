@@ -6,7 +6,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight ((t (:background "#0a4b5b"))))
- '(org-archived ((t (:foreground "dim gray" :weight normal))))
  '(org-todo ((t (:foreground "firebrick" :weight bold)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
