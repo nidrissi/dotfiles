@@ -198,12 +198,13 @@
     #+END_SRC
 ** smartparens
    #+BEGIN_SRC emacs-lisp
-     (use-package smartparens-config
-       :ensure smartparens
-       :diminish smartparens-mode
+     (use-package smartparens
+       :diminish
        :hook
        ((after-init . smartparens-global-mode)
-        (after-init . sp-use-smartparens-bindings)))
+        (after-init . sp-use-smartparens-bindings))
+       :config
+       (require 'smartparens-config))
    #+END_SRC
 ** which-key
    #+BEGIN_SRC emacs-lisp
