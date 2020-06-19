@@ -144,8 +144,8 @@
  '(menu-bar-mode nil)
  '(midnight-mode t)
  '(openwith-associations
-   '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "setsid -w xdg-open"
-      (file))) nil nil "Customized with use-package openwith")
+   '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "xdg-open"
+      (file))))
  '(org-agenda-custom-commands
    '(("n" "Agenda and all TODOs"
       ((agenda "" nil)

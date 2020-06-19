@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=wslopen
+Comment=Open file with Windows's start
+Exec=wslopen
+Terminal=false
