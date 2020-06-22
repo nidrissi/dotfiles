@@ -85,13 +85,13 @@
  '(delete-old-versions t)
  '(dired-listing-switches "-alh")
  '(ebib-allow-identical-fields t)
- '(ebib-bib-search-dirs '("/home/najib/math/texmf/bibtex/bib") t)
+ '(ebib-bib-search-dirs '("/home/najib/math/texmf/bibtex/bib"))
  '(ebib-bibtex-dialect 'biblatex)
  '(ebib-file-associations
    '(("pdf" . "setsid xdg-open %s")
      ("ps" . "setsid xdg-open %s")
      ("djvu" . "setsid xdg-open %s")))
- '(ebib-file-search-dirs '("/mnt/e/nextcloud/papers") t)
+ '(ebib-file-search-dirs '("/mnt/e/nextcloud/papers"))
  '(ebib-index-columns
    '(("Entry Key" 20 t)
      ("Year" 6 nil)
@@ -208,7 +208,7 @@
      ("PRÉVU" . "purple")))
  '(org-use-speed-commands t)
  '(package-selected-packages
-   '(elfeed doom-themes composite json-mode reftex htmlize typescript-mode which-key lsp-ivy lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line go-mode ssh-agency tup-mode openwith-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window))
+   '(yasnippet elfeed doom-themes composite json-mode reftex htmlize typescript-mode which-key lsp-ivy lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line go-mode ssh-agency tup-mode openwith-mode sass-mode web-mode tide multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme auctex ace-window))
  '(prettify-symbols-unprettify-at-point t)
  '(projectile-completion-system 'ivy)
  '(projectile-globally-ignored-file-suffixes
