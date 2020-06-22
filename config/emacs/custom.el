@@ -181,7 +181,6 @@
 ** TODO État de frais" :time-prompt t)))
  '(org-clock-idle-time 10)
  '(org-default-notes-file "~/org/refile.org")
- '(org-display-custom-times t)
  '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
  '(org-log-done 'time)
@@ -196,7 +195,6 @@
  '(org-refile-targets '((org-agenda-files :maxlevel . 2)))
  '(org-special-ctrl-a/e t)
  '(org-startup-truncated nil)
- '(org-time-stamp-custom-formats '("<%a %d/%m/%y>" . "<%a %d/%m/%y %H:%M>"))
  '(org-todo-keyword-faces
    '(("WIP" . org-todo)
      ("PRE" . org-todo)
