@@ -125,8 +125,6 @@ setopt prompt_subst
 export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %F{cyan}${vcs_info_msg_0_}%F{red}%#%f%b '
 export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
 
-export RPROMPT='[%T]'
-
 # title & vcs info
 function __my_title {
     case $TERM in

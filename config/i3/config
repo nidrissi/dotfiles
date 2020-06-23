@@ -3,7 +3,7 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:DejaVu Sans 12
+font pango:Cascadia Mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -12,7 +12,7 @@ floating_modifier $mod
 workspace_layout tabbed
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+a kill
@@ -160,7 +160,7 @@ assign [class="^okular$"] $ws4
 
 # Start i3bar to display a workspace bar
 bar {
-    font pango:DejaVu Sans 16
+    font pango:Cascadia Mono 16
 #    tray_output HDMI-2
     tray_padding 0
     status_command i3status
@@ -171,6 +171,5 @@ bar {
 # Starting things with i3
 exec --no-startup-id compton -C &
 exec --no-startup-id feh --bg-scale ~/nextcloud/img/wallpaper.jpg &
-exec --no-startup-id urxvtd -q -o -f &
 exec nextcloud &
 #exec --no-startup-id mpd &
