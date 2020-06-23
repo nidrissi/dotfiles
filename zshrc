@@ -104,6 +104,9 @@ case $HOST in
     'framboise')
         __my_color='#C41949';
         ;;
+    'diskoid')
+        __my_color='magenta'
+        ;;
     *)
         __my_color='blue'
         ;;
