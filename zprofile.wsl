@@ -1,4 +1,6 @@
-# .zprofile.wsl -*- sh -*-
+# zprofile.wsl -*- sh -*-
+# ~/.zprofile when using WSL
+# read by zsh (can't do better)
 
 # vcxsrv
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
