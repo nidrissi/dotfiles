@@ -19,8 +19,8 @@ load {
 }
 
 ethernet _first_ {
-    format_up = "Ω %ip"
-    format_down = "Ω down"
+    format_up = "🖧%ip"
+    format_down = "🖧down"
 }
 
 volume master {
