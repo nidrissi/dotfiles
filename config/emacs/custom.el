@@ -15,9 +15,6 @@
  '(blink-cursor-mode nil)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
- '(company-idle-delay 0.0)
- '(company-minimum-prefix-length 1)
- '(company-tooltip-align-annotations t)
  '(completion-ignored-extensions
    '(".hi" ".o" "~" ".bin" ".bak" ".obj" ".map" ".pif" ".lnk" ".a" ".ln" ".blg" ".bbl" ".dll" ".drv" ".vxd" ".386" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".fls" ".fdb_latexmk" ".run.xml" ".synctex.gz" "-blx.bib" ".nav" ".out" ".snm" ".log" ".bcf" ".ilg" ".ind" ".tdo"))
  '(confirm-kill-emacs 'yes-or-no-p)
@@ -59,7 +56,6 @@
  '(set-mark-command-repeat-pop t)
  '(tab-width 4)
  '(tool-bar-mode nil)
- '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(vc-follow-symlinks t)
  '(version-control t)
  '(visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
