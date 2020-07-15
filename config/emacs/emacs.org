@@ -380,23 +380,23 @@
              t))
         (reftex-insert-label-flags '("s" "asft"))
         (reftex-label-alist
-         '(("theorem" 97 "thm:" "~\\ref{%s}" t
+         '(("theorem" ?a "thm:" "~\\ref{%s}" t
             ("theorem"))
-           ("theoremintro" 97 "thm:" "~\\ref{%s}" t
+           ("theoremintro" ?a "thm:" "~\\ref{%s}" t
             ("theorem"))
-           ("proposition" 97 "prop:" "~\\ref{%s}" t
+           ("proposition" ?a "prop:" "~\\ref{%s}" t
             ("proposition"))
-           ("corollary" 97 "cor:" "~\\ref{%s}" t
+           ("corollary" ?a "cor:" "~\\ref{%s}" t
             ("corollary"))
-           ("lemma" 97 "lem:" "~\\ref{%s}" t
+           ("lemma" ?a "lem:" "~\\ref{%s}" t
             ("lemma"))
-           ("definition" 97 "def:" "~\\ref{%s}" t
+           ("definition" ?a "def:" "~\\ref{%s}" t
             ("definition"))
-           ("example" 97 "exa:" "~\\ref{%s}" t
+           ("example" ?a "exa:" "~\\ref{%s}" t
             ("example"))
-           ("remark" 97 "rmk:" "~\\ref{%s}" t
+           ("remark" ?a "rmk:" "~\\ref{%s}" t
             ("remark"))
-           ("conjecture" 97 "conj:" nil t
+           ("conjecture" ?a "conj:" nil t
             ("conjecture"))))
         (reftex-label-ignored-macros-and-environments '("tikzpicture" "tikzcd"))
         (reftex-plug-into-AUCTeX t))
@@ -453,9 +453,9 @@
            (4 "" "" t)))
         (LaTeX-math-abbrev-prefix "²")
         (LaTeX-math-list
-         '((111 "circ" "Ring operator" 8728)
-           (75 "Bbbk" "Blackboard bold k" 120156)
-           (224 "otimes" "Circled times" 8855)))
+         '((?o "circ" "Ring operator" ?∘)
+           (?K "Bbbk" "Blackboard bold k" ?𝕜)
+           (?à "otimes" "Circled times" ?⊗)))
         (TeX-PDF-mode t)
         (TeX-auto-save t)
         (TeX-complete-expert-commands t)
