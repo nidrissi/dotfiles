@@ -385,7 +385,7 @@
         :config
         (add-to-list 'reftex-bibliography-commands "addbibresource")
         (setq reftex-default-bibliography
-              (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME")))
+              (list (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
         :custom
         (reftex-derive-label-parameters
          '(3 20 t 1 "-"
