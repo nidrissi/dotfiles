@@ -338,6 +338,222 @@
       :custom-face
       (org-todo ((t (:foreground "firebrick" :weight bold)))))
   #+END_SRC
+* LaTeX
+** reftex
+   Must come before latex.
+   #+BEGIN_SRC emacs-lisp
+     (use-package reftex
+       :if window-system
+       :defer t
+       :config
+       (add-to-list 'reftex-bibliography-commands "addbibresource")
+       (setq reftex-default-bibliography
+             (list (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
+       :custom
+       (reftex-derive-label-parameters
+        '(3 20 t 1 "-"
+            ("the" "on" "in" "off" "a" "for" "by" "of" "and" "is" "to" "et" "le" "la" "les" "un" "une")
+            t))
+       (reftex-insert-label-flags '("s" "asft"))
+       (reftex-label-alist
+        '(("theorem" ?a "thm:" "~\\ref{%s}" t
+           ("theorem"))
+          ("theoremintro" ?a "thm:" "~\\ref{%s}" t
+           ("theorem"))
+          ("proposition" ?a "prop:" "~\\ref{%s}" t
+           ("proposition"))
+          ("corollary" ?a "cor:" "~\\ref{%s}" t
+           ("corollary"))
+          ("lemma" ?a "lem:" "~\\ref{%s}" t
+           ("lemma"))
+          ("definition" ?a "def:" "~\\ref{%s}" t
+           ("definition"))
+          ("example" ?a "exa:" "~\\ref{%s}" t
+           ("example"))
+          ("remark" ?a "rmk:" "~\\ref{%s}" t
+           ("remark"))
+          ("conjecture" ?a "conj:" nil t
+           ("conjecture"))))
+       (reftex-label-ignored-macros-and-environments '("tikzpicture" "tikzcd"))
+       (reftex-plug-into-AUCTeX t))
+   #+END_SRC
+** latex
+   #+BEGIN_SRC emacs-lisp
+     (use-package latex
+       :if window-system
+       :ensure auctex
+       :defer t
+       :mode ("\\.tex'" . latex-mode)
+       :bind (:map LaTeX-mode-map ("C-c C-k" . my/TeX-kill-job))
+       :hook
+       ((LaTeX-mode . turn-on-reftex)
+        (LaTeX-mode . turn-on-flyspell)
+        (LaTeX-mode . LaTeX-math-mode)
+        (LaTeX-mode . TeX-source-correlate-mode)
+        (LaTeX-mode . prettify-symbols-mode))
+       :config
+       ;; prettify!
+       (with-eval-after-load 'tex
+         (dolist
+             (elt '(("\\coloneqq" . ?≔) ("\\vartheta" . ?ϑ) ("\\varnothing" . ?∅) ("\\varpi" . ?ϖ) ("\\implies" . ?⟹) ("\\dots" . ?…) ("\\item" . ?*) ("\\og" . ?«) ("\\fg" . ?»)))
+           (add-to-list 'tex--prettify-symbols-alist elt)))
+       :custom
+       (LaTeX-command "latex -file-line-error")
+       (LaTeX-fill-break-at-separators '(\\\[ \\\]))
+       (LaTeX-font-list
+        '((11 "" "" "\\mathfrak{" "}")
+          (1 "" "" "\\mathcal{" "}")
+          (2 "\\textbf{" "}" "\\mathbf{" "}")
+          (3 "\\textsc{" "}")
+          (5 "\\emph{" "}")
+          (6 "\\textsf{" "}" "\\mathsf{" "}")
+          (9 "\\textit{" "}" "\\mathit{" "}")
+          (12 "\\textulc{" "}")
+          (13 "\\textmd{" "}")
+          (14 "\\textnormal{" "}" "\\mathnormal{" "}")
+          (18 "\\textrm{" "}" "\\mathrm{" "}")
+          (19 "\\textsl{" "}" "\\mathbb{" "}")
+          (20 "\\texttt{" "}" "\\mathtt{" "}")
+          (21 "\\textup{" "}")
+          (23 "\\textsw{" "}")
+          (4 "" "" t)))
+       (LaTeX-math-abbrev-prefix "²")
+       (LaTeX-math-list
+        '((?o "circ" "Ring operator" ?∘)
+          (?K "Bbbk" "Blackboard bold k" ?𝕜)
+          (?à "otimes" "Circled times" ?⊗)))
+       (TeX-PDF-mode t)
+       (TeX-auto-save t)
+       (TeX-complete-expert-commands t)
+       (TeX-electric-sub-and-superscript t)
+       (TeX-parse-self t)
+       (TeX-quote-language-alist '(("french" "\\og{}" "\\fg{}" nil)))
+       (TeX-source-correlate-method 'synctex)
+       (TeX-source-correlate-mode t)
+       (TeX-source-correlate-start-server t)
+       (TeX-view-program-selection
+        '((output-pdf "Okular")
+          ((output-dvi style-pstricks)
+           "dvips and gv")
+          (output-dvi "xdvi")
+          (output-html "xdg-open"))))
+
+     (defun my/TeX-kill-job ()
+       "Kill the currently running TeX job but ask for confirmation before."
+       (interactive)
+       (let ((process (TeX-active-process)))
+         (if process
+             (if (y-or-n-p "Kill current TeX process?")
+                 (kill-process process)
+               (error "Canceled kill."))
+           ;; Should test for TeX background process here.
+           (error "No TeX process to kill"))))
+
+   #+END_SRC
+** latexmk
+   #+BEGIN_SRC emacs-lisp
+     (use-package auctex-latexmk
+       :if window-system
+       :after latex
+       :commands auctex-latexmk-setup
+       :hook (LaTeX-mode . my/make-latexmk-default)
+       :init (auctex-latexmk-setup)
+       :custom (auctex-latexmk-inherit-TeX-PDF-mode t))
+
+     (defun my/make-latexmk-default ()
+       "Sets TeX-command-default to LatexMk, to be used in a hook."
+       (setq TeX-command-default "LatexMk"))
+   #+END_SRC
+** Fonts
+   Used for folding.
+   #+BEGIN_SRC emacs-lisp
+     (if (display-graphic-p)
+         (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ff) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
+           (set-fontset-font
+            "fontset-default"
+            (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
+            "STIX")))
+   #+END_SRC
+** ebib
+   #+BEGIN_SRC emacs-lisp
+     (use-package ebib
+       :if window-system
+       :bind ("C-c b" . ebib)
+       :custom
+       (ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME"))))
+       (ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir)))
+       (ebib-allow-identical-fields t)
+       (ebib-bibtex-dialect 'biblatex)
+       (ebib-file-associations
+        '(("pdf" . "setsid xdg-open %s")
+          ("ps" . "setsid xdg-open %s")
+          ("djvu" . "setsid xdg-open %s")))
+       (ebib-index-columns
+        '(("Entry Key" 20 t)
+          ("Year" 6 nil)
+          ("Author/Editor" 40 t)
+          ("Title" 60 t)
+          ("journaltitle" 50 nil)))
+       (ebib-keywords-field-keep-sorted t)
+       (ebib-keywords-file "ebib-keywords.txt")
+       (ebib-preload-bib-files '("mainbib.bib"))
+       (ebib-reading-list-file "~/org/ebib-list.org")
+       (ebib-reading-list-template "** %M %T
+        :PROPERTIES:
+        %K
+        :END:
+     ")
+       (ebib-timestamp-format "%Y.%m.%d")
+       (ebib-uniquify-keys t)
+       (ebib-use-timestamp t)
+       ;; Key generation
+       (bibtex-autokey-name-case-convert-function 'identity)
+       (bibtex-autokey-names 'infty)
+       (bibtex-autokey-titleword-length 0)
+       (bibtex-autokey-titleword-separator "")
+       (bibtex-autokey-titlewords 0)
+       (bibtex-autokey-year-length 4))
+   #+END_SRC
+** spell checking
+*** ispell
+    #+BEGIN_SRC emacs-lisp
+      (use-package ispell
+        :if window-system
+        :ensure nil
+        :defer t
+        :custom
+        (ispell-tex-skip-alists (list
+                                 (append
+                                  (car ispell-tex-skip-alists)
+                                  '(("\\\\cref" ispell-tex-arg-end)
+                                    ("\\\\Cref" ispell-tex-arg-end)
+                                    ("\\\\import" ispell-tex-arg-end 2)
+                                    ("\\\\textcite" ispell-tex-arg-end)))
+                                 (cadr ispell-tex-skip-alists)))
+        (ispell-dictionary "en_US")
+        (ispell-local-dictionary-alist
+         '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                ("-d" "en_US")
+                nil utf-8)
+           ("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+            ("-d" "en_US")
+            nil utf-8)
+           ("fr_FR" "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
+            ("-d" "fr_FR")
+            nil utf-8)))
+        (ispell-program-name "hunspell"))
+    #+END_SRC
+*** flyspell
+    #+BEGIN_SRC emacs-lisp
+      (use-package flyspell
+        :if window-system
+        :ensure nil
+        :defer t
+        :custom
+        (flyspell-tex-command-regexp
+         "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+        (flyspell-use-meta-tab nil))
+    #+END_SRC
 * Programming
 ** woman
    #+BEGIN_SRC emacs-lisp
@@ -373,222 +589,6 @@
         (flycheck-python-pycompile-executable "python3")
         (flycheck-python-pylint-executable "python3"))
     #+END_SRC
-** LaTeX
-*** reftex
-    Must come before latex.
-    #+BEGIN_SRC emacs-lisp
-      (use-package reftex
-        :if window-system
-        :defer t
-        :config
-        (add-to-list 'reftex-bibliography-commands "addbibresource")
-        (setq reftex-default-bibliography
-              (list (expand-file-name "bibtex/bib/mainbib.bib" (getenv "TEXMFHOME"))))
-        :custom
-        (reftex-derive-label-parameters
-         '(3 20 t 1 "-"
-             ("the" "on" "in" "off" "a" "for" "by" "of" "and" "is" "to" "et" "le" "la" "les" "un" "une")
-             t))
-        (reftex-insert-label-flags '("s" "asft"))
-        (reftex-label-alist
-         '(("theorem" ?a "thm:" "~\\ref{%s}" t
-            ("theorem"))
-           ("theoremintro" ?a "thm:" "~\\ref{%s}" t
-            ("theorem"))
-           ("proposition" ?a "prop:" "~\\ref{%s}" t
-            ("proposition"))
-           ("corollary" ?a "cor:" "~\\ref{%s}" t
-            ("corollary"))
-           ("lemma" ?a "lem:" "~\\ref{%s}" t
-            ("lemma"))
-           ("definition" ?a "def:" "~\\ref{%s}" t
-            ("definition"))
-           ("example" ?a "exa:" "~\\ref{%s}" t
-            ("example"))
-           ("remark" ?a "rmk:" "~\\ref{%s}" t
-            ("remark"))
-           ("conjecture" ?a "conj:" nil t
-            ("conjecture"))))
-        (reftex-label-ignored-macros-and-environments '("tikzpicture" "tikzcd"))
-        (reftex-plug-into-AUCTeX t))
-    #+END_SRC
-*** latex
-    #+BEGIN_SRC emacs-lisp
-      (use-package latex
-        :if window-system
-        :ensure auctex
-        :defer t
-        :mode ("\\.tex'" . latex-mode)
-        :bind (:map LaTeX-mode-map ("C-c C-k" . my/TeX-kill-job))
-        :hook
-        ((LaTeX-mode . turn-on-reftex)
-         (LaTeX-mode . turn-on-flyspell)
-         (LaTeX-mode . LaTeX-math-mode)
-         (LaTeX-mode . TeX-source-correlate-mode)
-         (LaTeX-mode . prettify-symbols-mode))
-        :config
-        ;; prettify!
-        (with-eval-after-load 'tex
-          (dolist
-              (elt '(("\\coloneqq" . ?≔) ("\\vartheta" . ?ϑ) ("\\varnothing" . ?∅) ("\\varpi" . ?ϖ) ("\\implies" . ?⟹) ("\\dots" . ?…) ("\\item" . ?*) ("\\og" . ?«) ("\\fg" . ?»)))
-            (add-to-list 'tex--prettify-symbols-alist elt)))
-        :custom
-        (LaTeX-command "latex -file-line-error")
-        (LaTeX-fill-break-at-separators '(\\\[ \\\]))
-        (LaTeX-font-list
-         '((11 "" "" "\\mathfrak{" "}")
-           (1 "" "" "\\mathcal{" "}")
-           (2 "\\textbf{" "}" "\\mathbf{" "}")
-           (3 "\\textsc{" "}")
-           (5 "\\emph{" "}")
-           (6 "\\textsf{" "}" "\\mathsf{" "}")
-           (9 "\\textit{" "}" "\\mathit{" "}")
-           (12 "\\textulc{" "}")
-           (13 "\\textmd{" "}")
-           (14 "\\textnormal{" "}" "\\mathnormal{" "}")
-           (18 "\\textrm{" "}" "\\mathrm{" "}")
-           (19 "\\textsl{" "}" "\\mathbb{" "}")
-           (20 "\\texttt{" "}" "\\mathtt{" "}")
-           (21 "\\textup{" "}")
-           (23 "\\textsw{" "}")
-           (4 "" "" t)))
-        (LaTeX-math-abbrev-prefix "²")
-        (LaTeX-math-list
-         '((?o "circ" "Ring operator" ?∘)
-           (?K "Bbbk" "Blackboard bold k" ?𝕜)
-           (?à "otimes" "Circled times" ?⊗)))
-        (TeX-PDF-mode t)
-        (TeX-auto-save t)
-        (TeX-complete-expert-commands t)
-        (TeX-electric-sub-and-superscript t)
-        (TeX-parse-self t)
-        (TeX-quote-language-alist '(("french" "\\og{}" "\\fg{}" nil)))
-        (TeX-source-correlate-method 'synctex)
-        (TeX-source-correlate-mode t)
-        (TeX-source-correlate-start-server t)
-        (TeX-view-program-selection
-         '((output-pdf "Okular")
-           ((output-dvi style-pstricks)
-            "dvips and gv")
-           (output-dvi "xdvi")
-           (output-html "xdg-open"))))
-
-      (defun my/TeX-kill-job ()
-        "Kill the currently running TeX job but ask for confirmation before."
-        (interactive)
-        (let ((process (TeX-active-process)))
-          (if process
-              (if (y-or-n-p "Kill current TeX process?")
-                  (kill-process process)
-                (error "Canceled kill."))
-            ;; Should test for TeX background process here.
-            (error "No TeX process to kill"))))
-
-    #+END_SRC
-*** latexmk
-    #+BEGIN_SRC emacs-lisp
-      (use-package auctex-latexmk
-        :if window-system
-        :after latex
-        :commands auctex-latexmk-setup
-        :hook (LaTeX-mode . my/make-latexmk-default)
-        :init (auctex-latexmk-setup)
-        :custom (auctex-latexmk-inherit-TeX-PDF-mode t))
-
-      (defun my/make-latexmk-default ()
-        "Sets TeX-command-default to LatexMk, to be used in a hook."
-        (setq TeX-command-default "LatexMk"))
-    #+END_SRC
-*** Fonts
-    Used for folding.
-    #+BEGIN_SRC emacs-lisp
-      (if (display-graphic-p)
-          (dolist (range '((#x2200 . #x23ff) (#x27c0 . #x27ff) (#x2980 . #x2bff) (#x1d400 . #x1d7ff)))
-            (set-fontset-font
-             "fontset-default"
-             (cons (decode-char 'ucs (car range)) (decode-char 'ucs (cdr range)))
-             "STIX")))
-    #+END_SRC
-*** ebib
-    #+BEGIN_SRC emacs-lisp
-      (use-package ebib
-        :if window-system
-        :bind ("C-c b" . ebib)
-        :custom
-        (ebib-bib-search-dirs (list (expand-file-name "bibtex/bib" (getenv "TEXMFHOME"))))
-        (ebib-file-search-dirs (list (expand-file-name "papers" my/nextcloud-dir)))
-        (ebib-allow-identical-fields t)
-        (ebib-bibtex-dialect 'biblatex)
-        (ebib-file-associations
-         '(("pdf" . "setsid xdg-open %s")
-           ("ps" . "setsid xdg-open %s")
-           ("djvu" . "setsid xdg-open %s")))
-        (ebib-index-columns
-         '(("Entry Key" 20 t)
-           ("Year" 6 nil)
-           ("Author/Editor" 40 t)
-           ("Title" 60 t)
-           ("journaltitle" 50 nil)))
-        (ebib-keywords-field-keep-sorted t)
-        (ebib-keywords-file "ebib-keywords.txt")
-        (ebib-preload-bib-files '("mainbib.bib"))
-        (ebib-reading-list-file "~/org/ebib-list.org")
-        (ebib-reading-list-template "** %M %T
-         :PROPERTIES:
-         %K
-         :END:
-      ")
-        (ebib-timestamp-format "%Y.%m.%d")
-        (ebib-uniquify-keys t)
-        (ebib-use-timestamp t)
-        ;; Key generation
-        (bibtex-autokey-name-case-convert-function 'identity)
-        (bibtex-autokey-names 'infty)
-        (bibtex-autokey-titleword-length 0)
-        (bibtex-autokey-titleword-separator "")
-        (bibtex-autokey-titlewords 0)
-        (bibtex-autokey-year-length 4))
-    #+END_SRC
-*** spell checking
-**** ispell
-     #+BEGIN_SRC emacs-lisp
-       (use-package ispell
-         :if window-system
-         :ensure nil
-         :defer t
-         :custom
-         (ispell-tex-skip-alists (list
-                                  (append
-                                   (car ispell-tex-skip-alists)
-                                   '(("\\\\cref" ispell-tex-arg-end)
-                                     ("\\\\Cref" ispell-tex-arg-end)
-                                     ("\\\\import" ispell-tex-arg-end 2)
-                                     ("\\\\textcite" ispell-tex-arg-end)))
-                                  (cadr ispell-tex-skip-alists)))
-         (ispell-dictionary "en_US")
-         (ispell-local-dictionary-alist
-          '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-                 ("-d" "en_US")
-                 nil utf-8)
-            ("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-             ("-d" "en_US")
-             nil utf-8)
-            ("fr_FR" "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
-             ("-d" "fr_FR")
-             nil utf-8)))
-         (ispell-program-name "hunspell"))
-     #+END_SRC
-**** flyspell
-     #+BEGIN_SRC emacs-lisp
-       (use-package flyspell
-         :if window-system
-         :ensure nil
-         :defer t
-         :custom
-         (flyspell-tex-command-regexp
-          "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
-         (flyspell-use-meta-tab nil))
-     #+END_SRC
 ** julia
    #+BEGIN_SRC emacs-lisp
      (use-package julia-mode
