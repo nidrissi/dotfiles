@@ -26,23 +26,10 @@
       (vertical-scroll-bars . right)))
  '(delete-old-versions t)
  '(echo-keystrokes 0.1)
- '(flyspell-use-meta-tab nil)
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(ispell-dictionary "en_US")
- '(ispell-local-dictionary-alist
-   '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-          ("-d" "en_US")
-          nil utf-8)
-     ("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" t
-      ("-d" "en_US")
-      nil utf-8)
-     ("fr_FR" "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
-      ("-d" "fr_FR")
-      nil utf-8)))
- '(ispell-program-name "hunspell")
  '(js-indent-level 2)
  '(load-prefer-newer t)
  '(menu-bar-mode nil)
@@ -56,7 +43,6 @@
  '(set-mark-command-repeat-pop t)
  '(tab-width 4)
  '(tool-bar-mode nil)
- '(vc-follow-symlinks t)
  '(version-control t)
  '(visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
  '(x-underline-at-descent-line t))

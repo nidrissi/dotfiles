@@ -371,9 +371,7 @@
         :custom
         (flycheck-python-flake8-executable "python3")
         (flycheck-python-pycompile-executable "python3")
-        (flycheck-python-pylint-executable "python3")
-        (flyspell-tex-command-regexp
-          "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)"))
+        (flycheck-python-pylint-executable "python3"))
     #+END_SRC
 ** LaTeX
 *** reftex
@@ -428,16 +426,6 @@
          (LaTeX-mode . LaTeX-math-mode)
          (LaTeX-mode . TeX-source-correlate-mode)
          (LaTeX-mode . prettify-symbols-mode))
-        :init
-        (setq ispell-tex-skip-alists
-              (list
-               (append
-                (car ispell-tex-skip-alists)
-                '(("\\\\cref" ispell-tex-arg-end)
-                  ("\\\\Cref" ispell-tex-arg-end)
-                  ("\\\\import" ispell-tex-arg-end 2)
-                  ("\\\\textcite" ispell-tex-arg-end)))
-               (cadr ispell-tex-skip-alists)))
         :config
         ;; prettify!
         (with-eval-after-load 'tex
@@ -561,6 +549,46 @@
         (bibtex-autokey-titlewords 0)
         (bibtex-autokey-year-length 4))
     #+END_SRC
+*** spell checking
+**** ispell
+     #+BEGIN_SRC emacs-lisp
+       (use-package ispell
+         :if window-system
+         :ensure nil
+         :defer t
+         :custom
+         (ispell-tex-skip-alists (list
+                                  (append
+                                   (car ispell-tex-skip-alists)
+                                   '(("\\\\cref" ispell-tex-arg-end)
+                                     ("\\\\Cref" ispell-tex-arg-end)
+                                     ("\\\\import" ispell-tex-arg-end 2)
+                                     ("\\\\textcite" ispell-tex-arg-end)))
+                                  (cadr ispell-tex-skip-alists)))
+         (ispell-dictionary "en_US")
+         (ispell-local-dictionary-alist
+          '((nil "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+                 ("-d" "en_US")
+                 nil utf-8)
+            ("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" t
+             ("-d" "en_US")
+             nil utf-8)
+            ("fr_FR" "[[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^[:alpha:]ÀÂÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t
+             ("-d" "fr_FR")
+             nil utf-8)))
+         (ispell-program-name "hunspell"))
+     #+END_SRC
+**** flyspell
+     #+BEGIN_SRC emacs-lisp
+       (use-package flyspell
+         :if window-system
+         :ensure nil
+         :defer t
+         :custom
+         (flyspell-tex-command-regexp
+          "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|textcite\\|label\\|c?ref\\|eqref\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+         (flyspell-use-meta-tab nil))
+     #+END_SRC
 ** julia
    #+BEGIN_SRC emacs-lisp
      (use-package julia-mode
