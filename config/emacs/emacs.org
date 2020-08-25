@@ -552,7 +552,14 @@
       ")
         (ebib-timestamp-format "%Y.%m.%d")
         (ebib-uniquify-keys t)
-        (ebib-use-timestamp t))
+        (ebib-use-timestamp t)
+        ;; Key generation
+        (bibtex-autokey-name-case-convert-function 'identity)
+        (bibtex-autokey-names 'infty)
+        (bibtex-autokey-titleword-length 0)
+        (bibtex-autokey-titleword-separator "")
+        (bibtex-autokey-titlewords 0)
+        (bibtex-autokey-year-length 4))
     #+END_SRC
 ** julia
    #+BEGIN_SRC emacs-lisp
