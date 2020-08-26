@@ -356,24 +356,24 @@
             t))
        (reftex-insert-label-flags '("s" "asft"))
        (reftex-label-alist
-        '(("theorem" ?a "thm:" "~\\ref{%s}" t
-           ("theorem"))
-          ("theoremintro" ?a "thm:" "~\\ref{%s}" t
-           ("theorem"))
-          ("proposition" ?a "prop:" "~\\ref{%s}" t
-           ("proposition"))
-          ("corollary" ?a "cor:" "~\\ref{%s}" t
-           ("corollary"))
-          ("lemma" ?a "lem:" "~\\ref{%s}" t
-           ("lemma"))
-          ("definition" ?a "def:" "~\\ref{%s}" t
-           ("definition"))
-          ("example" ?a "exa:" "~\\ref{%s}" t
-           ("example"))
-          ("remark" ?a "rmk:" "~\\ref{%s}" t
-           ("remark"))
-          ("conjecture" ?a "conj:" nil t
-           ("conjecture"))))
+        '(("theorem" ?T "thm:" "~\\ref{%s}" t
+           (regexp "theorems?" "théorèmes?"))
+          ("theoremintro" ?T "thm:" "~\\ref{%s}" t
+           (regexp "theorems?" "théorèmes?"))
+          ("proposition" ?P "prop:" "~\\ref{%s}" t
+           (regexp "propositions?"))
+          ("corollary" ?C "cor:" "~\\ref{%s}" t
+           (regexp "corollary" "corollaries" "corollaires?"))
+          ("lemma" ?L "lem:" "~\\ref{%s}" t
+           (regexp "lemm[ea]s?"))
+          ("definition" ?D "def:" "~\\ref{%s}" t
+           (regexp "d[eé]finitions?"))
+          ("example" ?E "exa:" "~\\ref{%s}" t
+           (regexp "ex[ae]mples?"))
+          ("remark" ?R "rmk:" "~\\ref{%s}" t
+           (regexp "remarks?" "remarques?"))
+          ("conjecture" ?K "conj:" nil t
+           (regexp "conjectures?"))))
        (reftex-label-ignored-macros-and-environments '("tikzpicture" "tikzcd"))
        (reftex-plug-into-AUCTeX t))
    #+END_SRC
