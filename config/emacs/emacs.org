@@ -179,6 +179,8 @@
        (after-init . ivy-mode)
        :custom
        (counsel-find-file-ignore-regexp (concat (regexp-opt completion-ignored-extensions) "\\'"))
+       (counsel-rg-base-command
+       '("rg" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"))
        (ivy-count-format "(%d/%d) ")
        (ivy-use-virtual-buffers t)
        :bind
