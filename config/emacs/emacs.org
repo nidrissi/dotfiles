@@ -356,25 +356,43 @@
         '(3 20 t 1 "-"
             ("the" "on" "in" "off" "a" "for" "by" "of" "and" "is" "to" "et" "le" "la" "les" "un" "une")
             t))
-       (reftex-insert-label-flags '("s" "asft"))
+       (reftex-insert-label-flags '("sTPCLDERK" "sftTPCLDERK"))
        (reftex-label-alist
         '(("theorem" ?T "thm:" "~\\ref{%s}" t
-           (regexp "theorems?" "théorèmes?"))
+           (regexp "theorems?"))
           ("theoremintro" ?T "thm:" "~\\ref{%s}" t
-           (regexp "theorems?" "théorèmes?"))
+           (regexp "theorems?"))
+          ("théorème" ?T "thm:" "~\\ref{%s}" t
+           (regexp "théorèmes?"))
+          ("théorèmeintro" ?T "thm:" "~\\ref{%s}" t
+           (regexp "théorèmes?"))
           ("proposition" ?P "prop:" "~\\ref{%s}" t
            (regexp "propositions?"))
           ("corollary" ?C "cor:" "~\\ref{%s}" t
-           (regexp "corollary" "corollaries" "corollaires?"))
+           ("corollary" "corollaries"))
+          ("corollaryintro" ?C "cor:" "~\\ref{%s}" t
+           ("corollary" "corollaries"))
+          ("corollaire" ?C "cor:" "~\\ref{%s}" t
+           (regexp "corollaires?"))
+          ("corollaireintro" ?C "cor:" "~\\ref{%s}" t
+           (regexp "corollaires?"))
           ("lemma" ?L "lem:" "~\\ref{%s}" t
-           (regexp "lemm[ea]s?"))
+           (regexp "lemmas?"))
+          ("lemme" ?L "lem:" "~\\ref{%s}" t
+           (regexp "lemmes?"))
           ("definition" ?D "def:" "~\\ref{%s}" t
-           (regexp "d[eé]finitions?"))
+           (regexp "definitions?"))
+          ("définition" ?D "def:" "~\\ref{%s}" t
+           (regexp "définitions?"))
           ("example" ?E "exa:" "~\\ref{%s}" t
-           (regexp "ex[ae]mples?"))
+           (regexp "examples?"))
+          ("exemple" ?E "exa:" "~\\ref{%s}" t
+           (regexp "exemples?"))
           ("remark" ?R "rmk:" "~\\ref{%s}" t
-           (regexp "remarks?" "remarques?"))
-          ("conjecture" ?K "conj:" nil t
+           (regexp "remarks?"))
+          ("remarque" ?R "rmk:" "~\\ref{%s}" t
+           (regexp "remarques?"))
+          ("conjecture" ?K "conj:" "~\\ref{%s}" t
            (regexp "conjectures?"))))
        (reftex-label-ignored-macros-and-environments '("tikzpicture" "tikzcd"))
        (reftex-plug-into-AUCTeX t))
