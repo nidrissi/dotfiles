@@ -356,7 +356,8 @@
         '(3 20 t 1 "-"
             ("the" "on" "in" "off" "a" "for" "by" "of" "and" "is" "to" "et" "le" "la" "les" "un" "une")
             t))
-       (reftex-insert-label-flags '("sTPCLDERK" "sftTPCLDERK"))
+       ;; 1 = deduce from context, 2 = prompt
+       (reftex-insert-label-flags '("s" "sftTPCLDERK"))
        (reftex-label-alist
         '(("theorem" ?T "thm:" "~\\ref{%s}" t
            (regexp "theorems?"))
