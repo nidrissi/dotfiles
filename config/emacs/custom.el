@@ -5,7 +5,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight ((t (:background "#0a4b5b")))))
+ '(highlight ((t (:background "#0a4b5b"))))
+ '(org-todo ((t (:foreground "firebrick" :weight bold)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -35,7 +36,7 @@
  '(menu-bar-mode nil)
  '(midnight-mode t)
  '(package-selected-packages
-   '(yasnippet elfeed doom-themes composite json-mode reftex htmlize which-key lsp-ivy lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line go-mode ssh-agency tup-mode openwith-mode sass-mode web-mode multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme ace-window))
+   '(realgud dap-mode yasnippet elfeed doom-themes composite json-mode reftex htmlize which-key lsp-ivy lsp-python-ms esup adaptive-wrap lsp-treemacs flycheck lsp-ui lsp-mode all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired diredfl uniquify dired-x smartparens-mode org elpy lua-mode glsl-mode julia-repl tuareg julia-mode ebib graphviz-dot-mode ivy smart-mode-line go-mode ssh-agency tup-mode openwith-mode sass-mode web-mode multiple-cursors diff-hl move-text gitconfig-mode gitignore-mode ivy-hydra counsel-projectile counsel anzu volatile-highlights-mode volatile-highlights smartparens company-emoji auctex-latexmk projectile-mode use-package yaml-mode visual-fill-column unicode-fonts undo-tree smart-mode-line-powerline-theme rainbow-delimiters openwith markdown-mode magit diminish cperl-mode company color-theme ace-window))
  '(prettify-symbols-unprettify-at-point t)
  '(python-shell-interpreter "python3")
  '(pyvenv-virtualenvwrapper-python "/usr/bin/python3")
