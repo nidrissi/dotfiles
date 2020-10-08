@@ -30,6 +30,7 @@ Gitler
 Goodwillie
 Gwilliam
 Hochschild
+Idrissi
 Kallel
 Kapranov
 Khovanov
@@ -71,6 +72,7 @@ Willwacher
 abelian
 acyclic
 bicolored
+bijections
 coaction
 cobordism
 cochains
@@ -84,7 +86,10 @@ combinatorial
 comodule
 compactification
 compactifications
+compactify
+computable
 connectedness
+cooperad
 dimensionality
 embeddings
 equivariance
@@ -98,13 +103,16 @@ homotopy
 homotopy
 hypergraph
 indecomposables
+injective
 invariance
 invariants
+isomorphisms
 levelwise
 linearization
 monoid
 monotonicity
 morphism
+nondegenerate
 operad
 operad
 operadic
@@ -117,7 +125,7 @@ poset
 projective
 rescalings
 submanifolds
+submersions
 tricolored
 trivializations
 unital
-Idrissi
