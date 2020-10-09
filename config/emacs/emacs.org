@@ -497,6 +497,10 @@
    #+END_SRC
 ** ebib
    #+BEGIN_SRC emacs-lisp
+     (setq my/ebib-pdf-opener
+           (if (executable-find "wslopen")
+               "wslopen %s"
+             "setsid xdg-open %s"))
      (use-package ebib
        :if window-system
        :bind
@@ -512,9 +516,9 @@
        (ebib-allow-identical-fields t)
        (ebib-bibtex-dialect 'biblatex)
        (ebib-file-associations
-        '(("pdf" . "setsid xdg-open %s")
-          ("ps" . "setsid xdg-open %s")
-          ("djvu" . "setsid xdg-open %s")))
+        `(("pdf" . ,my/ebib-pdf-opener)
+          ("ps" . ,my/ebib-pdf-opener)
+          ("djvu" . ,my/ebib-pdf-opener)))
        (ebib-index-columns
         '(("Entry Key" 20 t)
           ("Year" 6 nil)
