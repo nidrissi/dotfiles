@@ -659,13 +659,24 @@
 ** Magit
    #+BEGIN_SRC emacs-lisp
      (use-package magit
-       :bind ("C-c m" . magit-status)
+       :bind
+       ("C-c m" . magit-status)
+       ("C-c M" . magit-list-repositories)
        :config
        (global-magit-file-mode)
        (setq magit-last-seen-setup-instructions "1.4.0")
        :custom
        (magit-diff-refine-hunk 'all)
-       (magit-section-initial-visibility-alist nil))
+       (magit-section-initial-visibility-alist nil)
+       (magit-repository-directories
+        '(("~/papers" . 1)
+          ("~/a2b" . 0)
+          ("~/cours" . 0)
+          ("~/dotfiles" . 0)
+          ("~/exposes" . 0)
+          ("~/math" . 0)
+          ("~/org" . 0)
+          ("~/web" . 0))))
    #+END_SRC
 ** diff-hl
    #+BEGIN_SRC emacs-lisp
