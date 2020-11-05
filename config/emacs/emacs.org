@@ -313,6 +313,7 @@
       (org-default-notes-file "~/org/refile.org")
       (org-enforce-todo-checkbox-dependencies t)
       (org-enforce-todo-dependencies t)
+      (org-file-apps '((auto-mode . emacs) (directory . emacs)))
       (org-log-done 'time)
       (org-lowest-priority 68)
       (org-modules '(ol-bibtex ol-docview ol-eww ol-info))
