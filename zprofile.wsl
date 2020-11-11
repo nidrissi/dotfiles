@@ -10,8 +10,7 @@ setxkbmap 'fr(oss)' &!
 
 # env
 export PATH="$HOME/.local/bin:$PATH"
-export EDITOR='emacsclient'
-export ALTERNATE_EDITOR='emacs'
+export EDITOR='code --wait'
 ## tex
 export PATH="$HOME/.texlive2020/bin/x86_64-linux:$PATH"
 export MANPATH="$HOME/.texlive2020/texmf-dist/doc/man:$MANPATH"
