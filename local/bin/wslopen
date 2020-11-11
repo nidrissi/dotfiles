@@ -3,4 +3,4 @@
 # horrible hack so that it works in emacs
 # see https://github.com/microsoft/WSL/4412
 _path=$(realpath $1)
-(cd /mnt/c && cmd.exe /c start "$(wslpath -w $_path)" 2>&1 > /dev/null)
+(cmd.exe /c start "$(wslpath -w $_path)" | tee)

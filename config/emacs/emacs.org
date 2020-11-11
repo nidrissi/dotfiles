@@ -98,7 +98,7 @@
        (after-init . openwith-mode)
        :custom
        (openwith-associations
-        '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "xdg-open"
+        '(("\\.\\(?:pdf\\|ps\\|png\\|jpg\\|jpeg\\|svgz?\\)\\'" "wslopen"
            (file)))))
    #+END_SRC
 ** company
