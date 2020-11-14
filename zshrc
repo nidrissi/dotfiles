@@ -148,7 +148,3 @@ zrecompile -p \
            -R ~/.zshrc -- \
            -R ~/.zprofile -- \
            -M ~/.zcompdump
-
-# syntax highlighting
-# must be last
-source $HOME/.zplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
