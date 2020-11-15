@@ -142,6 +142,30 @@ function preexec {
     __my_title "%~ %# $2"
 }
 
+# WSL-specific
+## vcxsrv
+function xsetup() {
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+    export NO_AT_BRIDGE=1           # https://bbs.archlinux.org/viewtopic.php?id=228894
+    export LIBGL_ALWAYS_INDIRECT=1
+    setxkbmap 'fr(oss)' &!
+}
+
+## env
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR='code --wait'
+### tex
+export PATH="$HOME/.texlive2020/bin/x86_64-linux:$PATH"
+export MANPATH="$HOME/.texlive2020/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="$HOME/.texlive2020/texmf-dist/doc/info:$INFOPATH"
+export TEXMFHOME="$HOME/math/texmf"
+### nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+### perl
+[ -d "$HOME/.local/lib/perl5" ] && eval "$(perl -I$HOME/.local/lib/perl5 -Mlocal::lib=$HOME/.local)"
+
 # compilation
 autoload -U zrecompile
 zrecompile -p \
