@@ -112,20 +112,10 @@ case $HOST in
         ;;
 esac
 
-## vcs info
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' unstagedstr '*'
-zstyle ':vcs_info:git:*' formats '(%b%u%c) '
-zstyle ':vcs_info:git:*' actionformats '(%b%u%c|%a) '
-
 setopt prompt_subst
-export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %F{cyan}${vcs_info_msg_0_}%F{red}%#%f%b '
+export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %#%f%b '
 export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
 
-# title & vcs info
 function __my_title {
     case $TERM in
         xterm*|*rxvt*|screen)
@@ -136,7 +126,6 @@ function __my_title {
 function precmd {
     __my_title "%~ %#"
     rehash
-    vcs_info
 }
 function preexec {
     __my_title "%~ %# $2"
