@@ -147,7 +147,6 @@ export EDITOR='code --wait'
 export PATH="$HOME/.texlive2020/bin/x86_64-linux:$PATH"
 export MANPATH="$HOME/.texlive2020/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="$HOME/.texlive2020/texmf-dist/doc/info:$INFOPATH"
-export TEXMFHOME="$HOME/math/texmf"
 ### nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
