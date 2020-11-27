@@ -159,5 +159,4 @@ export NVM_DIR="$HOME/.nvm"
 autoload -U zrecompile
 zrecompile -p \
            -R ~/.zshrc -- \
-           -R ~/.zprofile -- \
            -M ~/.zcompdump
