@@ -3,7 +3,6 @@
 [user]
 	email = najib.idrissi.kaitouni@gmail.com
 	name = Najib Idrissi
-	signingkey = 38147FA2
 [color]
     diff = auto
     status = auto
