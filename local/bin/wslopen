@@ -1,6 +1,3 @@
-#!/bin/zsh
+#!/bin/sh
 
-# horrible hack so that it works in emacs
-# see https://github.com/microsoft/WSL/4412
-_path=$(realpath $1)
-(cmd.exe /c start "$(wslpath -w $_path)" | tee)
+explorer.exe $(wslpath -aw $(realpath $1)) &

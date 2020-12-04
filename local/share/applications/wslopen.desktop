@@ -2,6 +2,6 @@
 Type=Application
 Version=1.0
 Name=wslopen
-Comment=Open file with Windows's start
+Comment="Open file with Windows"
 Exec=wslopen
 Terminal=false
