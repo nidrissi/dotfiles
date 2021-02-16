@@ -15,10 +15,6 @@
 	fscache = true
 [pull]
 	rebase = merges
-[magit]
-	hideCampaign = true
-[winUpdater]
-	recentlySeenVersion = 2.21.0.windows.1
 [gc]
 	auto = 256
 [diff]
