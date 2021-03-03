@@ -1,4 +1,4 @@
-#!/bin/zsh -*- sh -*-
+#!/bin/zsh
 
 if [ "$TERM" = 'dumb' ]; then
     export PS1='$ '
@@ -41,16 +41,6 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?~'
 zstyle ':completion:*:rm:*' ignore-line yes
 
-## ignore some files for editors
-binary=(.o .zo .zi .zix '.sw?' .jpg .gif .dvi .dvi.gz)
-edit_ignore=(.aux .old .log '#' '~' $binary)
-editors=(pico vim '*emacs*' nedit nano joe mcedit cooledit)
-
-zstyle ":completion:*:*:(${(j:*|:)editors}*):*" ignored-patterns \*${^edit_ignore}
-zstyle ":completion:*:*:cat:*" ignored-patterns \*${^binary} '*.gz'
-
-unset binary editors edit_ignore
-
 ## Install it, load it
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
@@ -86,8 +76,6 @@ bindkey ' ' magic-space       # also do history expansion on space
 ## aliases
 alias ls='ls --color'
 alias ll='ls -Ahl'
-alias sctl=systemctl
-alias jctl=journalctl
 
 # prompt
 ## change prompt color based on host
@@ -116,29 +104,29 @@ setopt prompt_subst
 export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %#%f%b '
 export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
 
-function __my_title {
-    case $TERM in
-        xterm*|*rxvt*|screen)
-            print -Pn "\e]2; $* \a"
-            ;;
-    esac
-}
-function precmd {
-    __my_title "%~ %#"
-    rehash
-}
-function preexec {
-    __my_title "%~ %# $2"
-}
+# function __my_title {
+#     case $TERM in
+#         xterm*|*rxvt*|screen)
+#             print -Pn "\e]2; $* \a"
+#             ;;
+#     esac
+# }
+# function precmd {
+#     __my_title "%~ %#"
+#     rehash
+# }
+# function preexec {
+#     __my_title "%~ %# $2"
+# }
 
 # WSL-specific
 ## vcxsrv
-function xsetup() {
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
-    export NO_AT_BRIDGE=1           # https://bbs.archlinux.org/viewtopic.php?id=228894
-    export LIBGL_ALWAYS_INDIRECT=1
-    setxkbmap 'fr(oss)' &!
-}
+# function xsetup() {
+#     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+#     export NO_AT_BRIDGE=1           # https://bbs.archlinux.org/viewtopic.php?id=228894
+#     export LIBGL_ALWAYS_INDIRECT=1
+#     setxkbmap 'fr(oss)' &!
+# }
 
 ## env
 export PATH="$HOME/.local/bin:$PATH"
