@@ -80,7 +80,7 @@ alias ll='ls -Ahl'
 # prompt
 ## change prompt color based on host
 case $HOST in
-    'xyz.idrissi.eu')
+    'ring')
         __my_color='yellow'
         ;;
     'knot')
