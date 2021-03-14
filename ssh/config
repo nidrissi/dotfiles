@@ -3,8 +3,3 @@ Host framboise
      HostName framboise.local
      Port 22
      User pi
-
-Host xyz
-     HostName xyz.idrissi.eu
-     Port 22
-     User ubuntu
