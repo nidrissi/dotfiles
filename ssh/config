@@ -1,5 +1,8 @@
-# .ssh/config
 Host framboise
-     HostName framboise.local
-     Port 22
-     User pi
+  HostName framboise.local
+  Port 22
+  User pi
+
+Host webimj
+  HostName webusers.imj-prg.fr
+  User najib.idrissi-kaitouni
