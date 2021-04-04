@@ -137,8 +137,8 @@ export MANPATH="$HOME/.texlive2021/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="$HOME/.texlive2021/texmf-dist/doc/info:$INFOPATH"
 ### nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export PATH="$HOME/.nvm/versions/node/v15.13.0/bin:$PATH" # hard-coded :-(
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 ### perl
 [ -d "$HOME/.local/lib/perl5" ] && eval "$(perl -I$HOME/.local/lib/perl5 -Mlocal::lib=$HOME/.local)"
 
