@@ -132,9 +132,9 @@ export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR='code --wait'
 ### tex
-export PATH="$HOME/.texlive2020/bin/x86_64-linux:$PATH"
-export MANPATH="$HOME/.texlive2020/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="$HOME/.texlive2020/texmf-dist/doc/info:$INFOPATH"
+export PATH="$HOME/.texlive2021/bin/x86_64-linux:$PATH"
+export MANPATH="$HOME/.texlive2021/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="$HOME/.texlive2021/texmf-dist/doc/info:$INFOPATH"
 ### nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
