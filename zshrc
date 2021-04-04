@@ -139,8 +139,6 @@ export INFOPATH="$HOME/.texlive2021/texmf-dist/doc/info:$INFOPATH"
 export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.nvm/versions/node/v15.13.0/bin:$PATH" # hard-coded :-(
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-### perl
-[ -d "$HOME/.local/lib/perl5" ] && eval "$(perl -I$HOME/.local/lib/perl5 -Mlocal::lib=$HOME/.local)"
 
 # compilation
 autoload -U zrecompile
