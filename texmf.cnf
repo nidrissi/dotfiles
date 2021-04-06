@@ -8,4 +8,4 @@
 % And include *only* your changed values, not a copy of the whole thing!
 %
 TEXMFLOCAL = $SELFAUTOPARENT/texmf-local
-BIBINPUTS = /mnt/c/Users/najib/OneDrive/Travail/Papers;
+BIBINPUTS = /mnt/c/Users/najib/OneDrive/Travail/Papers;.;
