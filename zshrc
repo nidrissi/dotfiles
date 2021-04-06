@@ -104,29 +104,20 @@ setopt prompt_subst
 export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %#%f%b '
 export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
 
-# function __my_title {
-#     case $TERM in
-#         xterm*|*rxvt*|screen)
-#             print -Pn "\e]2; $* \a"
-#             ;;
-#     esac
-# }
-# function precmd {
-#     __my_title "%~ %#"
-#     rehash
-# }
-# function preexec {
-#     __my_title "%~ %# $2"
-# }
-
-# WSL-specific
-## vcxsrv
-# function xsetup() {
-#     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
-#     export NO_AT_BRIDGE=1           # https://bbs.archlinux.org/viewtopic.php?id=228894
-#     export LIBGL_ALWAYS_INDIRECT=1
-#     setxkbmap 'fr(oss)' &!
-# }
+function __my_title {
+    case $TERM in
+        xterm*|*rxvt*|screen)
+            print -Pn "\e]2; $* \a"
+            ;;
+    esac
+}
+function precmd {
+    __my_title "%~ %#"
+    rehash
+}
+function preexec {
+    __my_title "%~ %# $2"
+}
 
 ## env
 export PATH="$HOME/.local/bin:$PATH"
