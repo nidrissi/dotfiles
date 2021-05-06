@@ -6,3 +6,17 @@ Host framboise
 Host webimj
   HostName webusers.imj-prg.fr
   User najib.idrissi-kaitouni
+
+Host sas
+  HostName sas.math.univ-paris-diderot.fr
+  User nidrissi
+
+Host zeta
+  ProxyJump sas
+  HostName zeta.imjsc.sg.lan
+  User nidrissi
+
+Host epsilon
+  ProxyJump sas
+  HostName epsilon.imjsc.sg.lan
+  User nidrissi
