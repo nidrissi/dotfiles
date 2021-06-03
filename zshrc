@@ -101,8 +101,9 @@ case $HOST in
 esac
 
 setopt prompt_subst
-export PROMPT='%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %#%f%b '
-export PROMPT2='%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b '
+export PROMPT="%F{${__my_color}}%B%(!..%n@)%m%F{red} %~ %#%f%b "
+export PROMPT2="%F{${__my_color}}%B%(!..%n@)%m%F{red} %_>%f%b "
+unset __my_color
 
 function __my_title {
     case $TERM in
